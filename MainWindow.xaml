@@ -1,0 +1,293 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+        
+        xmlns:local="clr-namespace:Monitor"
+        xmlns:syncfusion="http://schemas.syncfusion.com/wpf" x:Class="Monitor.MainWindow"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="600" Width="800">
+
+    <Window.Resources>
+        <Style x:Key="StaticTitles">
+            <Style.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="5" />
+                </Style>
+            </Style.Resources>
+            <Setter Property="Control.Background" Value="#FF4500"/>
+            <Setter Property="Control.Foreground" Value="White"/>
+            <Setter Property="Control.FontSize" Value="15"/>
+            <Setter Property="Control.HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="Control.VerticalContentAlignment" Value="Center"/>
+            <Setter Property="FrameworkElement.HorizontalAlignment" Value="Stretch"/>
+        </Style>
+
+        <Style x:Key="TextBoxes">
+            <Setter Property="Control.HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="Control.VerticalContentAlignment" Value="Center"/>
+            <Setter Property="FrameworkElement.HorizontalAlignment" Value="Stretch"/>
+            <Setter Property="Control.FontSize" Value="25"/>
+        </Style>
+
+        <Style TargetType="{x:Type TextBox}">
+            <Style.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="5" />
+                </Style>
+            </Style.Resources>
+        </Style>
+
+        <Style x:Key="Buttons">
+            <Setter Property="Control.HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="Control.VerticalContentAlignment" Value="Center"/>
+            <Setter Property="FrameworkElement.HorizontalAlignment" Value="Stretch"/>
+        </Style>
+
+        <Style x:Key="DeleteTimers">
+            <Setter Property="xctk:MaskedTextBox.FontSize" Value="30"/>
+            <Setter Property="xctk:MaskedTextBox.HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="xctk:MaskedTextBox.VerticalContentAlignment" Value="Center"/>
+            <Setter Property="xctk:MaskedTextBox.HorizontalAlignment" Value="Stretch"/>
+            <Setter Property="xctk:MaskedTextBox.VerticalAlignment" Value="Stretch"/>
+            <Setter Property="xctk:MaskedTextBox.Margin" Value="0,0,0,0"/>
+        </Style>
+    </Window.Resources>
+
+
+    <Grid ShowGridLines="False" Margin="10,10,10,10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="12*"/>
+            <RowDefinition Height="4*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid x:Name="MainGrid" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Column="1" Height="0" Width="0" Margin="178,141,0,0" Grid.Row="1"/>
+        <Label Grid.Column="1" Style="{StaticResource StaticTitles}" Content="ЗАГОЛОВОК ТАБЛО" VerticalAlignment="Top" Padding="0,0,0,0" HorizontalAlignment="Stretch" Margin="0,2,0,0" />
+
+        <TextBox x:Name="NameTablo" Grid.Column="1" HorizontalAlignment="Stretch" Margin="0,30,0,0" Text="Спортивное табло для хоккея" TextWrapping="NoWrap" VerticalAlignment="Center" Width="auto" TextAlignment="Center" FontSize="22"/>
+        <Grid ShowGridLines="False" Grid.ColumnSpan="2" Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="10"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="10"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="5"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="0.3*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="5"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="0.3*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+            </Grid.RowDefinitions>
+
+            <!--Первый столбец-->
+
+            <Label Style="{StaticResource StaticTitles}" Content="Хозяева" Grid.ColumnSpan="4"/>
+            <TextBox x:Name="HostTitle" Margin="0,0,0,2" Padding="0,-5,0,0" Style="{StaticResource TextBoxes}" Text="Хозяева" Grid.RowSpan="1" Grid.Row="2" Grid.ColumnSpan="4"/>
+            <TextBox x:Name="HostName"  Margin="0,2,0,0" Padding="0,-5,0,0" Style="{StaticResource TextBoxes}" Text="Франция" Grid.RowSpan="1" Grid.Row="3" Grid.ColumnSpan="4"/>
+
+            <Border BorderBrush="White" Margin="0,0,0,5" Grid.Column="0" Grid.Row="5" Grid.RowSpan="7"  Grid.ColumnSpan="4" CornerRadius="5,5,5,5" Background="#FFE0DFDF"/>
+
+            <Label Style="{StaticResource StaticTitles}" Margin="2,0,2,0"  Content="Общий счет" Grid.Row="5" VerticalAlignment="Center"  Grid.ColumnSpan="4" />
+            <Button Content="-1"    Style="{StaticResource Buttons}" Margin="1,0,1,1" Grid.Row="7" Grid.RowSpan="2"  Grid.ColumnSpan="1"/>
+            <Button Content="СБРОС" Style="{StaticResource Buttons}" Margin="1,1,1,0" Grid.Row="9" Grid.RowSpan="2"  Grid.ColumnSpan="1"/>
+            <TextBox x:Name="HostCounter_TextBox"     Margin="1,0,1,0" Style="{StaticResource TextBoxes}" Text="0" FontSize="60" Grid.Row="7" Grid.RowSpan="4" Grid.Column="1" Grid.ColumnSpan="2" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" />
+            <Button x:Name="HostCounterPlus_Btn" Content="+1" Style="{StaticResource Buttons}" Margin="2,0,2,0" Grid.RowSpan="4" Grid.ColumnSpan="1" Grid.Column="3" Grid.Row="7" />
+
+            <Label Style="{StaticResource StaticTitles}" Grid.Column="0" Content="Большой экран" Grid.Row="12" VerticalAlignment="Bottom"  Grid.ColumnSpan="4" RenderTransformOrigin="0.5,0.5" >
+                <Label.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform X="0" Y="-3"/>
+                    </TransformGroup>
+                </Label.RenderTransform>
+            </Label>
+            <Button Style="{StaticResource Buttons}" Padding="1,1,1,1" Grid.Row="13" Grid.RowSpan="1" Grid.Column="0" Grid.ColumnSpan="2" >
+
+                <Image Source="/Resources/monitorOrange1.png"/>
+            </Button>
+            <Button Style="{StaticResource Buttons}" Grid.Row="13" Grid.RowSpan="1" Grid.Column="2" Grid.ColumnSpan="2" >
+                <Image Source="/Resources/biggestOrange1.png" />
+            </Button>
+
+            <!--Втрой столбец-->
+
+            <Label Style="{StaticResource StaticTitles}" Content="Период" Grid.Column="5" Grid.ColumnSpan="6"/>
+
+            <Button Content="-1" Style="{StaticResource Buttons}" Grid.Row="2" Grid.RowSpan="2" Grid.Column="5" Grid.ColumnSpan="2"/>
+            <TextBox Text="0" Style="{StaticResource TextBoxes}"  Margin="5,0,5,0" Grid.Row="2" Grid.RowSpan="2" Grid.Column="7" Grid.ColumnSpan="2" FontSize="45" />
+            <Button Content="+1" Style="{StaticResource Buttons}" Grid.Row="2" Grid.RowSpan="2" Grid.Column="9" Grid.ColumnSpan="2"/>
+
+            <Label Style="{StaticResource StaticTitles}" Content="Время" Grid.Row="5" Grid.RowSpan="1" Grid.Column="5" Grid.ColumnSpan="5"/>
+            <Button Content="Сброс"  Style="{StaticResource Buttons}" Grid.Row="5" Grid.RowSpan="1" Grid.Column="10" Grid.ColumnSpan="1" Margin="7,0,0,0"/>
+            <Button Content="5 мин"  Style="{StaticResource Buttons}" Margin="0,0,5,0" Grid.Row="7" Grid.RowSpan="1" Grid.Column="5" Grid.ColumnSpan="2"/>
+            <Button Content="20 мин" Style="{StaticResource Buttons}" Margin="0,0,5,0" Grid.Row="7" Grid.RowSpan="1" Grid.Column="7" Grid.ColumnSpan="2"/>
+            <Button Content="10 мин" Style="{StaticResource Buttons}" Margin="0,0,0,0" Grid.Row="7" Grid.RowSpan="1" Grid.Column="9" Grid.ColumnSpan="2"/>
+
+            <xctk:MaskedTextBox Style="{StaticResource TextBoxes}"
+                x:Name="MainTimer" 
+                Mask="00:00"      
+                FontSize="50"
+                Grid.Row="8" Grid.RowSpan="2" Grid.Column="5" Grid.ColumnSpan="6" Text="00:00"
+                VerticalContentAlignment="Center" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" TextAlignment="Center" HorizontalContentAlignment="Stretch" Padding="0,-10,0,0" Margin="0,3,0,3">
+
+            </xctk:MaskedTextBox>
+
+            <Button Content="Старт" Style="{StaticResource Buttons}" Grid.Row="10" Grid.RowSpan="1" Grid.Column="5" Grid.ColumnSpan="3" Margin="0,0,3,0"/>
+            <Button Content="Стоп"  Style="{StaticResource Buttons}" Grid.Row="10" Grid.RowSpan="1" Grid.Column="8" Grid.ColumnSpan="3" Margin="3,0,0,0"/>
+
+            <!--Третий столбец-->
+
+            <Label Style="{StaticResource StaticTitles}" Content="Гости" Grid.Column="12" Grid.ColumnSpan="4"/>
+            <TextBox x:Name="GuestsTitle" Margin="0,0,0,2" Padding="0,-5,0,0" Style="{StaticResource TextBoxes}" Text="Гости"  Grid.Column="12" Grid.RowSpan="1" Grid.Row="2" Grid.ColumnSpan="4"/>
+            <TextBox x:Name="GuestsName"  Margin="0,2,0,0" Padding="0,-5,0,0" Style="{StaticResource TextBoxes}" Text="Англия" Grid.Column="12" Grid.RowSpan="1" Grid.Row="3" Grid.ColumnSpan="4"/>
+
+            <Border BorderBrush="White" Margin="0,0,0,5" Grid.Column="12" Grid.Row="5" Grid.RowSpan="7"  Grid.ColumnSpan="4" CornerRadius="5,5,5,5" Background="#FFE0DFDF"/>
+
+            <Label Style="{StaticResource StaticTitles}" Margin="2,0,2,0" Grid.Column="12" Content="Общий счет" Grid.Row="5" VerticalAlignment="Center"  Grid.ColumnSpan="4" />
+            <Button Content="-1"    Style="{StaticResource Buttons}" Margin="1,0,1,1" Grid.Column="12"  Grid.Row="7" Grid.RowSpan="2"  Grid.ColumnSpan="1"/>
+            <Button Content="СБРОС" Style="{StaticResource Buttons}" Margin="1,1,1,0" Grid.Column="12"  Grid.Row="9" Grid.RowSpan="2"  Grid.ColumnSpan="1"/>
+            <TextBox x:Name="GuestsCounter_TextBox" Margin="1,0,1,0" Style="{StaticResource TextBoxes}" Text="0" FontSize="60" Grid.Row="7" Grid.RowSpan="4" Grid.Column="13" Grid.ColumnSpan="2" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" />
+            <Button x:Name="GuestsCounterPlus_Btn" Content="+1" Style="{StaticResource Buttons}" Margin="2,0,2,0"  Grid.RowSpan="4" Grid.ColumnSpan="1" Grid.Column="15" Grid.Row="7" />
+
+            <Label Style="{StaticResource StaticTitles}" Grid.Column="12" Content="Малый экран" Grid.Row="12" VerticalAlignment="Bottom"  Grid.ColumnSpan="4" RenderTransformOrigin="0.5,0.5" >
+                <Label.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform X="0" Y="-3"/>
+                    </TransformGroup>
+                </Label.RenderTransform>
+            </Label>
+            <Button Style="{StaticResource Buttons}" Padding="1,1,1,1" Grid.Row="13" Grid.RowSpan="1" Grid.Column="12" Grid.ColumnSpan="2" >
+
+                <Image Source="/Resources/monitorOrange1.png"/>
+            </Button>
+            <Button Style="{StaticResource Buttons}" Grid.Row="13" Grid.RowSpan="1" Grid.Column="14" Grid.ColumnSpan="2" >
+                <Image Source="/Resources/biggestOrange1.png" />
+            </Button>
+        </Grid>
+
+        <!--Нижняя сетка с удалениями-->
+
+        <Grid Grid.Row="5" ShowGridLines="False" Grid.ColumnSpan="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="0.1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="0.15*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="0.1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="5"/>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="5"/>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="5"/>
+                <RowDefinition Height="2*"/>
+                
+            </Grid.RowDefinitions>
+            <!--Левая половина-->
+            <Label Style="{StaticResource StaticTitles}" Grid.Column="0" Content="Удаления" Grid.Row="1" VerticalAlignment="Center"  Grid.ColumnSpan="9" />
+            <TextBox Margin="0,0,0,0" Style="{StaticResource TextBoxes}" Text="0" Grid.Row="3" Grid.Column="0"/>
+            <xctk:MaskedTextBox Style="{StaticResource DeleteTimers}" x:Name="HostTimer1" Mask="00:00" Grid.Row="2" Grid.RowSpan="2" Grid.Column="2" Grid.ColumnSpan="2" Text="00:00"> </xctk:MaskedTextBox>
+            <Button Content="+2" Style="{StaticResource Buttons}" Grid.Row="3" Grid.Column="5"/>
+            <Button Content="+5" Style="{StaticResource Buttons}" Grid.Row="3" Grid.Column="6"/>
+            <Button Content="+10" Style="{StaticResource Buttons}" Grid.Row="3" Grid.Column="7"/>
+            <Button Content="Сброс" Style="{StaticResource Buttons}" Grid.Row="3" Grid.Column="8"/>
+
+            <TextBox Margin="0,0,0,0" Style="{StaticResource TextBoxes}" Text="0" Grid.Row="5" Grid.Column="0"/>
+            <xctk:MaskedTextBox Style="{StaticResource DeleteTimers}" x:Name="HostTimer2" Mask="00:00" Grid.Row="5" Grid.RowSpan="2" Grid.Column="2" Grid.ColumnSpan="2" Text="00:00"></xctk:MaskedTextBox>
+            <Button Content="+2" Style="{StaticResource Buttons}"       Grid.Row="5" Grid.Column="5"/>
+            <Button Content="+5" Style="{StaticResource Buttons}"       Grid.Row="5" Grid.Column="6"/>
+            <Button Content="+10" Style="{StaticResource Buttons}"      Grid.Row="5" Grid.Column="7"/>
+            <Button Content="Сброс" Style="{StaticResource Buttons}"    Grid.Row="5" Grid.Column="8"/>
+
+            <TextBox Margin="0,0,0,0" Style="{StaticResource TextBoxes}" Text="0" Grid.Row="7" Grid.Column="0"/>
+            <xctk:MaskedTextBox Style="{StaticResource DeleteTimers}" x:Name="HostTimer3" Mask="00:00" Grid.Row="7" Grid.RowSpan="2" Grid.Column="2" Grid.ColumnSpan="2" Text="00:00"></xctk:MaskedTextBox>
+            <Button Content="+2" Style="{StaticResource Buttons}"       Grid.Row="7" Grid.Column="5"/>
+            <Button Content="+5" Style="{StaticResource Buttons}"       Grid.Row="7" Grid.Column="6"/>
+            <Button Content="+10" Style="{StaticResource Buttons}"      Grid.Row="7" Grid.Column="7"/>
+            <Button Content="Сброс" Style="{StaticResource Buttons}"    Grid.Row="7" Grid.Column="8"/>
+
+            <!--Правая половина-->
+            <Label Style="{StaticResource StaticTitles}" Grid.Column="10" Content="Удаления" Grid.Row="1" VerticalAlignment="Center"  Grid.ColumnSpan="9" />
+            <TextBox Margin="0,0,0,0" Style="{StaticResource TextBoxes}" Text="0" Grid.Row="3" Grid.Column="10"/>
+            <xctk:MaskedTextBox Style="{StaticResource DeleteTimers}" x:Name="GuestsTimer1" Mask="00:00" Grid.Row="2" Grid.RowSpan="2" Grid.Column="12" Grid.ColumnSpan="2" Text="00:00"></xctk:MaskedTextBox>
+            <Button Content="+2" Style="{StaticResource Buttons}"    Grid.Row="3" Grid.Column="15"/>
+            <Button Content="+5" Style="{StaticResource Buttons}"    Grid.Row="3" Grid.Column="16"/>
+            <Button Content="+10" Style="{StaticResource Buttons}"   Grid.Row="3" Grid.Column="17"/>
+            <Button Content="Сброс" Style="{StaticResource Buttons}" Grid.Row="3" Grid.Column="18"/>
+
+            <TextBox Margin="0,0,0,0" Style="{StaticResource TextBoxes}" Text="0" Grid.Row="5" Grid.Column="10"/>
+            <xctk:MaskedTextBox Style="{StaticResource DeleteTimers}" x:Name="GuestsTimer2" Mask="00:00" Grid.Row="5" Grid.RowSpan="2" Grid.Column="12" Grid.ColumnSpan="2" Text="00:00"></xctk:MaskedTextBox>
+            <Button Content="+2" Style="{StaticResource Buttons}"       Grid.Row="5" Grid.Column="15"/>
+            <Button Content="+5" Style="{StaticResource Buttons}"       Grid.Row="5" Grid.Column="16"/>
+            <Button Content="+10" Style="{StaticResource Buttons}"      Grid.Row="5" Grid.Column="17"/>
+            <Button Content="Сброс" Style="{StaticResource Buttons}"    Grid.Row="5" Grid.Column="18"/>
+
+            <TextBox Margin="0,0,0,0" Style="{StaticResource TextBoxes}" Text="0" Grid.Row="7" Grid.Column="10"/>
+            <xctk:MaskedTextBox Style="{StaticResource DeleteTimers}" x:Name="GuestsTimer3" Mask="00:00" Grid.Row="7" Grid.RowSpan="2" Grid.Column="12" Grid.ColumnSpan="2" Text="00:00"></xctk:MaskedTextBox>
+            <Button Content="+2" Style="{StaticResource Buttons}"       Grid.Row="7" Grid.Column="15"/>
+            <Button Content="+5" Style="{StaticResource Buttons}"       Grid.Row="7" Grid.Column="16"/>
+            <Button Content="+10" Style="{StaticResource Buttons}"      Grid.Row="7" Grid.Column="17"/>
+            <Button Content="Сброс" Style="{StaticResource Buttons}"    Grid.Row="7" Grid.Column="18"/>
+        </Grid>
+
+        
+
+    </Grid>
+</Window>
+<!--
+    
+    
+    -->
+        
