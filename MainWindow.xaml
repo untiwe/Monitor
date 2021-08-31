@@ -48,12 +48,16 @@
         </Style>
 
         <Style x:Key="DeleteTimers">
-            <Setter Property="xctk:MaskedTextBox.FontSize" Value="30"/>
+            <Setter Property="xctk:MaskedTextBox.FontSize" Value="20"/>
             <Setter Property="xctk:MaskedTextBox.HorizontalContentAlignment" Value="Center"/>
             <Setter Property="xctk:MaskedTextBox.VerticalContentAlignment" Value="Center"/>
             <Setter Property="xctk:MaskedTextBox.HorizontalAlignment" Value="Stretch"/>
             <Setter Property="xctk:MaskedTextBox.VerticalAlignment" Value="Stretch"/>
             <Setter Property="xctk:MaskedTextBox.Margin" Value="0,0,0,0"/>
+        </Style>
+
+        <Style x:Key="DeleteCounters" BasedOn="{StaticResource TextBoxes}" >
+            <Setter Property="Control.FontSize" Value="20"/>
         </Style>
     </Window.Resources>
 
@@ -237,22 +241,22 @@
             </Grid.RowDefinitions>
             <!--Левая половина-->
             <Label Style="{StaticResource StaticTitles}" Grid.Column="0" Content="Удаления" Grid.Row="1" VerticalAlignment="Center"  Grid.ColumnSpan="9" />
-            <TextBox Margin="0,0,0,0" Style="{StaticResource TextBoxes}" Text="0" Grid.Row="3" Grid.Column="0"/>
-            <xctk:MaskedTextBox Style="{StaticResource DeleteTimers}" x:Name="HostTimer1" Mask="00:00" Grid.Row="2" Grid.RowSpan="2" Grid.Column="2" Grid.ColumnSpan="2" Text="00:00"> </xctk:MaskedTextBox>
+            <TextBox Margin="0,0,0,0" Style="{StaticResource DeleteCounters}" Text="0" Grid.Row="3" Grid.Column="0"/>
+            <xctk:MaskedTextBox Style="{StaticResource DeleteTimers}" x:Name="HostTimer1" Mask="00:00" Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="2" Text="00:00"> </xctk:MaskedTextBox>
             <Button Content="+2" Style="{StaticResource Buttons}" Grid.Row="3" Grid.Column="5"/>
             <Button Content="+5" Style="{StaticResource Buttons}" Grid.Row="3" Grid.Column="6"/>
             <Button Content="+10" Style="{StaticResource Buttons}" Grid.Row="3" Grid.Column="7"/>
             <Button Content="Сброс" Style="{StaticResource Buttons}" Grid.Row="3" Grid.Column="8"/>
 
-            <TextBox Margin="0,0,0,0" Style="{StaticResource TextBoxes}" Text="0" Grid.Row="5" Grid.Column="0"/>
-            <xctk:MaskedTextBox Style="{StaticResource DeleteTimers}" x:Name="HostTimer2" Mask="00:00" Grid.Row="5" Grid.RowSpan="2" Grid.Column="2" Grid.ColumnSpan="2" Text="00:00"></xctk:MaskedTextBox>
+            <TextBox Margin="0,0,0,0" Style="{StaticResource DeleteCounters}" Text="0" Grid.Row="5" Grid.Column="0"/>
+            <xctk:MaskedTextBox Style="{StaticResource DeleteTimers}" x:Name="HostTimer2" Mask="00:00" Grid.Row="5" Grid.Column="2" Grid.ColumnSpan="2" Text="00:00"></xctk:MaskedTextBox>
             <Button Content="+2" Style="{StaticResource Buttons}"       Grid.Row="5" Grid.Column="5"/>
             <Button Content="+5" Style="{StaticResource Buttons}"       Grid.Row="5" Grid.Column="6"/>
             <Button Content="+10" Style="{StaticResource Buttons}"      Grid.Row="5" Grid.Column="7"/>
             <Button Content="Сброс" Style="{StaticResource Buttons}"    Grid.Row="5" Grid.Column="8"/>
 
-            <TextBox Margin="0,0,0,0" Style="{StaticResource TextBoxes}" Text="0" Grid.Row="7" Grid.Column="0"/>
-            <xctk:MaskedTextBox Style="{StaticResource DeleteTimers}" x:Name="HostTimer3" Mask="00:00" Grid.Row="7" Grid.RowSpan="2" Grid.Column="2" Grid.ColumnSpan="2" Text="00:00"></xctk:MaskedTextBox>
+            <TextBox Margin="0,0,0,0" Style="{StaticResource DeleteCounters}" Text="0" Grid.Row="7" Grid.Column="0"/>
+            <xctk:MaskedTextBox Style="{StaticResource DeleteTimers}" x:Name="HostTimer3" Mask="00:00" Grid.Row="7" Grid.Column="2" Grid.ColumnSpan="2" Text="00:00"></xctk:MaskedTextBox>
             <Button Content="+2" Style="{StaticResource Buttons}"       Grid.Row="7" Grid.Column="5"/>
             <Button Content="+5" Style="{StaticResource Buttons}"       Grid.Row="7" Grid.Column="6"/>
             <Button Content="+10" Style="{StaticResource Buttons}"      Grid.Row="7" Grid.Column="7"/>
@@ -260,22 +264,22 @@
 
             <!--Правая половина-->
             <Label Style="{StaticResource StaticTitles}" Grid.Column="10" Content="Удаления" Grid.Row="1" VerticalAlignment="Center"  Grid.ColumnSpan="9" />
-            <TextBox Margin="0,0,0,0" Style="{StaticResource TextBoxes}" Text="0" Grid.Row="3" Grid.Column="10"/>
-            <xctk:MaskedTextBox Style="{StaticResource DeleteTimers}" x:Name="GuestsTimer1" Mask="00:00" Grid.Row="2" Grid.RowSpan="2" Grid.Column="12" Grid.ColumnSpan="2" Text="00:00"></xctk:MaskedTextBox>
+            <TextBox Margin="0,0,0,0" Style="{StaticResource DeleteCounters}" Text="0" Grid.Row="3" Grid.Column="10"/>
+            <xctk:MaskedTextBox Style="{StaticResource DeleteTimers}" x:Name="GuestsTimer1" Mask="00:00" Grid.Row="3" Grid.Column="12" Grid.ColumnSpan="2" Text="00:00"></xctk:MaskedTextBox>
             <Button Content="+2" Style="{StaticResource Buttons}"    Grid.Row="3" Grid.Column="15"/>
             <Button Content="+5" Style="{StaticResource Buttons}"    Grid.Row="3" Grid.Column="16"/>
             <Button Content="+10" Style="{StaticResource Buttons}"   Grid.Row="3" Grid.Column="17"/>
             <Button Content="Сброс" Style="{StaticResource Buttons}" Grid.Row="3" Grid.Column="18"/>
 
-            <TextBox Margin="0,0,0,0" Style="{StaticResource TextBoxes}" Text="0" Grid.Row="5" Grid.Column="10"/>
-            <xctk:MaskedTextBox Style="{StaticResource DeleteTimers}" x:Name="GuestsTimer2" Mask="00:00" Grid.Row="5" Grid.RowSpan="2" Grid.Column="12" Grid.ColumnSpan="2" Text="00:00"></xctk:MaskedTextBox>
+            <TextBox Margin="0,0,0,0" Style="{StaticResource DeleteCounters}" Text="0" Grid.Row="5" Grid.Column="10"/>
+            <xctk:MaskedTextBox Style="{StaticResource DeleteTimers}" x:Name="GuestsTimer2" Mask="00:00" Grid.Row="5" Grid.Column="12" Grid.ColumnSpan="2" Text="00:00"></xctk:MaskedTextBox>
             <Button Content="+2" Style="{StaticResource Buttons}"       Grid.Row="5" Grid.Column="15"/>
             <Button Content="+5" Style="{StaticResource Buttons}"       Grid.Row="5" Grid.Column="16"/>
             <Button Content="+10" Style="{StaticResource Buttons}"      Grid.Row="5" Grid.Column="17"/>
             <Button Content="Сброс" Style="{StaticResource Buttons}"    Grid.Row="5" Grid.Column="18"/>
 
-            <TextBox Margin="0,0,0,0" Style="{StaticResource TextBoxes}" Text="0" Grid.Row="7" Grid.Column="10"/>
-            <xctk:MaskedTextBox Style="{StaticResource DeleteTimers}" x:Name="GuestsTimer3" Mask="00:00" Grid.Row="7" Grid.RowSpan="2" Grid.Column="12" Grid.ColumnSpan="2" Text="00:00"></xctk:MaskedTextBox>
+            <TextBox Margin="0,0,0,0" Style="{StaticResource DeleteCounters}" Text="0" Grid.Row="7" Grid.Column="10"/>
+            <xctk:MaskedTextBox Style="{StaticResource DeleteTimers}" x:Name="GuestsTimer3" Mask="00:00" Grid.Row="7" Grid.Column="12" Grid.ColumnSpan="2" Text="00:00"></xctk:MaskedTextBox>
             <Button Content="+2" Style="{StaticResource Buttons}"       Grid.Row="7" Grid.Column="15"/>
             <Button Content="+5" Style="{StaticResource Buttons}"       Grid.Row="7" Grid.Column="16"/>
             <Button Content="+10" Style="{StaticResource Buttons}"      Grid.Row="7" Grid.Column="17"/>
