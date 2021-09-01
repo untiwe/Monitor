@@ -83,9 +83,39 @@ namespace Monitor.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Byte[].
         /// </summary>
+        public static byte[] Izis_One {
+            get {
+                object obj = ResourceManager.GetObject("Izis_One", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Byte[].
+        /// </summary>
         public static byte[] Monitor {
             get {
                 object obj = ResourceManager.GetObject("Monitor", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Byte[].
+        /// </summary>
+        public static byte[] Promenad_Deco {
+            get {
+                object obj = ResourceManager.GetObject("Promenad_Deco", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Byte[].
+        /// </summary>
+        public static byte[] Shihan {
+            get {
+                object obj = ResourceManager.GetObject("Shihan", resourceCulture);
                 return ((byte[])(obj));
             }
         }

@@ -10,7 +10,10 @@
     <None Remove="monitorOrange1.png" />
     <None Remove="Resources\biggestOrange1.png" />
     <None Remove="Resources\crossOrange1.png" />
+    <None Remove="Resources\Izis One.ttf" />
     <None Remove="Resources\monitorOrange1.png" />
+    <None Remove="Resources\Promenad Deco.ttf" />
+    <None Remove="Resources\Shihan.ttf" />
   </ItemGroup>
 
   <ItemGroup>
@@ -21,7 +24,10 @@
     <Resource Include="monitorOrange1.png" />
     <Resource Include="Resources\biggestOrange1.png" />
     <Resource Include="Resources\crossOrange1.png" />
+    <Resource Include="Resources\Izis One.ttf" />
     <Resource Include="Resources\monitorOrange1.png" />
+    <Resource Include="Resources\Promenad Deco.ttf" />
+    <Resource Include="Resources\Shihan.ttf" />
   </ItemGroup>
 
   <ItemGroup>

@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Xceed.Wpf.Toolkit; //добавляем маску для ввода
-
+//тригеры для таймера 00:00 https://metanit.com/sharp/wpf/14.3.php
 namespace Monitor
 {
     /// <summary>
@@ -21,10 +21,22 @@ namespace Monitor
     /// </summary>
     public partial class MainWindow : Window
     {
+        BigWindow bigWindow = new BigWindow();
+
         public MainWindow()
         {
-            InitializeComponent();
+            InitializeComponent();;
+            DataContext = new View();
+
+
         }
+
+        private void OpenBigWindow(object sender, MouseButtonEventArgs e)
+        {
+            bigWindow.Show();
+        }
+
+
 
     }
 }
