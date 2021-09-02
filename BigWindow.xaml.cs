@@ -17,8 +17,10 @@ namespace Monitor
     /// <summary>
     /// Логика взаимодействия для BigWindow.xaml
     /// </summary>
+    /// 
     public partial class BigWindow : Window
     {
+
         public BigWindow()
         {
             InitializeComponent();

@@ -6,9 +6,11 @@ using System.Threading.Tasks;
 
 namespace Monitor
 {
-    class View
+    public class View
+
     {
-        public TeamInfo LeftTeam { get; } = new TeamInfo();
-        public TeamInfo RightTeam { get; } = new TeamInfo();
+        public TeamInfo LeftTeam { get; set; } = new TeamInfo();
+        public TeamInfo RightTeam { get; set; } = new TeamInfo();
+        public CentralInfo TabloInfo { get; set; } = new CentralInfo();
     }
 }

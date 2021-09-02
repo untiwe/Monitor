@@ -22,13 +22,18 @@ namespace Monitor
     public partial class MainWindow : Window
     {
         BigWindow bigWindow = new BigWindow();
+        public View _view = new View();
 
         public MainWindow()
         {
-            InitializeComponent();;
-            DataContext = new View();
-
-
+            InitializeComponent();
+            _view.LeftTeam.TeamTitle = "Россия";
+            _view.LeftTeam.TeamName = "Зенит";
+            _view.RightTeam.TeamTitle = "Англия";
+            _view.RightTeam.TeamName = "Манчестер";
+            _view.TabloInfo.TabloName = "Табло для хоккея";
+            DataContext = _view;
+            bigWindow.DataContext = DataContext;
         }
 
         private void OpenBigWindow(object sender, MouseButtonEventArgs e)
@@ -36,7 +41,19 @@ namespace Monitor
             bigWindow.Show();
         }
 
+        //копки счетчика левой команды
+        private void LeftTeamMinusRefreshCount(object sender, RoutedEventArgs e) => _view.LeftTeam.TeamCounter = 0;
+        private void LeftTeamPlusOneCount(object sender, RoutedEventArgs e) => _view.LeftTeam.TeamCounter++;
+        private void LeftTeamMinusOneCount(object sender, RoutedEventArgs e) => _view.LeftTeam.TeamCounter--;
 
+        //копки счетчика правой команды
+        private void RightTeamRefreshCount(object sender, RoutedEventArgs e) => _view.RightTeam.TeamCounter = 0;
+        private void RightTeamPlusOneCount(object sender, RoutedEventArgs e) => _view.RightTeam.TeamCounter++;
+        private void RightTeamMinusOneCount(object sender, RoutedEventArgs e) => _view.RightTeam.TeamCounter--;
+
+        //кнопки периода игры
+        private void PeriodPlusOneCount(object sender, RoutedEventArgs e) => _view.TabloInfo.Period++;
+        private void PeriodMinusOneCount(object sender, RoutedEventArgs e) => _view.TabloInfo.Period--;
 
     }
 }
