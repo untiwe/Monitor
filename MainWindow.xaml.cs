@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 using Xceed.Wpf.Toolkit; //добавляем маску для ввода
 //тригеры для таймера 00:00 https://metanit.com/sharp/wpf/14.3.php
 namespace Monitor
@@ -32,8 +34,13 @@ namespace Monitor
             _view.RightTeam.TeamTitle = "Англия";
             _view.RightTeam.TeamName = "Манчестер";
             _view.TabloInfo.TabloName = "Табло для хоккея";
+            //_view.TabloInfo.GameTaimer = new TimeSpan(1, 05, 3);
+            _view.TabloInfo.GameTaimerString = "71:22";
+            
             DataContext = _view;
             bigWindow.DataContext = DataContext;
+
+            DispatcherTimerSample();
         }
 
         private void OpenBigWindow(object sender, MouseButtonEventArgs e)
@@ -54,6 +61,26 @@ namespace Monitor
         //кнопки периода игры
         private void PeriodPlusOneCount(object sender, RoutedEventArgs e) => _view.TabloInfo.Period++;
         private void PeriodMinusOneCount(object sender, RoutedEventArgs e) => _view.TabloInfo.Period--;
+
+        
+        public void DispatcherTimerSample()
+        {
+            InitializeComponent();
+            DispatcherTimer timer = new DispatcherTimer();
+            timer.Interval = TimeSpan.FromSeconds(1);
+            timer.Tick += timer_Tick;
+            timer.Start();
+        }
+
+        void timer_Tick(object sender, EventArgs e)
+        {
+            _view.TabloInfo.GameTaimer = _view.TabloInfo.GameTaimer.Subtract(new TimeSpan(0, 0, 1));
+            //var ts = _view.TabloInfo.GameTaimer;
+            //Debug.WriteLine(string.Format("{0}:{1:mm}:{1:ss}", ts.TotalHours, ts));
+            //TestLabel.Content = string.Format("{0}:{1:ss}", Math.Floor(ts.TotalMinutes), ts);
+        }
+
+
 
     }
 }

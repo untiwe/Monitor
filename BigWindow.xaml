@@ -154,7 +154,7 @@
                     <TranslateTransform X="0" Y="100"/>
                 </TransformGroup>
             </Viewbox.RenderTransform>
-            <TextBlock Text="12:47"/>
+            <TextBlock Text="{Binding Path=TabloInfo.GameTaimerString, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
         </Viewbox>
         
 

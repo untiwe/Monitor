@@ -152,7 +152,7 @@
 
             <!--Втрой столбец-->
 
-            <Label Style="{StaticResource StaticTitles}" Content="Период" Grid.Column="5" Grid.ColumnSpan="6"/>
+            <Label x:Name="TestLabel" Style="{StaticResource StaticTitles}" Content="Период" Grid.Column="5" Grid.ColumnSpan="6"/>
 
             <Button Content="-1" Style="{StaticResource Buttons}" Grid.Row="2" Grid.RowSpan="2" Grid.Column="5" Grid.ColumnSpan="2" Click="PeriodMinusOneCount"/>
             <TextBox Text="{Binding Path=TabloInfo.Period, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource TextBoxes}"  Margin="5,0,5,0" Grid.Row="2" Grid.RowSpan="2" Grid.Column="7" Grid.ColumnSpan="2" FontSize="45" />
@@ -168,7 +168,7 @@
                 x:Name="MainTimer" 
                 Mask="00:00"      
                 FontSize="50"
-                Grid.Row="8" Grid.RowSpan="2" Grid.Column="5" Grid.ColumnSpan="6" Text="00:00"
+                Grid.Row="8" Grid.RowSpan="2" Grid.Column="5" Grid.ColumnSpan="6" Text="{Binding Path=TabloInfo.GameTaimerString, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                 VerticalContentAlignment="Center" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" TextAlignment="Center" HorizontalContentAlignment="Stretch" Padding="0,-10,0,0" Margin="0,3,0,3">
 
             </xctk:MaskedTextBox>
