@@ -15,13 +15,11 @@ using System.Windows.Shapes;
 namespace Monitor
 {
     /// <summary>
-    /// Логика взаимодействия для BigWindow.xaml
+    /// Логика взаимодействия для SmallWindow.xaml
     /// </summary>
-    /// 
-    public partial class BigWindow : Window
+    public partial class SmallWindow : Window
     {
-
-        public BigWindow()
+        public SmallWindow()
         {
             InitializeComponent();
         }
@@ -33,5 +31,6 @@ namespace Monitor
         }
 
         public void CreateVisibility() => this.Visibility = Visibility.Visible;
+
     }
 }

@@ -24,7 +24,9 @@ namespace Monitor
     public partial class MainWindow : Window
     {
         BigWindow bigWindow = new BigWindow();
+        SmallWindow smallWindow = new SmallWindow();
         public View _view = new View();
+        DispatcherTimer timer;
 
         public MainWindow()
         {
@@ -34,19 +36,78 @@ namespace Monitor
             _view.RightTeam.TeamTitle = "Англия";
             _view.RightTeam.TeamName = "Манчестер";
             _view.TabloInfo.TabloName = "Табло для хоккея";
-            //_view.TabloInfo.GameTaimer = new TimeSpan(1, 05, 3);
-            _view.TabloInfo.GameTaimerString = "71:22";
-            
+
             DataContext = _view;
             bigWindow.DataContext = DataContext;
+            bigWindow.IsVisibleChanged += SetImgBigMonitor;//подписка на изменение видимости для смены иконки на кнопке
+            smallWindow.DataContext = DataContext;
+            smallWindow.IsVisibleChanged += SetImgBigMonitor;
 
-            DispatcherTimerSample();
+
+            InitDispatcherTimer();
         }
 
-        private void OpenBigWindow(object sender, MouseButtonEventArgs e)
+        private void OpenBigWindow(object sender, RoutedEventArgs e)
         {
-            bigWindow.Show();
+            if (!bigWindow.IsVisible)
+                bigWindow.Show();
+            else
+                bigWindow.Close();
         }
+
+        private void OpenSmallWindow(object sender, RoutedEventArgs e)
+        {
+            if (!smallWindow.IsVisible)
+                smallWindow.Show();
+            else
+                smallWindow.Close();
+        }
+
+        private void StretchBigWindow(object sender, RoutedEventArgs e)
+        {//развернуть или уменьшить окно для экрана стадиона
+            if (bigWindow.WindowState == System.Windows.WindowState.Maximized)
+            {
+                bigWindow.WindowState = System.Windows.WindowState.Normal;
+                bigWindow.WindowStyle = WindowStyle.SingleBorderWindow;
+            }
+            else
+            {
+                bigWindow.WindowState = System.Windows.WindowState.Maximized;
+                bigWindow.WindowStyle = WindowStyle.None;
+            }
+        }
+
+        private void StretchSmallWindow(object sender, RoutedEventArgs e)
+        {//развернуть или уменьшить окно для экрана тренеров
+            if (smallWindow.WindowState == System.Windows.WindowState.Maximized)
+            {   
+                smallWindow.WindowState = System.Windows.WindowState.Normal;
+                smallWindow.WindowStyle = WindowStyle.SingleBorderWindow;
+            }
+            else
+            {
+                smallWindow.WindowState = System.Windows.WindowState.Maximized;
+                smallWindow.WindowStyle = WindowStyle.None;
+            }
+        }
+
+        private void SetImgBigMonitor(object sender, DependencyPropertyChangedEventArgs e)
+        {
+            if (bigWindow.Visibility == Visibility)
+                OpenBigWindiwBTN.Source = new BitmapImage(new Uri("pack://application:,,,/Monitor;component/Resources/crossOrange1.png"));
+            else
+                OpenBigWindiwBTN.Source = new BitmapImage(new Uri("pack://application:,,,/Monitor;component/Resources/monitorOrange1.png"));
+        }
+
+        private void SetImgSmallMonitor(object sender, DependencyPropertyChangedEventArgs e)
+        {
+            if (smallWindow.Visibility == Visibility)
+                OpenSmallWindiwBTN.Source = new BitmapImage(new Uri("pack://application:,,,/Monitor;component/Resources/crossOrange1.png"));
+            else
+                OpenSmallWindiwBTN.Source = new BitmapImage(new Uri("pack://application:,,,/Monitor;component/Resources/monitorOrange1.png"));
+        }
+
+
 
         //копки счетчика левой команды
         private void LeftTeamMinusRefreshCount(object sender, RoutedEventArgs e) => _view.LeftTeam.TeamCounter = 0;
@@ -63,22 +124,129 @@ namespace Monitor
         private void PeriodMinusOneCount(object sender, RoutedEventArgs e) => _view.TabloInfo.Period--;
 
         
-        public void DispatcherTimerSample()
-        {
-            InitializeComponent();
-            DispatcherTimer timer = new DispatcherTimer();
+        public void InitDispatcherTimer()
+        { 
+            timer = new DispatcherTimer();
             timer.Interval = TimeSpan.FromSeconds(1);
-            timer.Tick += timer_Tick;
-            timer.Start();
+            timer.Tick += _view.TabloInfo.SubtractTaimer;
+            timer.Tick += _view.LeftPlayer1.SubtractTaimer;
+            timer.Tick += _view.LeftPlayer2.SubtractTaimer;
+            timer.Tick += _view.LeftPlayer3.SubtractTaimer;
+            timer.Tick += _view.RightPlayer1.SubtractTaimer;
+            timer.Tick += _view.RightPlayer2.SubtractTaimer;
+            timer.Tick += _view.RightPlayer3.SubtractTaimer;
         }
 
-        void timer_Tick(object sender, EventArgs e)
+        void StartTimer() => timer.Start();
+        void StopTimer() => timer.Stop();
+
+        //управление центральным таймером
+        private void StopMainTimer()
         {
-            _view.TabloInfo.GameTaimer = _view.TabloInfo.GameTaimer.Subtract(new TimeSpan(0, 0, 1));
-            //var ts = _view.TabloInfo.GameTaimer;
-            //Debug.WriteLine(string.Format("{0}:{1:mm}:{1:ss}", ts.TotalHours, ts));
-            //TestLabel.Content = string.Format("{0}:{1:ss}", Math.Floor(ts.TotalMinutes), ts);
+            MainTimer.IsReadOnly = false;
+            MainTimer.Background = new SolidColorBrush(Color.FromRgb(255, 255, 255));
+
+            HostTimer1.IsReadOnly = false;
+            HostTimer1.Background = new SolidColorBrush(Color.FromRgb(255, 255, 255));
+            HostTimer2.IsReadOnly = false;
+            HostTimer2.Background = new SolidColorBrush(Color.FromRgb(255, 255, 255));
+            HostTimer3.IsReadOnly = false;
+            HostTimer3.Background = new SolidColorBrush(Color.FromRgb(255, 255, 255));
+            GuestsTimer1.IsReadOnly = false;
+            GuestsTimer1.Background = new SolidColorBrush(Color.FromRgb(255, 255, 255));
+            GuestsTimer2.IsReadOnly = false;
+            GuestsTimer2.Background = new SolidColorBrush(Color.FromRgb(255, 255, 255));
+            GuestsTimer3.IsReadOnly = false;
+            GuestsTimer3.Background = new SolidColorBrush(Color.FromRgb(255, 255, 255));
+
+            StopTimer();
         }
+        private void StartMainTimer()
+        {
+            MainTimer.IsReadOnly = true;
+            MainTimer.Background = new SolidColorBrush(Color.FromRgb(221, 221, 221));
+
+            HostTimer1.IsReadOnly = true;
+            HostTimer1.Background = new SolidColorBrush(Color.FromRgb(221, 221, 221));
+            HostTimer2.IsReadOnly = true;
+            HostTimer2.Background = new SolidColorBrush(Color.FromRgb(221, 221, 221));
+            HostTimer3.IsReadOnly = true;
+            HostTimer3.Background = new SolidColorBrush(Color.FromRgb(221, 221, 221));
+            GuestsTimer1.IsReadOnly = true;
+            GuestsTimer1.Background = new SolidColorBrush(Color.FromRgb(221, 221, 221));
+            GuestsTimer2.IsReadOnly = true;
+            GuestsTimer2.Background = new SolidColorBrush(Color.FromRgb(221, 221, 221));
+            GuestsTimer3.IsReadOnly = true;
+            GuestsTimer3.Background = new SolidColorBrush(Color.FromRgb(221, 221, 221));
+
+            StartTimer();
+        }
+
+        private void StartMainTimerBtn(object sender, RoutedEventArgs e) {
+            StartMainTimer();
+        }
+        private void StopMainTimerBtn(object sender, RoutedEventArgs e) {
+            StopMainTimer();
+        }
+        private void RefrashMainTimer(object sender, RoutedEventArgs e)
+        {
+            _view.TabloInfo.GameTaimer = new TimeSpan(0, 0, 0);
+            StopMainTimer();
+        }
+        private void AddMainTimer5Minutes(object sender, RoutedEventArgs e)
+        {
+            _view.TabloInfo.GameTaimer = new TimeSpan(0, 5, 0);
+        }
+        private void AddMainTimer10Minutes(object sender, RoutedEventArgs e)
+        {
+            _view.TabloInfo.GameTaimer = new TimeSpan(0, 10, 0);
+        }
+        private void AddMainTimer20Minutes(object sender, RoutedEventArgs e)
+        {
+            _view.TabloInfo.GameTaimer = new TimeSpan(0, 20, 0);
+        }
+
+        //Кнопки упарвления, временнем удаления игроков
+
+        private void PlayerDeletTimerPlus(RemovingPlayer Player, int minutes)
+        {
+            Player.RemovingTimer = Player.RemovingTimer.Add(new TimeSpan(0, minutes, 0));
+        }
+        
+        private void PlayerDeletTimerReset(RemovingPlayer Player) {
+            Player.RemovingTimer = new TimeSpan(0, 0, 0);
+            Player.PlayerNomber = 0;
+        }
+
+        private void LeftPlayer1TimerPlus2(object sender, RoutedEventArgs e) => PlayerDeletTimerPlus(_view.LeftPlayer1, 2);
+        private void LeftPlayer1TimerPlus5(object sender, RoutedEventArgs e) => PlayerDeletTimerPlus(_view.LeftPlayer1, 5);
+        private void LeftPlayer1TimerPlus10(object sender, RoutedEventArgs e) => PlayerDeletTimerPlus(_view.LeftPlayer1, 10);
+        private void LeftPlayer1TimerReset(object sender, RoutedEventArgs e) => PlayerDeletTimerReset(_view.LeftPlayer1);
+
+        private void LeftPlayer2TimerPlus2(object sender, RoutedEventArgs e) => PlayerDeletTimerPlus(_view.LeftPlayer2, 2);
+        private void LeftPlayer2TimerPlus5(object sender, RoutedEventArgs e) => PlayerDeletTimerPlus(_view.LeftPlayer2, 5);
+        private void LeftPlayer2TimerPlus10(object sender, RoutedEventArgs e) => PlayerDeletTimerPlus(_view.LeftPlayer2, 10);
+        private void LeftPlayer2TimerReset(object sender, RoutedEventArgs e) => PlayerDeletTimerReset(_view.LeftPlayer2);
+
+        private void LeftPlayer3TimerPlus2(object sender, RoutedEventArgs e) => PlayerDeletTimerPlus(_view.LeftPlayer3, 2);
+        private void LeftPlayer3TimerPlus5(object sender, RoutedEventArgs e) => PlayerDeletTimerPlus(_view.LeftPlayer3, 5);
+        private void LeftPlayer3TimerPlus10(object sender, RoutedEventArgs e) => PlayerDeletTimerPlus(_view.LeftPlayer3, 10);
+        private void LeftPlayer3TimerReset(object sender, RoutedEventArgs e) => PlayerDeletTimerReset(_view.LeftPlayer3);
+
+        private void RightPlayer1TimerPlus2(object sender, RoutedEventArgs e) => PlayerDeletTimerPlus(_view.RightPlayer1, 2);
+        private void RightPlayer1TimerPlus5(object sender, RoutedEventArgs e) => PlayerDeletTimerPlus(_view.RightPlayer1, 5);
+        private void RightPlayer1TimerPlus10(object sender, RoutedEventArgs e) => PlayerDeletTimerPlus(_view.RightPlayer1, 10);
+        private void RightPlayer1TimerReset(object sender, RoutedEventArgs e) => PlayerDeletTimerReset(_view.RightPlayer1);
+
+        private void RightPlayer2TimerPlus2(object sender, RoutedEventArgs e) => PlayerDeletTimerPlus(_view.RightPlayer2, 2);
+        private void RightPlayer2TimerPlus5(object sender, RoutedEventArgs e) => PlayerDeletTimerPlus(_view.RightPlayer2, 5);
+        private void RightPlayer2TimerPlus10(object sender, RoutedEventArgs e) => PlayerDeletTimerPlus(_view.RightPlayer2, 10);
+        private void RightPlayer2TimerReset(object sender, RoutedEventArgs e) => PlayerDeletTimerReset(_view.RightPlayer2);
+
+        private void RightPlayer3TimerPlus2(object sender, RoutedEventArgs e) => PlayerDeletTimerPlus(_view.RightPlayer3, 2);
+        private void RightPlayer3TimerPlus5(object sender, RoutedEventArgs e) => PlayerDeletTimerPlus(_view.RightPlayer3, 5);
+        private void RightPlayer3TimerPlus10(object sender, RoutedEventArgs e) => PlayerDeletTimerPlus(_view.RightPlayer3, 10);
+        private void RightPlayer3TimerReset(object sender, RoutedEventArgs e) => PlayerDeletTimerReset(_view.RightPlayer3);
 
 
 

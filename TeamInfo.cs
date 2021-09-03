@@ -37,6 +37,8 @@ namespace Monitor
             set
             {
                 _TeamCounter = value;
+                if (_TeamCounter < 0)
+                    _TeamCounter = 0;
                 OnPropertyChanged("TeamCounter");//или OnPropertyChanged();
             }
         }
@@ -48,6 +50,7 @@ namespace Monitor
                 PropertyChanged(this, new PropertyChangedEventArgs(prop));
         }
 
+        
 
-    }
+        }
 }

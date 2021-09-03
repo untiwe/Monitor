@@ -1,0 +1,139 @@
+﻿<Window x:Class="Monitor.SmallWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Monitor"
+        mc:Ignorable="d"
+        Title="SmallWindow" Height="96" Width="992" Foreground="White" Background="Black" Closing="Window_Closing">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <!--16 строк-->
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <!--32 колонки-->
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+
+        </Grid.ColumnDefinitions>
+        <!--Первая строка, с заголовками и периодом-->
+        <Viewbox Grid.Row="0" Grid.RowSpan="4" Grid.Column="0" Grid.ColumnSpan="6">
+            <TextBlock Text="Удаления" />
+        </Viewbox>
+        <Viewbox Grid.Row="1" Grid.RowSpan="5" Grid.Column="6" Grid.ColumnSpan="7">
+            <TextBlock Text="Зен" />
+        </Viewbox>
+        <Viewbox Grid.Row="0" Grid.RowSpan="7" Grid.Column="13" Grid.ColumnSpan="5">
+            <TextBlock Text="Период" />
+        </Viewbox>
+        <Viewbox Grid.Row="0" Grid.RowSpan="7" Grid.Column="17" Grid.ColumnSpan="1">
+            <TextBlock Text="1" />
+        </Viewbox>
+        <Viewbox Grid.Row="1" Grid.RowSpan="5" Grid.Column="19" Grid.ColumnSpan="7">
+            <TextBlock Text="ЗенитМчестер" />
+        </Viewbox>
+        <Viewbox Grid.Row="0" Grid.RowSpan="4" Grid.Column="26" Grid.ColumnSpan="6">
+            <TextBlock Text="Удаления" />
+        </Viewbox>
+
+        <!--Вторая строка левые удаления-->
+        <Viewbox Grid.Row="4" Grid.RowSpan="4" Grid.Column="1" Grid.ColumnSpan="1">
+            <TextBlock Text="00" />
+        </Viewbox>
+        <Viewbox Grid.Row="4" Grid.RowSpan="4" Grid.Column="3" Grid.ColumnSpan="2">
+            <TextBlock Text="12:34" />
+        </Viewbox>
+        <Viewbox Grid.Row="8" Grid.RowSpan="4" Grid.Column="1" Grid.ColumnSpan="1">
+            <TextBlock Text="00" />
+        </Viewbox>
+        <Viewbox Grid.Row="8" Grid.RowSpan="4" Grid.Column="3" Grid.ColumnSpan="2">
+            <TextBlock Text="12:34" />
+        </Viewbox>
+        <Viewbox Grid.Row="12" Grid.RowSpan="4" Grid.Column="1" Grid.ColumnSpan="1">
+            <TextBlock Text="00" />
+        </Viewbox>
+        <Viewbox Grid.Row="12" Grid.RowSpan="4" Grid.Column="3" Grid.ColumnSpan="2">
+            <TextBlock Text="12:34" />
+        </Viewbox>
+
+        <!--Вторая строка, счет и таймер-->
+
+        <Viewbox Grid.Row="4" Grid.RowSpan="11" Grid.Column="8" Grid.ColumnSpan="3">
+            <TextBlock Text="0" />
+        </Viewbox>
+        <Viewbox Grid.Row="6" Grid.RowSpan="10" Grid.Column="14" Grid.ColumnSpan="4">
+            <TextBlock Text="14:10" />
+        </Viewbox>
+        <Viewbox Grid.Row="4" Grid.RowSpan="11" Grid.Column="21" Grid.ColumnSpan="3">
+            <TextBlock Text="0" />
+        </Viewbox>
+
+        <!--Вторая строка правые удаления-->
+        <Viewbox Grid.Row="4" Grid.RowSpan="4" Grid.Column="27" Grid.ColumnSpan="1">
+            <TextBlock Text="00" />
+        </Viewbox>
+        <Viewbox Grid.Row="4" Grid.RowSpan="4" Grid.Column="29" Grid.ColumnSpan="2">
+            <TextBlock Text="12:34" />
+        </Viewbox>
+        <Viewbox Grid.Row="8" Grid.RowSpan="4" Grid.Column="27" Grid.ColumnSpan="1">
+            <TextBlock Text="00" />
+        </Viewbox>
+        <Viewbox Grid.Row="8" Grid.RowSpan="4" Grid.Column="29" Grid.ColumnSpan="2">
+            <TextBlock Text="12:34" />
+        </Viewbox>
+        <Viewbox Grid.Row="12" Grid.RowSpan="4" Grid.Column="27" Grid.ColumnSpan="1">
+            <TextBlock Text="00" />
+        </Viewbox>
+        <Viewbox Grid.Row="12" Grid.RowSpan="4" Grid.Column="29" Grid.ColumnSpan="2">
+            <TextBlock Text="12:34" />
+        </Viewbox>
+
+    </Grid>
+</Window>
