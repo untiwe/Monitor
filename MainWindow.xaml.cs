@@ -248,7 +248,10 @@ namespace Monitor
         private void RightPlayer3TimerPlus10(object sender, RoutedEventArgs e) => PlayerDeletTimerPlus(_view.RightPlayer3, 10);
         private void RightPlayer3TimerReset(object sender, RoutedEventArgs e) => PlayerDeletTimerReset(_view.RightPlayer3);
 
-
-
+        private void test1_Click(object sender, RoutedEventArgs e)
+        {
+            smallWindow.SmallWidowGrid.ShowGridLines = test1.IsChecked.Value;
+            
+        }
     }
 }

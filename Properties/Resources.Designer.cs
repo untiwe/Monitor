@@ -83,6 +83,16 @@ namespace Monitor.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Byte[].
         /// </summary>
+        public static byte[] ft24 {
+            get {
+                object obj = ResourceManager.GetObject("ft24", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Byte[].
+        /// </summary>
         public static byte[] Izis_One {
             get {
                 object obj = ResourceManager.GetObject("Izis_One", resourceCulture);
@@ -96,6 +106,16 @@ namespace Monitor.Properties {
         public static byte[] Monitor {
             get {
                 object obj = ResourceManager.GetObject("Monitor", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Byte[].
+        /// </summary>
+        public static byte[] ofont_ru_a_EmpirialRg {
+            get {
+                object obj = ResourceManager.GetObject("ofont_ru_a_EmpirialRg", resourceCulture);
                 return ((byte[])(obj));
             }
         }

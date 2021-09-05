@@ -1,4 +1,4 @@
-﻿<Window x:Class="Monitor.SmallWindow"
+<Window x:Class="Monitor.SmallWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -15,13 +15,13 @@
         </Style>
 
         <Style TargetType="TextBlock" BasedOn="{StaticResource BaseFontFamily}">
-
+            
             <!--<Setter Property="Control.Background" Value="Blue"/>-->
 
         </Style>
     </Window.Resources>
 
-    <Grid x:Name="SmallWidowGrid">
+    <Grid>
         <Grid.RowDefinitions>
             <!--16 строк-->
             <RowDefinition Height="1*"/>
