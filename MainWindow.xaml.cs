@@ -41,7 +41,7 @@ namespace Monitor
             bigWindow.DataContext = DataContext;
             bigWindow.IsVisibleChanged += SetImgBigMonitor;//подписка на изменение видимости для смены иконки на кнопке
             smallWindow.DataContext = DataContext;
-            smallWindow.IsVisibleChanged += SetImgBigMonitor;
+            smallWindow.IsVisibleChanged += SetImgSmallMonitor;
 
 
             InitDispatcherTimer();
@@ -248,10 +248,9 @@ namespace Monitor
         private void RightPlayer3TimerPlus10(object sender, RoutedEventArgs e) => PlayerDeletTimerPlus(_view.RightPlayer3, 10);
         private void RightPlayer3TimerReset(object sender, RoutedEventArgs e) => PlayerDeletTimerReset(_view.RightPlayer3);
 
-        private void test1_Click(object sender, RoutedEventArgs e)
-        {
-            smallWindow.SmallWidowGrid.ShowGridLines = test1.IsChecked.Value;
-            
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {//Делаем выход из приложения при закрытии главного окна. Для закрытя скрытых окон
+            Application.Current.Shutdown();
         }
     }
 }

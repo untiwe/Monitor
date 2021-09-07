@@ -4,6 +4,9 @@
     <OutputType>WinExe</OutputType>
     <TargetFramework>net5.0-windows</TargetFramework>
     <UseWPF>true</UseWPF>
+    <PackageIcon>66666666.png</PackageIcon>
+    <PackageIconUrl />
+    <ApplicationIcon>iconMonitor.ico</ApplicationIcon>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -12,9 +15,13 @@
 
   <ItemGroup>
     <None Remove="monitorOrange1.png" />
+    <None Remove="Resources\a_lcdnova.ttf" />
     <None Remove="Resources\biggestOrange1.png" />
     <None Remove="Resources\crossOrange1.png" />
+    <None Remove="Resources\Digital Regular.ttf" />
+    <None Remove="Resources\ft12.ttf" />
     <None Remove="Resources\ft24.ttf" />
+    <None Remove="Resources\iconMonitor.ico" />
     <None Remove="Resources\Izis One.ttf" />
     <None Remove="Resources\monitorOrange1.png" />
     <None Remove="Resources\ofont.ru_a_EmpirialRg.ttf" />
@@ -28,9 +35,13 @@
 
   <ItemGroup>
     <Resource Include="monitorOrange1.png" />
+    <Resource Include="Resources\a_lcdnova.ttf" />
     <Resource Include="Resources\biggestOrange1.png" />
     <Resource Include="Resources\crossOrange1.png" />
+    <Resource Include="Resources\Digital Regular.ttf" />
+    <Resource Include="Resources\ft12.ttf" />
     <Resource Include="Resources\ft24.ttf" />
+    <Resource Include="Resources\iconMonitor.ico" />
     <Resource Include="Resources\Izis One.ttf" />
     <Resource Include="Resources\monitorOrange1.png" />
     <Resource Include="Resources\ofont.ru_a_EmpirialRg.ttf" />

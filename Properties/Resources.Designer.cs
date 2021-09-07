@@ -63,6 +63,16 @@ namespace Monitor.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Byte[].
         /// </summary>
+        public static byte[] a_lcdnova {
+            get {
+                object obj = ResourceManager.GetObject("a_lcdnova", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Byte[].
+        /// </summary>
         public static byte[] biggestOrange1 {
             get {
                 object obj = ResourceManager.GetObject("biggestOrange1", resourceCulture);
@@ -83,9 +93,39 @@ namespace Monitor.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Byte[].
         /// </summary>
+        public static byte[] Digital_Regular {
+            get {
+                object obj = ResourceManager.GetObject("Digital_Regular", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Byte[].
+        /// </summary>
+        public static byte[] ft12 {
+            get {
+                object obj = ResourceManager.GetObject("ft12", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Byte[].
+        /// </summary>
         public static byte[] ft24 {
             get {
                 object obj = ResourceManager.GetObject("ft24", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Byte[].
+        /// </summary>
+        public static byte[] iconMonitor {
+            get {
+                object obj = ResourceManager.GetObject("iconMonitor", resourceCulture);
                 return ((byte[])(obj));
             }
         }

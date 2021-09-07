@@ -5,12 +5,17 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Monitor"
         mc:Ignorable="d"
-        Title="BigWindow" Height="450" Width="800" AutomationProperties.Name="BigWindow" Closing="Window_Closing">
+        Title="Большой экран" Height="450" Width="800" AutomationProperties.Name="BigWindow" Closing="Window_Closing">
 
     <Window.Resources>
 
         <Style x:Key="BaseFontFamily">
-            <Setter Property="TextElement.FontFamily" Value="Resources/#Izis One" />
+            <Setter Property="TextElement.FontFamily" Value="Resources/#a_lcdnova" />
+        </Style>
+
+        <Style x:Key="NumbersStyle">
+            <Setter Property="TextElement.FontFamily" Value="Resources/#Digital Regular" />
+            <Setter Property="Control.Foreground" Value="#FFF9936D"/>
         </Style>
         
         <Style TargetType="TextBlock" BasedOn="{StaticResource BaseFontFamily}">
@@ -37,7 +42,7 @@
         </Style>
 
         <!--Стили с тригерами для списков удаленых игроков-->
-        <Style x:Key="LeftPlayerRemoving1" BasedOn="{StaticResource BaseFontFamily}">
+        <Style x:Key="LeftPlayerRemoving1" BasedOn="{StaticResource NumbersStyle}">
             <Setter Property="Control.Foreground" Value="#FFF9936D"/>
             <Style.Triggers>
                 <DataTrigger Binding="{Binding Path=LeftPlayer1.PlayerNomber}" Value="0">
@@ -45,7 +50,7 @@
                 </DataTrigger>
             </Style.Triggers>
         </Style>
-        <Style x:Key="LeftPlayerRemoving2" BasedOn="{StaticResource BaseFontFamily}">
+        <Style x:Key="LeftPlayerRemoving2" BasedOn="{StaticResource NumbersStyle}">
             <Setter Property="Control.Foreground" Value="#FFF9936D"/>
             <Style.Triggers>
                 <DataTrigger Binding="{Binding Path=LeftPlayer2.PlayerNomber}" Value="0">
@@ -53,7 +58,7 @@
                 </DataTrigger>
             </Style.Triggers>
         </Style>
-        <Style x:Key="LeftPlayerRemoving3" BasedOn="{StaticResource BaseFontFamily}">
+        <Style x:Key="LeftPlayerRemoving3" BasedOn="{StaticResource NumbersStyle}">
             <Setter Property="Control.Foreground" Value="#FFF9936D"/>
             <Style.Triggers>
                 <DataTrigger Binding="{Binding Path=LeftPlayer3.PlayerNomber}" Value="0">
@@ -61,7 +66,7 @@
                 </DataTrigger>
             </Style.Triggers>
         </Style>
-        <Style x:Key="RightPlayerRemoving1" BasedOn="{StaticResource BaseFontFamily}">
+        <Style x:Key="RightPlayerRemoving1" BasedOn="{StaticResource NumbersStyle}">
             <Setter Property="Control.Foreground" Value="#FFF9936D"/>
             <Style.Triggers>
                 <DataTrigger Binding="{Binding Path=RightPlayer1.PlayerNomber}" Value="0">
@@ -69,7 +74,7 @@
                 </DataTrigger>
             </Style.Triggers>
         </Style>
-        <Style x:Key="RightPlayerRemoving2" BasedOn="{StaticResource BaseFontFamily}">
+        <Style x:Key="RightPlayerRemoving2" BasedOn="{StaticResource NumbersStyle}">
             <Setter Property="Control.Foreground" Value="#FFF9936D"/>
             <Style.Triggers>
                 <DataTrigger Binding="{Binding Path=RightPlayer2.PlayerNomber}" Value="0">
@@ -77,7 +82,7 @@
                 </DataTrigger>
             </Style.Triggers>
         </Style>
-        <Style x:Key="RightPlayerRemoving3" BasedOn="{StaticResource BaseFontFamily}">
+        <Style x:Key="RightPlayerRemoving3" BasedOn="{StaticResource NumbersStyle}">
             <Setter Property="Control.Foreground" Value="#FFF9936D"/>
             <Style.Triggers>
                 <DataTrigger Binding="{Binding Path=RightPlayer3.PlayerNomber}" Value="0">
@@ -143,7 +148,7 @@
                     <TranslateTransform X="0" Y="-30"/>
                 </TransformGroup>
             </Viewbox.RenderTransform>
-            <TextBlock Text="{Binding Path=LeftTeam.TeamCounter, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+            <TextBlock Style="{StaticResource NumbersStyle}" Text="{Binding Path=LeftTeam.TeamCounter, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
         </Viewbox>
 
         <Viewbox HorizontalAlignment="Center" Grid.ColumnSpan="2" Grid.Row="7">
@@ -182,7 +187,7 @@
                     <TranslateTransform X="0" Y="25"/>
                 </TransformGroup>
             </Viewbox.RenderTransform>
-            <TextBlock Text="{Binding Path=TabloInfo.Period, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+            <TextBlock Style="{StaticResource NumbersStyle}" Text="{Binding Path=TabloInfo.Period, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
         </Viewbox>
         <Viewbox HorizontalAlignment="Center" Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="4" Grid.RowSpan="2" Margin="0,20,0,0">
             <Viewbox.RenderTransform>
@@ -204,7 +209,7 @@
                     <TranslateTransform X="0" Y="100"/>
                 </TransformGroup>
             </Viewbox.RenderTransform>
-            <TextBlock Text="{Binding Path=TabloInfo.GameTaimerString, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+            <TextBlock Style="{StaticResource NumbersStyle}" Text="{Binding Path=TabloInfo.GameTaimerString, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
         </Viewbox>
         
 
@@ -236,7 +241,7 @@
                     <TranslateTransform X="0" Y="-30"/>
                 </TransformGroup>
             </Viewbox.RenderTransform>
-            <TextBlock Text="{Binding Path=RightTeam.TeamCounter, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+            <TextBlock Style="{StaticResource NumbersStyle}" Text="{Binding Path=RightTeam.TeamCounter, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
         </Viewbox>
 
         <Viewbox HorizontalAlignment="Center" Grid.ColumnSpan="2" Grid.Column="4" Grid.Row="7">

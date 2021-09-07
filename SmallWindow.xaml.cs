@@ -30,7 +30,7 @@ namespace Monitor
             this.Visibility = Visibility.Hidden;
         }
 
-        public void CreateVisibility() => this.Visibility = Visibility.Visible;
+       
 
     }
 }

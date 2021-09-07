@@ -9,7 +9,7 @@
         xmlns:local="clr-namespace:Monitor"
         xmlns:syncfusion="http://schemas.syncfusion.com/wpf" x:Class="Monitor.MainWindow"
         mc:Ignorable="d"
-        Title="MainWindow" Height="650" Width="950">
+        Title="Монитор" Height="650" Width="950" Closing="Window_Closing">
 
     <Window.Resources>
         <Style x:Key="StaticTitles">
@@ -205,7 +205,6 @@
             <Button Style="{StaticResource Buttons}" Grid.Row="13" Grid.RowSpan="1" Grid.Column="14" Grid.ColumnSpan="2" Click="StretchSmallWindow">
                 <Image Source="/Resources/biggestOrange1.png" />
             </Button>
-            <CheckBox x:Name="test1" Content="CheckBox" Grid.Column="6" HorizontalAlignment="Left" Margin="1,28,0,0" Grid.Row="12" VerticalAlignment="Top" Click="test1_Click" Grid.ColumnSpan="2" Height="29" Grid.RowSpan="2" Width="96" />
         </Grid>
 
         <!--Нижняя сетка с удалениями-->
