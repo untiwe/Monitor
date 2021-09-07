@@ -31,11 +31,11 @@ namespace Monitor
         public MainWindow()
         {
             InitializeComponent();
-            _view.LeftTeam.TeamTitle = "Россия";
-            _view.LeftTeam.TeamName = "Зенит";
-            _view.RightTeam.TeamTitle = "Англия";
-            _view.RightTeam.TeamName = "Манчестер";
-            _view.TabloInfo.TabloName = "Табло для хоккея";
+            _view.LeftTeam.TeamTitle = "";
+            _view.LeftTeam.TeamName = "Хозяева";
+            _view.RightTeam.TeamTitle = "";
+            _view.RightTeam.TeamName = "Гости";
+            _view.TabloInfo.TabloName = "Академия Имени Валерия Харламова";
 
             DataContext = _view;
             bigWindow.DataContext = DataContext;
@@ -247,6 +247,21 @@ namespace Monitor
         private void RightPlayer3TimerPlus5(object sender, RoutedEventArgs e) => PlayerDeletTimerPlus(_view.RightPlayer3, 5);
         private void RightPlayer3TimerPlus10(object sender, RoutedEventArgs e) => PlayerDeletTimerPlus(_view.RightPlayer3, 10);
         private void RightPlayer3TimerReset(object sender, RoutedEventArgs e) => PlayerDeletTimerReset(_view.RightPlayer3);
+
+        private void ChangeClock(object sender, RoutedEventArgs e)
+            //влючение/выключение часов на малом экране
+        {
+            Style style = smallWindow.FindResource("TimeShow") as Style;
+            smallWindow.Clock.Style = style;
+            style = smallWindow.FindResource("TimeHidden") as Style;
+            smallWindow.Clock.Style = style;
+
+            Debug.WriteLine(smallWindow.Clock.Style);
+
+            
+
+        }
+        
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {//Делаем выход из приложения при закрытии главного окна. Для закрытя скрытых окон

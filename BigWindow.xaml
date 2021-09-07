@@ -5,16 +5,16 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Monitor"
         mc:Ignorable="d"
-        Title="Большой экран" Height="450" Width="800" AutomationProperties.Name="BigWindow" Closing="Window_Closing">
+        Title="Большой экран" Height="450" Width="800" AutomationProperties.Name="BigWindow" Closing="Window_Closing" FontFamily="Arial" FontWeight="Bold">
 
     <Window.Resources>
 
         <Style x:Key="BaseFontFamily">
-            <Setter Property="TextElement.FontFamily" Value="Resources/#a_lcdnova" />
+            <!--<Setter Property="TextElement.FontFamily" Value="Resources/#a_lcdnova" />-->
         </Style>
 
         <Style x:Key="NumbersStyle">
-            <Setter Property="TextElement.FontFamily" Value="Resources/#Digital Regular" />
+            <!--<Setter Property="TextElement.FontFamily" Value="Resources/#Digital Regular" />-->
             <Setter Property="Control.Foreground" Value="#FFF9936D"/>
         </Style>
         

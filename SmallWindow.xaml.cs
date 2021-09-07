@@ -22,6 +22,10 @@ namespace Monitor
         public SmallWindow()
         {
             InitializeComponent();
+            //Style style = this.FindResource("TimeShow") as Style;
+            //Clock.Style = style;
+            //style = this.FindResource("TimeHidden") as Style;
+            //Clock.Style = style;
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
