@@ -249,16 +249,12 @@ namespace Monitor
         private void RightPlayer3TimerReset(object sender, RoutedEventArgs e) => PlayerDeletTimerReset(_view.RightPlayer3);
 
         private void ChangeClock(object sender, RoutedEventArgs e)
-            //влючение/выключение часов на малом экране
+        //влючение/выключение часов на малом экране
         {
-            Style style = smallWindow.FindResource("TimeShow") as Style;
-            smallWindow.Clock.Style = style;
-            style = smallWindow.FindResource("TimeHidden") as Style;
-            smallWindow.Clock.Style = style;
-
-            Debug.WriteLine(smallWindow.Clock.Style);
-
-            
+            if (smallWindow.TimeVisibility)
+                TimeBtn.Content = "Убрать";
+            else
+                TimeBtn.Content = "Время";
 
         }
         

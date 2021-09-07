@@ -140,7 +140,7 @@
         <Viewbox Grid.Row="0" Grid.RowSpan="4" Grid.Column="0" Grid.ColumnSpan="6">
             <TextBlock Text="Удаления" />
         </Viewbox>
-        <Grid ShowGridLines="True" Grid.Row="0" Grid.RowSpan="8" Grid.Column="6" Grid.ColumnSpan="20">
+        <Grid ShowGridLines="False" Grid.Row="0" Grid.RowSpan="8" Grid.Column="6" Grid.ColumnSpan="20">
             <Grid.ColumnDefinitions>
                 <!--24 колонки-->
                 <ColumnDefinition Width="1*"/>
@@ -179,8 +179,8 @@
             <Viewbox Grid.Row="0" Grid.RowSpan="5" Grid.Column="0" Grid.ColumnSpan="12">
                 <TextBlock Text="{Binding Path=LeftTeam.TeamName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
             </Viewbox>
-            <Viewbox x:Name="Clock" Style="{StaticResource TimeHidden}" Grid.Row="0" Grid.RowSpan="4" Grid.Column="10" Grid.ColumnSpan="5">
-                <TextBlock Text="22:18" />
+            <Viewbox x:Name="Clock" Style="{StaticResource TimeHidden}" Grid.Row="0" Grid.RowSpan="4" Grid.Column="9" Grid.ColumnSpan="7">
+                <TextBlock x:Name="ClockBox" Text="22:18" />
             </Viewbox>
             <Viewbox Grid.Row="0" Grid.RowSpan="5" Grid.Column="13" Grid.ColumnSpan="12">
                 <TextBlock Text="{Binding Path=RightTeam.TeamName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />

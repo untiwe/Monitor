@@ -19,6 +19,27 @@ namespace Monitor
     /// </summary>
     public partial class SmallWindow : Window
     {
+        private bool _TimeVisibility = false;
+        public bool TimeVisibility
+        {
+            get
+            {
+                _TimeVisibility = !_TimeVisibility;
+                if (_TimeVisibility)
+                {
+                    Style style = this.FindResource("TimeShow") as Style;
+                    Clock.Style = style;
+                }
+                else
+                {
+                    Style style = this.FindResource("TimeHidden") as Style;
+                    Clock.Style = style;
+                }
+
+                return _TimeVisibility;
+            }
+        }
+
         public SmallWindow()
         {
             InitializeComponent();
@@ -26,6 +47,7 @@ namespace Monitor
             //Clock.Style = style;
             //style = this.FindResource("TimeHidden") as Style;
             //Clock.Style = style;
+            StartRefrashDateTime();
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
@@ -34,7 +56,22 @@ namespace Monitor
             this.Visibility = Visibility.Hidden;
         }
 
-       
+        private void StartRefrashDateTime()
+        {//обновляем вермя дня на малом табло 
+            Task.Factory.StartNew(() => { 
+                while (true){
+
+                    this.Dispatcher.Invoke(() => {
+                        ClockBox.Text = DateTime.Now.ToString("HH:mm:ss");
+                    });
+
+                    Task.Delay(1000);
+
+
+                }
+            });
+            
+        } 
 
     }
 }

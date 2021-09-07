@@ -198,7 +198,7 @@
                     </TransformGroup>
                 </Label.RenderTransform>
             </Label>
-            <Button Content="Сброс"  Style="{StaticResource Buttons}" Grid.Row="12" Grid.RowSpan="1" Grid.Column="15" Grid.ColumnSpan="1" Margin="7,0,0,0" Click="ChangeClock" VerticalAlignment="Center"/>
+            <Button x:Name="TimeBtn" Content="Вермя"  Style="{StaticResource Buttons}" Grid.Row="12" Grid.RowSpan="1" Grid.Column="15" Grid.ColumnSpan="1" Margin="7,0,0,4" Click="ChangeClock" VerticalAlignment="Bottom"/>
             <Button Style="{StaticResource Buttons}" Padding="1,1,1,1" Grid.Row="13" Grid.RowSpan="1" Grid.Column="12" Grid.ColumnSpan="2" Click="OpenSmallWindow" >
 
                 <Image x:Name="OpenSmallWindiwBTN"  Source="/Resources/monitorOrange1.png"/>
