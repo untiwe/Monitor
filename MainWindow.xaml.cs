@@ -14,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Threading;
+using WpfScreenHelper;
 using Xceed.Wpf.Toolkit; //добавляем маску для ввода
 //тригеры для таймера 00:00 https://metanit.com/sharp/wpf/14.3.php
 namespace Monitor
@@ -30,6 +31,8 @@ namespace Monitor
 
         public MainWindow()
         {
+            
+
             InitializeComponent();
             _view.LeftTeam.TeamTitle = "";
             _view.LeftTeam.TeamName = "Хозяева";
@@ -45,27 +48,34 @@ namespace Monitor
 
 
             InitDispatcherTimer();
+
+            //строим кнопки с выбором монитора
+            ConstructBibMonitorButtons(SelectBigMonitorWrapper, "SelectBigMonitorButtons");
+            ConstructBibMonitorButtons(SelectSmallMonitorWrapper, "SelectSmallMonitorButtons");
         }
 
-        private void OpenBigWindow(object sender, RoutedEventArgs e)
+        private void OpenBigWindow(object sender, RoutedEventArgs e) => _OpenBigWindow();
+
+        private void _OpenBigWindow()
         {
             if (!bigWindow.IsVisible)
                 bigWindow.Show();
             else
                 bigWindow.Close();
         }
-
-        private void OpenSmallWindow(object sender, RoutedEventArgs e)
+        private void OpenSmallWindow(object sender, RoutedEventArgs e) => _OpenSmallWindow();
+        private void _OpenSmallWindow()
         {
             if (!smallWindow.IsVisible)
                 smallWindow.Show();
             else
                 smallWindow.Close();
         }
-
-        private void StretchBigWindow(object sender, RoutedEventArgs e)
+        private void StretchBigWindow(object sender, RoutedEventArgs e) => _StretchBigWindow();
+       
+        private void _StretchBigWindow()
         {//развернуть или уменьшить окно для экрана стадиона
-            if (bigWindow.WindowState == System.Windows.WindowState.Maximized)
+        if (bigWindow.WindowState == System.Windows.WindowState.Maximized)
             {
                 bigWindow.WindowState = System.Windows.WindowState.Normal;
                 bigWindow.WindowStyle = WindowStyle.SingleBorderWindow;
@@ -76,11 +86,12 @@ namespace Monitor
                 bigWindow.WindowStyle = WindowStyle.None;
             }
         }
+        private void StretchSmallWindow(object sender, RoutedEventArgs e) => _StretchSmallWindow();
 
-        private void StretchSmallWindow(object sender, RoutedEventArgs e)
+        private void _StretchSmallWindow()
         {//развернуть или уменьшить окно для экрана тренеров
             if (smallWindow.WindowState == System.Windows.WindowState.Maximized)
-            {   
+            {
                 smallWindow.WindowState = System.Windows.WindowState.Normal;
                 smallWindow.WindowStyle = WindowStyle.SingleBorderWindow;
             }
@@ -107,6 +118,7 @@ namespace Monitor
                 OpenSmallWindiwBTN.Source = new BitmapImage(new Uri("pack://application:,,,/Monitor;component/Resources/monitorOrange1.png"));
         }
 
+        
 
 
         //копки счетчика левой команды
@@ -257,7 +269,59 @@ namespace Monitor
                 TimeBtn.Content = "Время";
 
         }
-        
+
+
+        //выбор мониторов и открытие двух окон
+        private void OpenWindows(object sender, RoutedEventArgs e)
+        {
+            foreach (RadioButton i in SelectBigMonitorWrapper.Children)
+            {if ((bool)i.IsChecked)
+                {
+
+                    int screenNumber;
+                    int.TryParse(i.Content.ToString(), out screenNumber);
+                    var screen = WpfScreenHelper.Screen.AllScreens.ToArray()[screenNumber];
+                    bigWindow.Left = screen.Bounds.Left;
+                    bigWindow.Top = screen.Bounds.Top;
+                }
+            }
+
+            foreach (RadioButton i in SelectSmallMonitorWrapper.Children)
+            {
+                if ((bool)i.IsChecked)
+                {
+
+                    int screenNumber;
+                    int.TryParse(i.Content.ToString(), out screenNumber);
+                    var screen = WpfScreenHelper.Screen.AllScreens.ToArray()[screenNumber];
+                    smallWindow.Left = screen.Bounds.Left;
+                    smallWindow.Top = screen.Bounds.Top;
+                }
+            }
+
+            _OpenBigWindow();
+            _StretchBigWindow();
+            _OpenSmallWindow();
+            _StretchSmallWindow();
+
+
+
+        }
+        private void ConstructBibMonitorButtons(StackPanel Panel, string groupName)
+        {
+            //конструктор радиокнопок при запуске главного окна
+            int ScreensCount = WpfScreenHelper.Screen.AllScreens.ToArray().Length;
+
+            //SelectBigMonitorWrapper
+            for (int i = 0; i < ScreensCount; i++)
+            {
+                RadioButton radioButton = new RadioButton { Content = i.ToString(), GroupName = groupName, HorizontalAlignment = HorizontalAlignment.Center};
+                Panel.Children.Add(radioButton);
+            }
+
+        }
+
+
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {//Делаем выход из приложения при закрытии главного окна. Для закрытя скрытых окон
