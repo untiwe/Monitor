@@ -63,7 +63,7 @@ namespace Monitor
         {
 
             _view.TabloInfo.TabloName = ConfigurationManager.AppSettings.Get("TabloName");
-            _view.LeftTeam.TeamName =   ConfigurationManager.AppSettings.Get("LeftTeamName");
+            _view.LeftTeam.TeamName =  ConfigurationManager.AppSettings.Get("LeftTeamName");
             _view.RightTeam.TeamName = ConfigurationManager.AppSettings.Get("RightTeamName");
 
             
@@ -316,7 +316,7 @@ namespace Monitor
 
                     int screenNumber;
                     int.TryParse(i.Content.ToString(), out screenNumber);
-                    var screen = WpfScreenHelper.Screen.AllScreens.ToArray()[screenNumber];
+                    var screen = WpfScreenHelper.Screen.AllScreens.ToArray()[screenNumber-1];
                     smallWindow.Left = screen.Bounds.Left;
                     smallWindow.Top = screen.Bounds.Top;
                 }

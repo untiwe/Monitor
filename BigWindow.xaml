@@ -26,7 +26,6 @@
             <Setter Property="Control.VerticalContentAlignment" Value="Center"/>
             <Setter Property="Control.HorizontalAlignment" Value="Stretch"/>
             <Setter Property="Control.VerticalAlignment" Value="Stretch"/>
-            
         </Style>
 
         <Style x:Key="LabelStyle1" BasedOn="{StaticResource BaseFontFamily}">
@@ -113,7 +112,7 @@
             <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
         <Viewbox Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="6" HorizontalAlignment="Center" VerticalAlignment="Center">
-            <TextBlock Text="{Binding Path=TabloInfo.TabloName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></TextBlock>
+            <TextBlock Style="{StaticResource TextBlockTextColor}" Text="{Binding Path=TabloInfo.TabloName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></TextBlock>
         </Viewbox>
        
 
@@ -133,7 +132,7 @@
             </Label.RenderTransform>
         </Label>
         <Viewbox HorizontalAlignment="Center" Grid.ColumnSpan="2" Grid.Row="3">
-            <TextBlock Text="{Binding Path=LeftTeam.TeamName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+            <TextBlock Style="{StaticResource TextBlockTextColor}" Text="{Binding Path=LeftTeam.TeamName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
         </Viewbox>
         <Viewbox HorizontalAlignment="Center" Grid.ColumnSpan="2" Grid.Row="4" Grid.RowSpan="3">
             <Viewbox.RenderTransform>
@@ -226,7 +225,7 @@
             </Label.RenderTransform>
         </Label>
         <Viewbox HorizontalAlignment="Center" Grid.ColumnSpan="2" Grid.Column="4" Grid.Row="3">
-            <TextBlock Text="{Binding Path=RightTeam.TeamName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+            <TextBlock Style="{StaticResource TextBlockTextColor}"  Text="{Binding Path=RightTeam.TeamName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
         </Viewbox>
         <Viewbox HorizontalAlignment="Center" Grid.ColumnSpan="2" Grid.Column="4" Grid.Row="4" Grid.RowSpan="3">
             <Viewbox.RenderTransform>
