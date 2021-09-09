@@ -11,79 +11,75 @@
 
         <Style x:Key="BaseFontFamily">
             <!--<Setter Property="TextElement.FontFamily" Value="Resources/#a_lcdnova" />-->
+            <Setter Property="Control.Foreground" Value="#FF4500"/>
         </Style>
 
-        <Style x:Key="NumbersStyle">
+        <Style x:Key="DeleteNumbersStyle">
             <!--<Setter Property="TextElement.FontFamily" Value="Resources/#Digital Regular" />-->
-            <Setter Property="Control.Foreground" Value="#FFF9936D"/>
+            <Setter Property="Control.Foreground" Value="white"/>
         </Style>
         
-        <Style TargetType="TextBlock" BasedOn="{StaticResource BaseFontFamily}">
+        <Style x:Name="NumbersStyle" TargetType="TextBlock" BasedOn="{StaticResource BaseFontFamily}">
             <Setter Property="Control.FontSize" Value="50"/>
             <Setter Property="Control.Background" Value="Transparent"/>
             <Setter Property="Control.HorizontalContentAlignment" Value="Center"/>
             <Setter Property="Control.VerticalContentAlignment" Value="Center"/>
             <Setter Property="Control.HorizontalAlignment" Value="Stretch"/>
             <Setter Property="Control.VerticalAlignment" Value="Stretch"/>
-            <Setter Property="Control.Foreground" Value="#FFF9936D"/>
-            <!--<Setter Property="Control.Background" Value="Blue"/>-->
-
+            
         </Style>
 
         <Style x:Key="LabelStyle1" BasedOn="{StaticResource BaseFontFamily}">
             <Setter Property="Control.HorizontalContentAlignment" Value="Center"/>
             <Setter Property="Control.VerticalContentAlignment" Value="Center"/>
             <Setter Property="Control.VerticalAlignment" Value="Center"/>
-            
-            <!--<Setter Property="Control.Background" Value="Blue"/>-->
         </Style>
-        <Style x:Key="TextBlockTextColor" BasedOn="{StaticResource LabelStyle1}">
+        <Style x:Name="WordsStyle" x:Key="TextBlockTextColor" BasedOn="{StaticResource LabelStyle1}">
             <Setter Property="Control.Foreground" Value="#FF4500"/>
         </Style>
 
         <!--Стили с тригерами для списков удаленых игроков-->
-        <Style x:Key="LeftPlayerRemoving1" BasedOn="{StaticResource NumbersStyle}">
-            <Setter Property="Control.Foreground" Value="#FFF9936D"/>
+        <Style x:Key="LeftPlayerRemoving1" BasedOn="{StaticResource DeleteNumbersStyle}">
+            
             <Style.Triggers>
                 <DataTrigger Binding="{Binding Path=LeftPlayer1.PlayerNomber}" Value="0">
                     <Setter Property="Control.Foreground" Value="Transparent"/>
                 </DataTrigger>
             </Style.Triggers>
         </Style>
-        <Style x:Key="LeftPlayerRemoving2" BasedOn="{StaticResource NumbersStyle}">
-            <Setter Property="Control.Foreground" Value="#FFF9936D"/>
+        <Style x:Key="LeftPlayerRemoving2" BasedOn="{StaticResource DeleteNumbersStyle}">
+           
             <Style.Triggers>
                 <DataTrigger Binding="{Binding Path=LeftPlayer2.PlayerNomber}" Value="0">
                     <Setter Property="Control.Foreground" Value="Transparent"/>
                 </DataTrigger>
             </Style.Triggers>
         </Style>
-        <Style x:Key="LeftPlayerRemoving3" BasedOn="{StaticResource NumbersStyle}">
-            <Setter Property="Control.Foreground" Value="#FFF9936D"/>
+        <Style x:Key="LeftPlayerRemoving3" BasedOn="{StaticResource DeleteNumbersStyle}">
+            
             <Style.Triggers>
                 <DataTrigger Binding="{Binding Path=LeftPlayer3.PlayerNomber}" Value="0">
                     <Setter Property="Control.Foreground" Value="Transparent"/>
                 </DataTrigger>
             </Style.Triggers>
         </Style>
-        <Style x:Key="RightPlayerRemoving1" BasedOn="{StaticResource NumbersStyle}">
-            <Setter Property="Control.Foreground" Value="#FFF9936D"/>
+        <Style x:Key="RightPlayerRemoving1" BasedOn="{StaticResource DeleteNumbersStyle}">
+            
             <Style.Triggers>
                 <DataTrigger Binding="{Binding Path=RightPlayer1.PlayerNomber}" Value="0">
                     <Setter Property="Control.Foreground" Value="Transparent"/>
                 </DataTrigger>
             </Style.Triggers>
         </Style>
-        <Style x:Key="RightPlayerRemoving2" BasedOn="{StaticResource NumbersStyle}">
-            <Setter Property="Control.Foreground" Value="#FFF9936D"/>
+        <Style x:Key="RightPlayerRemoving2" BasedOn="{StaticResource DeleteNumbersStyle}">
+            
             <Style.Triggers>
                 <DataTrigger Binding="{Binding Path=RightPlayer2.PlayerNomber}" Value="0">
                     <Setter Property="Control.Foreground" Value="Transparent"/>
                 </DataTrigger>
             </Style.Triggers>
         </Style>
-        <Style x:Key="RightPlayerRemoving3" BasedOn="{StaticResource NumbersStyle}">
-            <Setter Property="Control.Foreground" Value="#FFF9936D"/>
+        <Style x:Key="RightPlayerRemoving3" BasedOn="{StaticResource DeleteNumbersStyle}">
             <Style.Triggers>
                 <DataTrigger Binding="{Binding Path=RightPlayer3.PlayerNomber}" Value="0">
                     <Setter Property="Control.Foreground" Value="Transparent"/>
@@ -93,7 +89,7 @@
     </Window.Resources>
 
 
-    <Grid ShowGridLines="False" Background="#FF2E2E2E">
+    <Grid ShowGridLines="False" Background="black">
 
         <Grid.RowDefinitions>
             <RowDefinition Height="0.1*"/>
@@ -148,7 +144,7 @@
                     <TranslateTransform X="0" Y="-30"/>
                 </TransformGroup>
             </Viewbox.RenderTransform>
-            <TextBlock Style="{StaticResource NumbersStyle}" Text="{Binding Path=LeftTeam.TeamCounter, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+            <TextBlock Style="{StaticResource DeleteNumbersStyle}" Text="{Binding Path=LeftTeam.TeamCounter, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
         </Viewbox>
 
         <Viewbox HorizontalAlignment="Center" Grid.ColumnSpan="2" Grid.Row="7">
@@ -187,7 +183,7 @@
                     <TranslateTransform X="0" Y="25"/>
                 </TransformGroup>
             </Viewbox.RenderTransform>
-            <TextBlock Style="{StaticResource NumbersStyle}" Text="{Binding Path=TabloInfo.Period, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+            <TextBlock Style="{StaticResource DeleteNumbersStyle}" Text="{Binding Path=TabloInfo.Period, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
         </Viewbox>
         <Viewbox HorizontalAlignment="Center" Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="4" Grid.RowSpan="2" Margin="0,20,0,0">
             <Viewbox.RenderTransform>
@@ -209,7 +205,7 @@
                     <TranslateTransform X="0" Y="100"/>
                 </TransformGroup>
             </Viewbox.RenderTransform>
-            <TextBlock Style="{StaticResource NumbersStyle}" Text="{Binding Path=TabloInfo.GameTaimerString, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+            <TextBlock Style="{StaticResource DeleteNumbersStyle}" Text="{Binding Path=TabloInfo.GameTaimerString, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
         </Viewbox>
         
 
@@ -241,7 +237,7 @@
                     <TranslateTransform X="0" Y="-30"/>
                 </TransformGroup>
             </Viewbox.RenderTransform>
-            <TextBlock Style="{StaticResource NumbersStyle}" Text="{Binding Path=RightTeam.TeamCounter, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+            <TextBlock Style="{StaticResource DeleteNumbersStyle}" Text="{Binding Path=RightTeam.TeamCounter, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
         </Viewbox>
 
         <Viewbox HorizontalAlignment="Center" Grid.ColumnSpan="2" Grid.Column="4" Grid.Row="7">

@@ -121,6 +121,9 @@
   <data name="a_lcdnova" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\a_lcdnova.ttf;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="bigest" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bigest.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="biggestOrange1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\biggestOrange1.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
@@ -153,5 +156,8 @@
   </data>
   <data name="Shihan" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Shihan.ttf;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="smallest" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\smallest.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
 </root>

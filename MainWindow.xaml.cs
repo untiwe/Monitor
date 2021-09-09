@@ -16,6 +16,8 @@ using System.Windows.Shapes;
 using System.Windows.Threading;
 using WpfScreenHelper;
 using Xceed.Wpf.Toolkit; //добавляем маску для ввода
+using System.Configuration;
+using System.Collections.Specialized;
 //тригеры для таймера 00:00 https://metanit.com/sharp/wpf/14.3.php
 namespace Monitor
 {
@@ -31,14 +33,15 @@ namespace Monitor
 
         public MainWindow()
         {
+
             
 
             InitializeComponent();
             _view.LeftTeam.TeamTitle = "";
-            _view.LeftTeam.TeamName = "Хозяева";
             _view.RightTeam.TeamTitle = "";
-            _view.RightTeam.TeamName = "Гости";
-            _view.TabloInfo.TabloName = "Академия Имени Валерия Харламова";
+            //_view.TabloInfo.TabloName = "Академия имени Валерия Харламова";
+            //_view.LeftTeam.TeamName = "Хозяева";
+            //_view.RightTeam.TeamName = "Гости";
 
             DataContext = _view;
             bigWindow.DataContext = DataContext;
@@ -52,16 +55,31 @@ namespace Monitor
             //строим кнопки с выбором монитора
             ConstructBibMonitorButtons(SelectBigMonitorWrapper, "SelectBigMonitorButtons");
             ConstructBibMonitorButtons(SelectSmallMonitorWrapper, "SelectSmallMonitorButtons");
+
+            SetSettings();
+        }
+
+        private void SetSettings()
+        {
+
+            _view.TabloInfo.TabloName = ConfigurationManager.AppSettings.Get("TabloName");
+            _view.LeftTeam.TeamName =   ConfigurationManager.AppSettings.Get("LeftTeamName");
+            _view.RightTeam.TeamName = ConfigurationManager.AppSettings.Get("RightTeamName");
+
+            
+
         }
 
         private void OpenBigWindow(object sender, RoutedEventArgs e) => _OpenBigWindow();
 
         private void _OpenBigWindow()
         {
-            if (!bigWindow.IsVisible)
-                bigWindow.Show();
+            if (!bigWindow.IsVisible) 
+                bigWindow.Show();               
             else
                 bigWindow.Close();
+
+            // стили блин bigWindow.SetStyles();
         }
         private void OpenSmallWindow(object sender, RoutedEventArgs e) => _OpenSmallWindow();
         private void _OpenSmallWindow()
@@ -79,11 +97,13 @@ namespace Monitor
             {
                 bigWindow.WindowState = System.Windows.WindowState.Normal;
                 bigWindow.WindowStyle = WindowStyle.SingleBorderWindow;
+                StrechBigWindiwBTN.Source = new BitmapImage(new Uri("pack://application:,,,/Monitor;component/Resources/bigest.png"));
             }
             else
             {
                 bigWindow.WindowState = System.Windows.WindowState.Maximized;
                 bigWindow.WindowStyle = WindowStyle.None;
+                StrechBigWindiwBTN.Source = new BitmapImage(new Uri("pack://application:,,,/Monitor;component/Resources/smallest.png"));
             }
         }
         private void StretchSmallWindow(object sender, RoutedEventArgs e) => _StretchSmallWindow();
@@ -94,11 +114,13 @@ namespace Monitor
             {
                 smallWindow.WindowState = System.Windows.WindowState.Normal;
                 smallWindow.WindowStyle = WindowStyle.SingleBorderWindow;
+                StrechSmallWindiwBTN.Source = new BitmapImage(new Uri("pack://application:,,,/Monitor;component/Resources/bigest.png"));
             }
             else
             {
                 smallWindow.WindowState = System.Windows.WindowState.Maximized;
                 smallWindow.WindowStyle = WindowStyle.None;
+                StrechSmallWindiwBTN.Source = new BitmapImage(new Uri("pack://application:,,,/Monitor;component/Resources/smallest.png"));
             }
         }
 
@@ -274,13 +296,14 @@ namespace Monitor
         //выбор мониторов и открытие двух окон
         private void OpenWindows(object sender, RoutedEventArgs e)
         {
+           
             foreach (RadioButton i in SelectBigMonitorWrapper.Children)
             {if ((bool)i.IsChecked)
                 {
 
                     int screenNumber;
                     int.TryParse(i.Content.ToString(), out screenNumber);
-                    var screen = WpfScreenHelper.Screen.AllScreens.ToArray()[screenNumber];
+                    var screen = WpfScreenHelper.Screen.AllScreens.ToArray()[screenNumber-1];
                     bigWindow.Left = screen.Bounds.Left;
                     bigWindow.Top = screen.Bounds.Top;
                 }
@@ -315,7 +338,7 @@ namespace Monitor
             //SelectBigMonitorWrapper
             for (int i = 0; i < ScreensCount; i++)
             {
-                RadioButton radioButton = new RadioButton { Content = i.ToString(), GroupName = groupName, HorizontalAlignment = HorizontalAlignment.Center};
+                RadioButton radioButton = new RadioButton { Content = (i+1).ToString(), GroupName = groupName, HorizontalAlignment = HorizontalAlignment.Center};
                 Panel.Children.Add(radioButton);
             }
 
@@ -326,6 +349,28 @@ namespace Monitor
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {//Делаем выход из приложения при закрытии главного окна. Для закрытя скрытых окон
             Application.Current.Shutdown();
+        }         
+
+        private void AddUpdateAppSettings(string key, string value)
+        {
+           var configFile = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+           var settings = configFile.AppSettings.Settings;
+           if (settings[key] == null)
+           {
+               settings.Add(key, value);
+           }
+           else
+           {
+               settings[key].Value = value;
+           }
+           configFile.Save(ConfigurationSaveMode.Modified);
+           ConfigurationManager.RefreshSection(configFile.AppSettings.SectionInformation.Name);
+           
         }
+
+        private void NameTablo_KeyUp(object sender, KeyEventArgs e) => AddUpdateAppSettings("TabloName", _view.TabloInfo.TabloName);
+        private void HostName_KeyUp(object sender, KeyEventArgs e) => AddUpdateAppSettings("LeftTeamName", _view.LeftTeam.TeamName);
+        private void GuestsName_KeyUp(object sender, KeyEventArgs e) => AddUpdateAppSettings("RightTeamName", _view.RightTeam.TeamName);
+        
     }
 }

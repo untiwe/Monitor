@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -30,6 +31,14 @@ namespace Monitor
         {
             e.Cancel = true;
             this.Visibility = Visibility.Hidden;
+        }
+
+        public void SetStyles()
+        {
+            Setter setter = new Setter(Control.ForegroundProperty, Color.FromArgb(0, 0, 0, 0));
+            Style = Resources["NubmersStyle"] as Style;
+            Debug.WriteLine(Style);
+            Style.Setters.Add(setter);
         }
 
         public void CreateVisibility() => this.Visibility = Visibility.Visible;

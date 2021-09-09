@@ -73,6 +73,16 @@ namespace Monitor.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Byte[].
         /// </summary>
+        public static byte[] bigest {
+            get {
+                object obj = ResourceManager.GetObject("bigest", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Byte[].
+        /// </summary>
         public static byte[] biggestOrange1 {
             get {
                 object obj = ResourceManager.GetObject("biggestOrange1", resourceCulture);
@@ -176,6 +186,16 @@ namespace Monitor.Properties {
         public static byte[] Shihan {
             get {
                 object obj = ResourceManager.GetObject("Shihan", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Byte[].
+        /// </summary>
+        public static byte[] smallest {
+            get {
+                object obj = ResourceManager.GetObject("smallest", resourceCulture);
                 return ((byte[])(obj));
             }
         }

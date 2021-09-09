@@ -16,6 +16,7 @@
   <ItemGroup>
     <None Remove="monitorOrange1.png" />
     <None Remove="Resources\a_lcdnova.ttf" />
+    <None Remove="Resources\bigest.png" />
     <None Remove="Resources\biggestOrange1.png" />
     <None Remove="Resources\crossOrange1.png" />
     <None Remove="Resources\Digital Regular.ttf" />
@@ -27,6 +28,7 @@
     <None Remove="Resources\ofont.ru_a_EmpirialRg.ttf" />
     <None Remove="Resources\Promenad Deco.ttf" />
     <None Remove="Resources\Shihan.ttf" />
+    <None Remove="Resources\smallest.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -37,6 +39,7 @@
   <ItemGroup>
     <Resource Include="monitorOrange1.png" />
     <Resource Include="Resources\a_lcdnova.ttf" />
+    <Resource Include="Resources\bigest.png" />
     <Resource Include="Resources\biggestOrange1.png" />
     <Resource Include="Resources\crossOrange1.png" />
     <Resource Include="Resources\Digital Regular.ttf" />
@@ -48,6 +51,7 @@
     <Resource Include="Resources\ofont.ru_a_EmpirialRg.ttf" />
     <Resource Include="Resources\Promenad Deco.ttf" />
     <Resource Include="Resources\Shihan.ttf" />
+    <Resource Include="Resources\smallest.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -56,6 +60,11 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Update="Properties\Settings.Designer.cs">
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
   </ItemGroup>
 
   <ItemGroup>
@@ -63,6 +72,13 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
   </ItemGroup>
 
 </Project>
