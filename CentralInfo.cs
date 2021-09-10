@@ -74,8 +74,14 @@ namespace Monitor
                 PropertyChanged(this, new PropertyChangedEventArgs(prop));
         }
 
+        public delegate void TimerEnded();
+        public event TimerEnded TimeEndEvent;
+
         public void SubtractTaimer(object sender, EventArgs e)
         {
+            if (GameTaimer.Seconds == 1 && GameTaimer.Minutes == 0)
+                TimeEndEvent?.Invoke();
+
             if (GameTaimer.Seconds > 0 || GameTaimer.Minutes > 0)
                 GameTaimer = GameTaimer.Subtract(new TimeSpan(0, 0, 1));
         }

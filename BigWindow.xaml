@@ -170,10 +170,10 @@
         
 
         <!--Центральная часть-->
-        <Viewbox HorizontalAlignment="Center"  Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="2" Grid.RowSpan="2" Margin="0,20,0,20">
+        <Viewbox HorizontalAlignment="Center"  Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="2" Grid.RowSpan="3" Margin="0,20,0,20">
             <TextBlock Style="{StaticResource TextBlockTextColor}" Text="Период"/>
         </Viewbox>
-        <Viewbox HorizontalAlignment="Center" Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="3" Grid.RowSpan="2">
+        <Viewbox HorizontalAlignment="Center" Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="4" Grid.RowSpan="2">
             <Viewbox.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -184,7 +184,7 @@
             </Viewbox.RenderTransform>
             <TextBlock Style="{StaticResource DeleteNumbersStyle}" Text="{Binding Path=TabloInfo.Period, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
         </Viewbox>
-        <Viewbox HorizontalAlignment="Center" Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="4" Grid.RowSpan="2" Margin="0,20,0,0">
+        <Viewbox HorizontalAlignment="Center" Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="5" Grid.RowSpan="2" Margin="0,20,0,0">
             <Viewbox.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -195,7 +195,7 @@
             </Viewbox.RenderTransform>
             <TextBlock Style="{StaticResource TextBlockTextColor}" Text="Время"/>
         </Viewbox>
-        <Viewbox HorizontalAlignment="Center"  Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="5" Grid.RowSpan="3">
+        <Viewbox HorizontalAlignment="Center"  Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="6" Grid.RowSpan="3">
             <Viewbox.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>

@@ -51,6 +51,7 @@ namespace Monitor
 
 
             InitDispatcherTimer();
+            _view.TabloInfo.TimeEndEvent += EndMainTimer;
 
             //строим кнопки с выбором монитора
             ConstructBibMonitorButtons(SelectBigMonitorWrapper, "SelectBigMonitorButtons");
@@ -175,7 +176,8 @@ namespace Monitor
         void StopTimer() => timer.Stop();
 
         //управление центральным таймером
-        private void StopMainTimer()
+        private void StopMainTimer() => _StopMainTimer();
+        private void _StopMainTimer()
         {
             MainTimer.IsReadOnly = false;
             MainTimer.Background = new SolidColorBrush(Color.FromRgb(255, 255, 255));
@@ -195,7 +197,9 @@ namespace Monitor
 
             StopTimer();
         }
-        private void StartMainTimer()
+        private void StartMainTimer() => _StartMainTimer();
+
+        private void _StartMainTimer()
         {
             MainTimer.IsReadOnly = true;
             MainTimer.Background = new SolidColorBrush(Color.FromRgb(221, 221, 221));
@@ -216,17 +220,18 @@ namespace Monitor
             StartTimer();
         }
 
-        private void StartMainTimerBtn(object sender, RoutedEventArgs e) {
-            StartMainTimer();
+        private void StartStopMainTimerBtn(object sender, RoutedEventArgs e) {
+            StartStopMainTimer();
         }
-        private void StopMainTimerBtn(object sender, RoutedEventArgs e) {
-            StopMainTimer();
-        }
+        
         private void RefrashMainTimer(object sender, RoutedEventArgs e)
         {
             _view.TabloInfo.GameTaimer = new TimeSpan(0, 0, 0);
             StopMainTimer();
         }
+
+        private void EndMainTimer() => _StopMainTimer();
+
         private void AddMainTimer5Minutes(object sender, RoutedEventArgs e)
         {
             _view.TabloInfo.GameTaimer = new TimeSpan(0, 5, 0);
@@ -371,6 +376,25 @@ namespace Monitor
         private void NameTablo_KeyUp(object sender, KeyEventArgs e) => AddUpdateAppSettings("TabloName", _view.TabloInfo.TabloName);
         private void HostName_KeyUp(object sender, KeyEventArgs e) => AddUpdateAppSettings("LeftTeamName", _view.LeftTeam.TeamName);
         private void GuestsName_KeyUp(object sender, KeyEventArgs e) => AddUpdateAppSettings("RightTeamName", _view.RightTeam.TeamName);
-        
+
+     
+
+        private void Window_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.F1)
+                StartStopMainTimer();
+
+
+        }
+
+        private void StartStopMainTimer()
+        {
+            if (timer.IsEnabled)
+            {
+                _StopMainTimer();
+            }
+            else
+                _StartMainTimer();
+        }
     }
 }

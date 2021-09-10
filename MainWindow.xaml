@@ -9,7 +9,7 @@
         xmlns:local="clr-namespace:Monitor"
         xmlns:syncfusion="http://schemas.syncfusion.com/wpf" x:Class="Monitor.MainWindow"
         mc:Ignorable="d"
-        Title="Монитор" Height="650" Width="950" Closing="Window_Closing" WindowStartupLocation="Manual">
+        Title="Монитор" Height="650" Width="950" Closing="Window_Closing" WindowStartupLocation="Manual" PreviewKeyDown="Window_PreviewKeyDown">
 
 
     <Window.Resources>
@@ -36,6 +36,7 @@
 
         <Style TargetType="{x:Type Button}">
             <Setter Property="FontSize" Value="55" />
+            <!--<Setter Property="Focusable" Value="False"/>-->
         </Style>
 
         <Style TargetType="{x:Type TextBox}">
@@ -172,8 +173,7 @@
                 Grid.Row="8" Grid.RowSpan="2" Grid.Column="5" Grid.ColumnSpan="6" Text="{Binding Path=TabloInfo.GameTaimerString, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                 VerticalContentAlignment="Center" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" TextAlignment="Center" HorizontalContentAlignment="Stretch" Padding="0,-10,0,0" Margin="0,3,0,3"/>
 
-            <Button Content="Старт" Style="{StaticResource Buttons}" Grid.Row="10" Grid.RowSpan="1" Grid.Column="5" Grid.ColumnSpan="3" Margin="0,0,3,0" Click="StartMainTimerBtn"/>
-            <Button Content="Стоп"  Style="{StaticResource Buttons}" Grid.Row="10" Grid.RowSpan="1" Grid.Column="8" Grid.ColumnSpan="3" Margin="3,0,0,0" Click="StopMainTimerBtn"/>
+            <Button Content="Старт/стоп" Style="{StaticResource Buttons}" Grid.Row="10" Grid.RowSpan="1" Grid.Column="5" Grid.ColumnSpan="6" Click="StartStopMainTimerBtn" FontWeight="Bold"/>
 
             <!--Третий столбец-->
 

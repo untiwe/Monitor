@@ -62,7 +62,7 @@ namespace Monitor
                 while (true){
 
                     this.Dispatcher.Invoke(() => {
-                        ClockBox.Text = DateTime.Now.ToString("HH:mm:ss");
+                        ClockBox.Text = DateTime.Now.ToString("HH:mm");
                     });
 
                     Task.Delay(1000);

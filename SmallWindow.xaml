@@ -18,11 +18,15 @@
 
         <Style TargetType="TextBlock" BasedOn="{StaticResource BaseFontFamily}">
         </Style>
-        
-        
+
+        <Style x:Key="TimersFontFamily" BasedOn="{StaticResource BaseFontFamily}">
+            <Setter Property="Control.Foreground" Value="#06d12b"/>
+        </Style>
+
+
 
         <!--Стили с тригерами для списков удаленых игроков-->
-        <Style x:Key="LeftPlayerRemoving1" BasedOn="{StaticResource BaseFontFamily}">
+        <Style x:Key="LeftPlayerRemoving1" BasedOn="{StaticResource TimersFontFamily}">
              
             <Style.Triggers>
                 <DataTrigger Binding="{Binding Path=LeftPlayer1.PlayerNomber}" Value="0">
@@ -30,7 +34,7 @@
                 </DataTrigger>
             </Style.Triggers>
         </Style>
-        <Style x:Key="LeftPlayerRemoving2" BasedOn="{StaticResource BaseFontFamily}">
+        <Style x:Key="LeftPlayerRemoving2" BasedOn="{StaticResource TimersFontFamily}">
              
             <Style.Triggers>
                 <DataTrigger Binding="{Binding Path=LeftPlayer2.PlayerNomber}" Value="0">
@@ -38,7 +42,7 @@
                 </DataTrigger>
             </Style.Triggers>
         </Style>
-        <Style x:Key="LeftPlayerRemoving3" BasedOn="{StaticResource BaseFontFamily}">
+        <Style x:Key="LeftPlayerRemoving3" BasedOn="{StaticResource TimersFontFamily}">
              
             <Style.Triggers>
                 <DataTrigger Binding="{Binding Path=LeftPlayer3.PlayerNomber}" Value="0">
@@ -46,7 +50,7 @@
                 </DataTrigger>
             </Style.Triggers>
         </Style>
-        <Style x:Key="RightPlayerRemoving1" BasedOn="{StaticResource BaseFontFamily}">
+        <Style x:Key="RightPlayerRemoving1" BasedOn="{StaticResource TimersFontFamily}">
              
             <Style.Triggers>
                 <DataTrigger Binding="{Binding Path=RightPlayer1.PlayerNomber}" Value="0">
@@ -54,7 +58,7 @@
                 </DataTrigger>
             </Style.Triggers>
         </Style>
-        <Style x:Key="RightPlayerRemoving2" BasedOn="{StaticResource BaseFontFamily}">
+        <Style x:Key="RightPlayerRemoving2" BasedOn="{StaticResource TimersFontFamily}">
              
             <Style.Triggers>
                 <DataTrigger Binding="{Binding Path=RightPlayer2.PlayerNomber}" Value="0">
@@ -62,7 +66,7 @@
                 </DataTrigger>
             </Style.Triggers>
         </Style>
-        <Style x:Key="RightPlayerRemoving3" BasedOn="{StaticResource BaseFontFamily}">
+        <Style x:Key="RightPlayerRemoving3" BasedOn="{StaticResource TimersFontFamily}">
              
             <Style.Triggers>
                 <DataTrigger Binding="{Binding Path=RightPlayer3.PlayerNomber}" Value="0">
@@ -72,7 +76,7 @@
         </Style>
 
         <Style x:Key="TimeShow">
-            <Setter Property="Control.Foreground" Value="Red"/>
+            <Setter Property="Control.Foreground" Value="Yellow"/>
         </Style>
 
         <Style x:Key="TimeHidden">
@@ -140,9 +144,15 @@
         <Viewbox Grid.Row="0" Grid.RowSpan="4" Grid.Column="0" Grid.ColumnSpan="6">
             <TextBlock Text="Удаления" />
         </Viewbox>
-        <Grid ShowGridLines="False" Grid.Row="0" Grid.RowSpan="8" Grid.Column="6" Grid.ColumnSpan="20">
+        <Grid ShowGridLines="False" Grid.Row="0" Grid.RowSpan="8" Grid.Column="5" Grid.ColumnSpan="22">
             <Grid.ColumnDefinitions>
-                <!--24 колонки-->
+                <!--30 колонок-->
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
                 <ColumnDefinition Width="1*"/>
                 <ColumnDefinition Width="1*"/>
                 <ColumnDefinition Width="1*"/>
@@ -176,13 +186,13 @@
                 <RowDefinition Height="1*"/>
                 <RowDefinition Height="1*"/>
             </Grid.RowDefinitions>
-            <Viewbox Grid.Row="0" Grid.RowSpan="5" Grid.Column="0" Grid.ColumnSpan="12">
-                <TextBlock Text="{Binding Path=LeftTeam.TeamName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+            <Viewbox Grid.Row="1" Grid.RowSpan="3" Grid.Column="0" Grid.ColumnSpan="12">
+                <TextBlock HorizontalAlignment="Center" Text="{Binding Path=LeftTeam.TeamName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
             </Viewbox>
-            <Viewbox x:Name="Clock" Style="{StaticResource TimeHidden}" Grid.Row="0" Grid.RowSpan="4" Grid.Column="9" Grid.ColumnSpan="7">
-                <TextBlock x:Name="ClockBox" Text="22:18" />
+            <Viewbox x:Name="Clock" Style="{StaticResource TimeHidden}" Grid.Row="1" Grid.RowSpan="3" Grid.Column="11" Grid.ColumnSpan="7">
+                <TextBlock x:Name="ClockBox" Text="00:00" />
             </Viewbox>
-            <Viewbox Grid.Row="0" Grid.RowSpan="5" Grid.Column="13" Grid.ColumnSpan="12">
+            <Viewbox Grid.Row="1" Grid.RowSpan="3" Grid.Column="17" Grid.ColumnSpan="12">
                 <TextBlock Text="{Binding Path=RightTeam.TeamName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
             </Viewbox>
         </Grid>
@@ -212,19 +222,19 @@
 
         <!--Вторая строка, счет и таймер-->
 
-        <Viewbox Grid.Row="6" Grid.RowSpan="10" Grid.Column="9" Grid.ColumnSpan="4">
+        <Viewbox Grid.Row="6" Grid.RowSpan="10" Grid.Column="7" Grid.ColumnSpan="5">
             <TextBlock Text="{Binding Path=LeftTeam.TeamCounter, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
         </Viewbox>
-        <Viewbox Grid.Row="4" Grid.RowSpan="12" Grid.Column="13" Grid.ColumnSpan="5">
+        <Viewbox Grid.Row="4" Grid.RowSpan="12" Grid.Column="11" Grid.ColumnSpan="4">
             <TextBlock Text="Период" />
         </Viewbox>
-        <Viewbox Grid.Row="4" Grid.RowSpan="12" Grid.Column="14" Grid.ColumnSpan="5">
+        <Viewbox Grid.Row="7" Grid.RowSpan="6" Grid.Column="14" Grid.ColumnSpan="4">
             <TextBlock Text="{Binding Path=TabloInfo.Period, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
         </Viewbox>
-        <Viewbox Grid.Row="4" Grid.RowSpan="12" Grid.Column="15" Grid.ColumnSpan="5">
+        <Viewbox Style="{StaticResource TimersFontFamily}" Grid.Row="4" Grid.RowSpan="12" Grid.Column="17" Grid.ColumnSpan="3">
             <TextBlock Text="{Binding Path=TabloInfo.GameTaimerString, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
         </Viewbox>
-        <Viewbox Grid.Row="6" Grid.RowSpan="10" Grid.Column="20" Grid.ColumnSpan="3">
+        <Viewbox Grid.Row="6" Grid.RowSpan="10" Grid.Column="20" Grid.ColumnSpan="4">
             <TextBlock Text="{Binding Path=RightTeam.TeamCounter, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
         </Viewbox>
 
