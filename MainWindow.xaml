@@ -124,14 +124,14 @@
 
             <Label Style="{StaticResource StaticTitles}" Content="Хозяева" Grid.ColumnSpan="4"/>
             <TextBox x:Name="HostTitle" Margin="0,0,0,2" Padding="0,-5,0,0" Style="{StaticResource TextBoxes}" Text="{Binding Path=LeftTeam.TeamTitle, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.RowSpan="1" Grid.Row="2" Grid.ColumnSpan="4"/>
-            <TextBox x:Name="HostName"  Margin="0,2,0,0" Padding="0,-5,0,0" Style="{StaticResource TextBoxes}" Text="{Binding Path=LeftTeam.TeamName,  Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.RowSpan="1" Grid.Row="3" Grid.ColumnSpan="4" KeyUp="HostName_KeyUp"/>
+            <TextBox x:Name="HostName"  Margin="0,2,0,0" Padding="0,-5,0,0" Style="{StaticResource TextBoxes}" Text="{Binding Path=LeftTeam.TeamName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.RowSpan="1" Grid.Row="3" Grid.ColumnSpan="4" KeyUp="HostName_KeyUp"/>
 
             <Border BorderBrush="White" Margin="0,0,0,5" Grid.Column="0" Grid.Row="5" Grid.RowSpan="7"  Grid.ColumnSpan="4" CornerRadius="5,5,5,5" Background="#FFE0DFDF"/>
 
             <Label Style="{StaticResource StaticTitles}" Margin="2,0,2,0"  Content="Общий счет" Grid.Row="5" VerticalAlignment="Center"  Grid.ColumnSpan="4" />
             <Button Content="-1"    Style="{StaticResource Buttons}"     Margin="1,0,1,1" Grid.Row="7" Grid.RowSpan="2"  Grid.ColumnSpan="1" Click="LeftTeamMinusOneCount"/>
             <Button Content="СБРОС" Style="{StaticResource Buttons}" Click="LeftTeamMinusRefreshCount" Margin="1,1,1,0" Grid.Row="9" Grid.RowSpan="2"  Grid.ColumnSpan="1"/>
-            <TextBox x:Name="HostCounter_TextBox" Margin="1,0,1,0" Style="{StaticResource TextBoxes}" Text="{Binding Path=LeftTeam.TeamCounter, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" FontSize="60" Grid.Row="7" Grid.RowSpan="4" Grid.Column="1" Grid.ColumnSpan="2" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" />
+            <TextBox x:Name="HostCounter_TextBox" Margin="1,0,1,0" Style="{StaticResource TextBoxes}" Text="{Binding Path=LeftTeam.TeamCounter}" FontSize="60" Grid.Row="7" Grid.RowSpan="4" Grid.Column="1" Grid.ColumnSpan="2" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" />
             <Button x:Name="HostCounterPlus_Btn" Content="+1" Style="{StaticResource Buttons}" Click="LeftTeamPlusOneCount" Margin="2,0,2,0" Grid.RowSpan="4" Grid.ColumnSpan="1" Grid.Column="3" Grid.Row="7" />
 
             <Label Style="{StaticResource StaticTitles}" Grid.Column="0" Content="Большой экран" Grid.Row="12" VerticalAlignment="Bottom"  Grid.ColumnSpan="4" RenderTransformOrigin="0.5,0.5" >
@@ -157,7 +157,7 @@
             <Label x:Name="TestLabel" Style="{StaticResource StaticTitles}" Content="Период" Grid.Column="5" Grid.ColumnSpan="6"/>
 
             <Button Content="-1" Style="{StaticResource Buttons}" Grid.Row="2" Grid.RowSpan="2" Grid.Column="5" Grid.ColumnSpan="2" Click="PeriodMinusOneCount"/>
-            <TextBox Text="{Binding Path=TabloInfo.Period, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource TextBoxes}"  Margin="5,0,5,0" Grid.Row="2" Grid.RowSpan="2" Grid.Column="7" Grid.ColumnSpan="2" FontSize="45" />
+            <TextBox Text="{Binding Path=TabloInfo.Period}" Style="{StaticResource TextBoxes}"  Margin="5,0,5,0" Grid.Row="2" Grid.RowSpan="2" Grid.Column="7" Grid.ColumnSpan="2" FontSize="45" />
             <Button Content="+1" Style="{StaticResource Buttons}" Grid.Row="2" Grid.RowSpan="2" Grid.Column="9" Grid.ColumnSpan="2" Click="PeriodPlusOneCount"/>
 
             <Label Style="{StaticResource StaticTitles}" Content="Время" Grid.Row="5" Grid.RowSpan="1" Grid.Column="5" Grid.ColumnSpan="5"/>
@@ -170,7 +170,7 @@
                 x:Name="MainTimer" 
                 Mask="00:00"      
                 FontSize="50"
-                Grid.Row="8" Grid.RowSpan="2" Grid.Column="5" Grid.ColumnSpan="6" Text="{Binding Path=TabloInfo.GameTaimerString, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                Grid.Row="8" Grid.RowSpan="2" Grid.Column="5" Grid.ColumnSpan="6" Text="{Binding Path=TabloInfo.GameTaimerString}"
                 VerticalContentAlignment="Center" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" TextAlignment="Center" HorizontalContentAlignment="Stretch" Padding="0,-10,0,0" Margin="0,3,0,3"/>
 
             <Button Content="Старт/стоп" Style="{StaticResource Buttons}" Grid.Row="10" Grid.RowSpan="1" Grid.Column="5" Grid.ColumnSpan="6" Click="StartStopMainTimerBtn" FontWeight="Bold"/>
@@ -179,14 +179,14 @@
 
             <Label Style="{StaticResource StaticTitles}" Content="Гости" Grid.Column="12" Grid.ColumnSpan="4"/>
             <TextBox x:Name="GuestsTitle" Margin="0,0,0,2" Padding="0,-5,0,0" Style="{StaticResource TextBoxes}" Text="{Binding Path=RightTeam.TeamTitle, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Column="12" Grid.RowSpan="1" Grid.Row="2" Grid.ColumnSpan="4"/>
-            <TextBox x:Name="GuestsName"  Margin="0,2,0,0" Padding="0,-5,0,0" Style="{StaticResource TextBoxes}" Text="{Binding Path=RightTeam.TeamName,  Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Column="12" Grid.RowSpan="1" Grid.Row="3" Grid.ColumnSpan="4" KeyUp="GuestsName_KeyUp"/>
+            <TextBox x:Name="GuestsName"  Margin="0,2,0,0" Padding="0,-5,0,0" Style="{StaticResource TextBoxes}" Text="{Binding Path=RightTeam.TeamName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Column="12" Grid.RowSpan="1" Grid.Row="3" Grid.ColumnSpan="4" KeyUp="GuestsName_KeyUp"/>
 
             <Border BorderBrush="White" Margin="0,0,0,5" Grid.Column="12" Grid.Row="5" Grid.RowSpan="7"  Grid.ColumnSpan="4" CornerRadius="5,5,5,5" Background="#FFE0DFDF"/>
 
             <Label Style="{StaticResource StaticTitles}" Margin="2,0,2,0" Grid.Column="12" Content="Общий счет" Grid.Row="5" VerticalAlignment="Center"  Grid.ColumnSpan="4" />
             <Button Content="-1"    Style="{StaticResource Buttons}" Margin="1,0,1,1" Grid.Column="12"  Grid.Row="7" Grid.RowSpan="2"  Grid.ColumnSpan="1" Click="RightTeamMinusOneCount"/>
             <Button Content="СБРОС" Style="{StaticResource Buttons}" Margin="1,1,1,0" Grid.Column="12"  Grid.Row="9" Grid.RowSpan="2"  Grid.ColumnSpan="1" Click="RightTeamRefreshCount"/>
-            <TextBox x:Name="GuestsCounter_TextBox" Margin="1,0,1,0" Style="{StaticResource TextBoxes}" Text="{Binding Path=RightTeam.TeamCounter, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" FontSize="60" Grid.Row="7" Grid.RowSpan="4" Grid.Column="13" Grid.ColumnSpan="2" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" />
+            <TextBox x:Name="GuestsCounter_TextBox" Margin="1,0,1,0" Style="{StaticResource TextBoxes}" Text="{Binding Path=RightTeam.TeamCounter}" FontSize="60" Grid.Row="7" Grid.RowSpan="4" Grid.Column="13" Grid.ColumnSpan="2" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" />
             <Button x:Name="GuestsCounterPlus_Btn" Content="+1" Style="{StaticResource Buttons}" Margin="2,0,2,0"  Grid.RowSpan="4" Grid.ColumnSpan="1" Grid.Column="15" Grid.Row="7" Click="RightTeamPlusOneCount" />
 
             <Label Style="{StaticResource StaticTitles}" Grid.Column="12" Content="Малый экран" Grid.Row="12" VerticalAlignment="Bottom"  Grid.ColumnSpan="3" RenderTransformOrigin="0.5,0.5" >
@@ -256,22 +256,22 @@
             </Grid.RowDefinitions>
             <!--Левая половина-->
             <Label Style="{StaticResource StaticTitles}" Grid.Column="0" Content="Удаления" Grid.Row="1" VerticalAlignment="Center"  Grid.ColumnSpan="9" Margin="0,-5,0,0" />
-            <TextBox Margin="0,0,0,0" Style="{StaticResource DeleteCounters}" Text="{Binding Path=LeftPlayer1.PlayerNomber, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Row="3" Grid.Column="0"/>
-            <xctk:MaskedTextBox Style="{StaticResource DeleteTimers}" x:Name="HostTimer1" Mask="00:00" Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="2" Text="{Binding Path=LeftPlayer1.RemovingTimerString, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></xctk:MaskedTextBox>
+            <TextBox Margin="0,0,0,0" Style="{StaticResource DeleteCounters}" Text="{Binding Path=LeftPlayer1.PlayerNomber}" Grid.Row="3" Grid.Column="0"/>
+            <xctk:MaskedTextBox Style="{StaticResource DeleteTimers}" x:Name="HostTimer1" Mask="00:00" Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="2" Text="{Binding Path=LeftPlayer1.RemovingTimerString}"></xctk:MaskedTextBox>
             <Button Content="+2"    Style="{StaticResource Buttons}"    Grid.Row="3" Grid.Column="5" Click="LeftPlayer1TimerPlus2"/>
             <Button Content="+5"    Style="{StaticResource Buttons}"    Grid.Row="3" Grid.Column="6" Click="LeftPlayer1TimerPlus5"/>
             <Button Content="+10"   Style="{StaticResource Buttons}"    Grid.Row="3" Grid.Column="7" Click="LeftPlayer1TimerPlus10"/>
             <Button Content="Сброс" Style="{StaticResource Buttons}"    Grid.Row="3" Grid.Column="8" Click="LeftPlayer1TimerReset"/>
 
-            <TextBox Margin="0,0,0,0" Style="{StaticResource DeleteCounters}" Text="{Binding Path=LeftPlayer2.PlayerNomber, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Row="5" Grid.Column="0"/>
-            <xctk:MaskedTextBox Style="{StaticResource DeleteTimers}" x:Name="HostTimer2" Mask="00:00" Grid.Row="5" Grid.Column="2" Grid.ColumnSpan="2" Text="{Binding Path=LeftPlayer2.RemovingTimerString, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></xctk:MaskedTextBox>
+            <TextBox Margin="0,0,0,0" Style="{StaticResource DeleteCounters}" Text="{Binding Path=LeftPlayer2.PlayerNomber}" Grid.Row="5" Grid.Column="0"/>
+            <xctk:MaskedTextBox Style="{StaticResource DeleteTimers}" x:Name="HostTimer2" Mask="00:00" Grid.Row="5" Grid.Column="2" Grid.ColumnSpan="2" Text="{Binding Path=LeftPlayer2.RemovingTimerString}"></xctk:MaskedTextBox>
             <Button Content="+2"    Style="{StaticResource Buttons}"    Grid.Row="5" Grid.Column="5" Click="LeftPlayer2TimerPlus2"/>
             <Button Content="+5"    Style="{StaticResource Buttons}"    Grid.Row="5" Grid.Column="6" Click="LeftPlayer2TimerPlus5"/>
             <Button Content="+10"   Style="{StaticResource Buttons}"    Grid.Row="5" Grid.Column="7" Click="LeftPlayer2TimerPlus10"/>
             <Button Content="Сброс" Style="{StaticResource Buttons}"    Grid.Row="5" Grid.Column="8" Click="LeftPlayer2TimerReset"/>
 
-            <TextBox Margin="0,0,0,0" Style="{StaticResource DeleteCounters}" Text="{Binding Path=LeftPlayer3.PlayerNomber, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Row="7" Grid.Column="0"/>
-            <xctk:MaskedTextBox Style="{StaticResource DeleteTimers}" x:Name="HostTimer3" Mask="00:00" Grid.Row="7" Grid.Column="2" Grid.ColumnSpan="2" Text="{Binding Path=LeftPlayer3.RemovingTimerString, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></xctk:MaskedTextBox>
+            <TextBox Margin="0,0,0,0" Style="{StaticResource DeleteCounters}" Text="{Binding Path=LeftPlayer3.PlayerNomber}" Grid.Row="7" Grid.Column="0"/>
+            <xctk:MaskedTextBox Style="{StaticResource DeleteTimers}" x:Name="HostTimer3" Mask="00:00" Grid.Row="7" Grid.Column="2" Grid.ColumnSpan="2" Text="{Binding Path=LeftPlayer3.RemovingTimerString}"></xctk:MaskedTextBox>
             <Button Content="+2"    Style="{StaticResource Buttons}"    Grid.Row="7" Grid.Column="5" Click="LeftPlayer3TimerPlus2"/>
             <Button Content="+5"    Style="{StaticResource Buttons}"    Grid.Row="7" Grid.Column="6" Click="LeftPlayer3TimerPlus5"/>
             <Button Content="+10"   Style="{StaticResource Buttons}"    Grid.Row="7" Grid.Column="7" Click="LeftPlayer3TimerPlus10"/>
@@ -279,22 +279,22 @@
 
             <!--Правая половина-->
             <Label Style="{StaticResource StaticTitles}" Grid.Column="10" Content="Удаления" Grid.Row="1" VerticalAlignment="Center"  Grid.ColumnSpan="9" Margin="0,-5,0,0" />
-            <TextBox Margin="0,0,0,0" Style="{StaticResource DeleteCounters}" Text="{Binding Path=RightPlayer1.PlayerNomber, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Row="3" Grid.Column="10"/>
-            <xctk:MaskedTextBox Style="{StaticResource DeleteTimers}" x:Name="GuestsTimer1" Mask="00:00" Grid.Row="3" Grid.Column="12" Grid.ColumnSpan="2" Text="{Binding Path=RightPlayer1.RemovingTimerString, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></xctk:MaskedTextBox>
+            <TextBox Margin="0,0,0,0" Style="{StaticResource DeleteCounters}" Text="{Binding Path=RightPlayer1.PlayerNomber}" Grid.Row="3" Grid.Column="10"/>
+            <xctk:MaskedTextBox Style="{StaticResource DeleteTimers}" x:Name="GuestsTimer1" Mask="00:00" Grid.Row="3" Grid.Column="12" Grid.ColumnSpan="2" Text="{Binding Path=RightPlayer1.RemovingTimerString}"></xctk:MaskedTextBox>
             <Button Content="+2"    Style="{StaticResource Buttons}"    Grid.Row="3" Grid.Column="15" Click="RightPlayer1TimerPlus2"/>
             <Button Content="+5"    Style="{StaticResource Buttons}"    Grid.Row="3" Grid.Column="16" Click="RightPlayer1TimerPlus5"/>
             <Button Content="+10"   Style="{StaticResource Buttons}"    Grid.Row="3" Grid.Column="17" Click="RightPlayer1TimerPlus10"/>
             <Button Content="Сброс" Style="{StaticResource Buttons}"    Grid.Row="3" Grid.Column="18" Click="RightPlayer1TimerReset"/>
 
-            <TextBox Margin="0,0,0,0" Style="{StaticResource DeleteCounters}" Text="{Binding Path=RightPlayer2.PlayerNomber, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Row="5" Grid.Column="10"/>
-            <xctk:MaskedTextBox Style="{StaticResource DeleteTimers}" x:Name="GuestsTimer2" Mask="00:00" Grid.Row="5" Grid.Column="12" Grid.ColumnSpan="2" Text="{Binding Path=RightPlayer2.RemovingTimerString, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></xctk:MaskedTextBox>
+            <TextBox Margin="0,0,0,0" Style="{StaticResource DeleteCounters}" Text="{Binding Path=RightPlayer2.PlayerNomber}" Grid.Row="5" Grid.Column="10"/>
+            <xctk:MaskedTextBox Style="{StaticResource DeleteTimers}" x:Name="GuestsTimer2" Mask="00:00" Grid.Row="5" Grid.Column="12" Grid.ColumnSpan="2" Text="{Binding Path=RightPlayer2.RemovingTimerString}"></xctk:MaskedTextBox>
             <Button Content="+2"    Style="{StaticResource Buttons}"    Grid.Row="5" Grid.Column="15" Click="RightPlayer2TimerPlus2"/>
             <Button Content="+5"    Style="{StaticResource Buttons}"    Grid.Row="5" Grid.Column="16" Click="RightPlayer2TimerPlus5"/>
             <Button Content="+10"   Style="{StaticResource Buttons}"    Grid.Row="5" Grid.Column="17" Click="RightPlayer2TimerPlus10"/>
             <Button Content="Сброс" Style="{StaticResource Buttons}"    Grid.Row="5" Grid.Column="18" Click="RightPlayer2TimerReset"/>
 
-            <TextBox Margin="0,0,0,0" Style="{StaticResource DeleteCounters}" Text="{Binding Path=RightPlayer3.PlayerNomber, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Row="7" Grid.Column="10"/>
-            <xctk:MaskedTextBox Style="{StaticResource DeleteTimers}" x:Name="GuestsTimer3" Mask="00:00" Grid.Row="7" Grid.Column="12" Grid.ColumnSpan="2" Text="{Binding Path=RightPlayer3.RemovingTimerString, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></xctk:MaskedTextBox>
+            <TextBox Margin="0,0,0,0" Style="{StaticResource DeleteCounters}" Text="{Binding Path=RightPlayer3.PlayerNomber}" Grid.Row="7" Grid.Column="10"/>
+            <xctk:MaskedTextBox Style="{StaticResource DeleteTimers}" x:Name="GuestsTimer3" Mask="00:00" Grid.Row="7" Grid.Column="12" Grid.ColumnSpan="2" Text="{Binding Path=RightPlayer3.RemovingTimerString}"></xctk:MaskedTextBox>
             <Button Content="+2"    Style="{StaticResource Buttons}"    Grid.Row="7" Grid.Column="15" Click="RightPlayer3TimerPlus2"/>
             <Button Content="+5"    Style="{StaticResource Buttons}"    Grid.Row="7" Grid.Column="16" Click="RightPlayer3TimerPlus5"/>
             <Button Content="+10"   Style="{StaticResource Buttons}"    Grid.Row="7" Grid.Column="17" Click="RightPlayer3TimerPlus10"/>

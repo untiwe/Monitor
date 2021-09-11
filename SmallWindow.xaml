@@ -187,13 +187,13 @@
                 <RowDefinition Height="1*"/>
             </Grid.RowDefinitions>
             <Viewbox Grid.Row="1" Grid.RowSpan="3" Grid.Column="0" Grid.ColumnSpan="12">
-                <TextBlock HorizontalAlignment="Center" Text="{Binding Path=LeftTeam.TeamName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                <TextBlock HorizontalAlignment="Center" Text="{Binding Path=LeftTeam.TeamName}" />
             </Viewbox>
             <Viewbox x:Name="Clock" Style="{StaticResource TimeHidden}" Grid.Row="1" Grid.RowSpan="3" Grid.Column="11" Grid.ColumnSpan="7">
                 <TextBlock x:Name="ClockBox" Text="00:00" />
             </Viewbox>
             <Viewbox Grid.Row="1" Grid.RowSpan="3" Grid.Column="17" Grid.ColumnSpan="12">
-                <TextBlock Text="{Binding Path=RightTeam.TeamName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                <TextBlock Text="{Binding Path=RightTeam.TeamName}" />
             </Viewbox>
         </Grid>
         <Viewbox Grid.Row="0" Grid.RowSpan="4" Grid.Column="26" Grid.ColumnSpan="6">
@@ -202,60 +202,60 @@
 
         <!--Вторая строка левые удаления-->
         <Viewbox Grid.Row="4" Grid.RowSpan="4" Grid.Column="1" Grid.ColumnSpan="1">
-            <TextBlock Style="{StaticResource LeftPlayerRemoving1}" Text="{Binding Path=LeftPlayer1.PlayerNomber, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+            <TextBlock Style="{StaticResource LeftPlayerRemoving1}" Text="{Binding Path=LeftPlayer1.PlayerNomber}" />
         </Viewbox>
         <Viewbox Grid.Row="4" Grid.RowSpan="4" Grid.Column="3" Grid.ColumnSpan="2">
-            <TextBlock Style="{StaticResource LeftPlayerRemoving1}" Text="{Binding Path=LeftPlayer1.RemovingTimerString, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+            <TextBlock Style="{StaticResource LeftPlayerRemoving1}" Text="{Binding Path=LeftPlayer1.RemovingTimerString}" />
         </Viewbox>
         <Viewbox Grid.Row="8" Grid.RowSpan="4" Grid.Column="1" Grid.ColumnSpan="1">
-            <TextBlock Style="{StaticResource LeftPlayerRemoving2}" Text="{Binding Path=LeftPlayer2.PlayerNomber, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+            <TextBlock Style="{StaticResource LeftPlayerRemoving2}" Text="{Binding Path=LeftPlayer2.PlayerNomber}"/>
         </Viewbox>
         <Viewbox Grid.Row="8" Grid.RowSpan="4" Grid.Column="3" Grid.ColumnSpan="2">
-            <TextBlock Style="{StaticResource LeftPlayerRemoving2}" Text="{Binding Path=LeftPlayer2.RemovingTimerString, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+            <TextBlock Style="{StaticResource LeftPlayerRemoving2}" Text="{Binding Path=LeftPlayer2.RemovingTimerString}" />
         </Viewbox>
         <Viewbox Grid.Row="12" Grid.RowSpan="4" Grid.Column="1" Grid.ColumnSpan="1">
-            <TextBlock Style="{StaticResource LeftPlayerRemoving3}" Text="{Binding Path=LeftPlayer3.PlayerNomber, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+            <TextBlock Style="{StaticResource LeftPlayerRemoving3}" Text="{Binding Path=LeftPlayer3.PlayerNomber}"/>
         </Viewbox>
         <Viewbox Grid.Row="12" Grid.RowSpan="4" Grid.Column="3" Grid.ColumnSpan="2">
-            <TextBlock Style="{StaticResource LeftPlayerRemoving3}" Text="{Binding Path=LeftPlayer3.RemovingTimerString, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+            <TextBlock Style="{StaticResource LeftPlayerRemoving3}" Text="{Binding Path=LeftPlayer3.RemovingTimerString}"/>
         </Viewbox>
 
         <!--Вторая строка, счет и таймер-->
 
         <Viewbox Grid.Row="6" Grid.RowSpan="10" Grid.Column="7" Grid.ColumnSpan="5">
-            <TextBlock Text="{Binding Path=LeftTeam.TeamCounter, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+            <TextBlock Text="{Binding Path=LeftTeam.TeamCounter}" />
         </Viewbox>
         <Viewbox Grid.Row="4" Grid.RowSpan="12" Grid.Column="11" Grid.ColumnSpan="4">
             <TextBlock Text="Период" />
         </Viewbox>
         <Viewbox Grid.Row="7" Grid.RowSpan="6" Grid.Column="14" Grid.ColumnSpan="4">
-            <TextBlock Text="{Binding Path=TabloInfo.Period, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+            <TextBlock Text="{Binding Path=TabloInfo.Period}"/>
         </Viewbox>
         <Viewbox Style="{StaticResource TimersFontFamily}" Grid.Row="4" Grid.RowSpan="12" Grid.Column="17" Grid.ColumnSpan="3">
-            <TextBlock Text="{Binding Path=TabloInfo.GameTaimerString, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+            <TextBlock Text="{Binding Path=TabloInfo.GameTaimerString}"/>
         </Viewbox>
         <Viewbox Grid.Row="6" Grid.RowSpan="10" Grid.Column="20" Grid.ColumnSpan="4">
-            <TextBlock Text="{Binding Path=RightTeam.TeamCounter, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+            <TextBlock Text="{Binding Path=RightTeam.TeamCounter}"/>
         </Viewbox>
 
         <!--Вторая строка правые удаления-->
         <Viewbox Grid.Row="4" Grid.RowSpan="4" Grid.Column="27" Grid.ColumnSpan="1">
-            <TextBlock Style="{StaticResource RightPlayerRemoving1}" Text="{Binding Path=RightPlayer1.PlayerNomber, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+            <TextBlock Style="{StaticResource RightPlayerRemoving1}" Text="{Binding Path=RightPlayer1.PlayerNomber}"/>
         </Viewbox>
         <Viewbox Grid.Row="4" Grid.RowSpan="4" Grid.Column="29" Grid.ColumnSpan="2">
-            <TextBlock Style="{StaticResource RightPlayerRemoving1}" Text="{Binding Path=RightPlayer1.RemovingTimerString, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+            <TextBlock Style="{StaticResource RightPlayerRemoving1}" Text="{Binding Path=RightPlayer1.RemovingTimerString}"/>
         </Viewbox>
         <Viewbox Grid.Row="8" Grid.RowSpan="4" Grid.Column="27" Grid.ColumnSpan="1">
-            <TextBlock Style="{StaticResource RightPlayerRemoving2}" Text="{Binding Path=RightPlayer2.PlayerNomber, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+            <TextBlock Style="{StaticResource RightPlayerRemoving2}" Text="{Binding Path=RightPlayer2.PlayerNomber}"/>
         </Viewbox>
         <Viewbox Grid.Row="8" Grid.RowSpan="4" Grid.Column="29" Grid.ColumnSpan="2">
-            <TextBlock Style="{StaticResource RightPlayerRemoving2}" Text="{Binding Path=RightPlayer2.RemovingTimerString, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+            <TextBlock Style="{StaticResource RightPlayerRemoving2}" Text="{Binding Path=RightPlayer2.RemovingTimerString}"/>
         </Viewbox>
         <Viewbox Grid.Row="12" Grid.RowSpan="4" Grid.Column="27" Grid.ColumnSpan="1">
-            <TextBlock Style="{StaticResource RightPlayerRemoving3}" Text="{Binding Path=RightPlayer3.PlayerNomber, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+            <TextBlock Style="{StaticResource RightPlayerRemoving3}" Text="{Binding Path=RightPlayer3.PlayerNomber}"/>
         </Viewbox>
         <Viewbox Grid.Row="12" Grid.RowSpan="4" Grid.Column="29" Grid.ColumnSpan="2">
-            <TextBlock Style="{StaticResource RightPlayerRemoving3}" Text="{Binding Path=RightPlayer3.RemovingTimerString, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+            <TextBlock Style="{StaticResource RightPlayerRemoving3}" Text="{Binding Path=RightPlayer3.RemovingTimerString}"/>
         </Viewbox>
 
     </Grid>

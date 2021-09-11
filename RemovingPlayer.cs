@@ -55,13 +55,17 @@ namespace Monitor
             if (PropertyChanged != null)
                 PropertyChanged(this, new PropertyChangedEventArgs(prop));
         }
-
+        
         public void SubtractTaimer(object sender, EventArgs e)
         {
-            if (RemovingTimer.Seconds == 0 && RemovingTimer.Minutes == 0)
-                PlayerNomber = 0;
-            if (RemovingTimer.Seconds > 0 || RemovingTimer.Minutes > 0)
-                RemovingTimer = RemovingTimer.Subtract(new TimeSpan(0, 0, 1));
+            Task.Factory.StartNew(() =>
+            {
+
+                if (RemovingTimer.Seconds == 0 && RemovingTimer.Minutes == 0)
+                    PlayerNomber = 0;
+                if (RemovingTimer.Seconds > 0 || RemovingTimer.Minutes > 0)
+                    RemovingTimer = RemovingTimer.Subtract(new TimeSpan(0, 0, 1));
+            });
         }
     }
 }

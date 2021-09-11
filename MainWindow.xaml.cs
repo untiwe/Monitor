@@ -161,8 +161,9 @@ namespace Monitor
         
         public void InitDispatcherTimer()
         { 
-            timer = new DispatcherTimer();
+            timer = new DispatcherTimer(DispatcherPriority.Send);
             timer.Interval = TimeSpan.FromSeconds(1);
+            //timer.Interval = TimeSpan.FromMilliseconds(985);
             timer.Tick += _view.TabloInfo.SubtractTaimer;
             timer.Tick += _view.LeftPlayer1.SubtractTaimer;
             timer.Tick += _view.LeftPlayer2.SubtractTaimer;
@@ -377,14 +378,11 @@ namespace Monitor
         private void HostName_KeyUp(object sender, KeyEventArgs e) => AddUpdateAppSettings("LeftTeamName", _view.LeftTeam.TeamName);
         private void GuestsName_KeyUp(object sender, KeyEventArgs e) => AddUpdateAppSettings("RightTeamName", _view.RightTeam.TeamName);
 
-     
-
+        
         private void Window_PreviewKeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.F1)
                 StartStopMainTimer();
-
-
         }
 
         private void StartStopMainTimer()

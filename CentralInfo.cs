@@ -77,6 +77,7 @@ namespace Monitor
         public delegate void TimerEnded();
         public event TimerEnded TimeEndEvent;
 
+       
         public void SubtractTaimer(object sender, EventArgs e)
         {
             if (GameTaimer.Seconds == 1 && GameTaimer.Minutes == 0)
