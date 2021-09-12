@@ -22,59 +22,87 @@
             <Setter Property="TextElement.FontFamily" Value="Resources/#ft12" />
         </Style>
 
-        <Style BasedOn="{StaticResource BaseFontFamily}" TargetType="TextBlock" />
+        <Style
+            BasedOn="{StaticResource BaseFontFamily}"
+            TargetType="TextBlock" />
 
-        <Style x:Key="TimersFontFamily" BasedOn="{StaticResource BaseFontFamily}">
+        <Style
+            x:Key="TimersFontFamily"
+            BasedOn="{StaticResource BaseFontFamily}">
             <Setter Property="Control.Foreground" Value="#06d12b" />
         </Style>
 
 
 
         <!--  Стили с тригерами для списков удаленых игроков  -->
-        <Style x:Key="LeftPlayerRemoving1" BasedOn="{StaticResource TimersFontFamily}">
+        <Style
+            x:Key="LeftPlayerRemoving1"
+            BasedOn="{StaticResource TimersFontFamily}">
 
             <Style.Triggers>
-                <DataTrigger Binding="{Binding Path=LeftPlayer1.PlayerNomber}" Value="0">
+                <DataTrigger
+                    Binding="{Binding Path=LeftPlayer1.PlayerNomber}"
+                    Value="0">
                     <Setter Property="Control.Foreground" Value="Transparent" />
                 </DataTrigger>
             </Style.Triggers>
         </Style>
-        <Style x:Key="LeftPlayerRemoving2" BasedOn="{StaticResource TimersFontFamily}">
+        <Style
+            x:Key="LeftPlayerRemoving2"
+            BasedOn="{StaticResource TimersFontFamily}">
 
             <Style.Triggers>
-                <DataTrigger Binding="{Binding Path=LeftPlayer2.PlayerNomber}" Value="0">
+                <DataTrigger
+                    Binding="{Binding Path=LeftPlayer2.PlayerNomber}"
+                    Value="0">
                     <Setter Property="Control.Foreground" Value="Transparent" />
                 </DataTrigger>
             </Style.Triggers>
         </Style>
-        <Style x:Key="LeftPlayerRemoving3" BasedOn="{StaticResource TimersFontFamily}">
+        <Style
+            x:Key="LeftPlayerRemoving3"
+            BasedOn="{StaticResource TimersFontFamily}">
 
             <Style.Triggers>
-                <DataTrigger Binding="{Binding Path=LeftPlayer3.PlayerNomber}" Value="0">
+                <DataTrigger
+                    Binding="{Binding Path=LeftPlayer3.PlayerNomber}"
+                    Value="0">
                     <Setter Property="Control.Foreground" Value="Transparent" />
                 </DataTrigger>
             </Style.Triggers>
         </Style>
-        <Style x:Key="RightPlayerRemoving1" BasedOn="{StaticResource TimersFontFamily}">
+        <Style
+            x:Key="RightPlayerRemoving1"
+            BasedOn="{StaticResource TimersFontFamily}">
 
             <Style.Triggers>
-                <DataTrigger Binding="{Binding Path=RightPlayer1.PlayerNomber}" Value="0">
+                <DataTrigger
+                    Binding="{Binding Path=RightPlayer1.PlayerNomber}"
+                    Value="0">
                     <Setter Property="Control.Foreground" Value="Transparent" />
                 </DataTrigger>
             </Style.Triggers>
         </Style>
-        <Style x:Key="RightPlayerRemoving2" BasedOn="{StaticResource TimersFontFamily}">
+        <Style
+            x:Key="RightPlayerRemoving2"
+            BasedOn="{StaticResource TimersFontFamily}">
 
             <Style.Triggers>
-                <DataTrigger Binding="{Binding Path=RightPlayer2.PlayerNomber}" Value="0">
+                <DataTrigger
+                    Binding="{Binding Path=RightPlayer2.PlayerNomber}"
+                    Value="0">
                     <Setter Property="Control.Foreground" Value="Transparent" />
                 </DataTrigger>
             </Style.Triggers>
         </Style>
-        <Style x:Key="RightPlayerRemoving3" BasedOn="{StaticResource TimersFontFamily}">
+        <Style
+            x:Key="RightPlayerRemoving3"
+            BasedOn="{StaticResource TimersFontFamily}">
 
             <Style.Triggers>
-                <DataTrigger Binding="{Binding Path=RightPlayer3.PlayerNomber}" Value="0">
+                <DataTrigger
+                    Binding="{Binding Path=RightPlayer3.PlayerNomber}"
+                    Value="0">
                     <Setter Property="Control.Foreground" Value="Transparent" />
                 </DataTrigger>
             </Style.Triggers>
@@ -205,7 +233,9 @@
                 Grid.RowSpan="3"
                 Grid.Column="0"
                 Grid.ColumnSpan="12">
-                <TextBlock HorizontalAlignment="Center" Text="{Binding Path=LeftTeam.TeamName}" />
+                <TextBlock
+                    HorizontalAlignment="Center"
+                    Text="{Binding Path=LeftTeam.TeamName}" />
             </Viewbox>
             <Viewbox
                 x:Name="Clock"
@@ -214,7 +244,9 @@
                 Grid.Column="11"
                 Grid.ColumnSpan="7"
                 Style="{StaticResource TimeHidden}">
-                <TextBlock x:Name="ClockBox" Text="00:00" />
+                <TextBlock
+                    x:Name="ClockBox"
+                    Text="00:00" />
             </Viewbox>
             <Viewbox
                 Grid.Row="1"
@@ -238,42 +270,54 @@
             Grid.RowSpan="4"
             Grid.Column="1"
             Grid.ColumnSpan="1">
-            <TextBlock Style="{StaticResource LeftPlayerRemoving1}" Text="{Binding Path=LeftPlayer1.PlayerNomber}" />
+            <TextBlock
+                Style="{StaticResource LeftPlayerRemoving1}"
+                Text="{Binding Path=LeftPlayer1.PlayerNomber}" />
         </Viewbox>
         <Viewbox
             Grid.Row="4"
             Grid.RowSpan="4"
             Grid.Column="3"
             Grid.ColumnSpan="2">
-            <TextBlock Style="{StaticResource LeftPlayerRemoving1}" Text="{Binding Path=LeftPlayer1.RemovingTimerString}" />
+            <TextBlock
+                Style="{StaticResource LeftPlayerRemoving1}"
+                Text="{Binding Path=LeftPlayer1.RemovingTimerString}" />
         </Viewbox>
         <Viewbox
             Grid.Row="8"
             Grid.RowSpan="4"
             Grid.Column="1"
             Grid.ColumnSpan="1">
-            <TextBlock Style="{StaticResource LeftPlayerRemoving2}" Text="{Binding Path=LeftPlayer2.PlayerNomber}" />
+            <TextBlock
+                Style="{StaticResource LeftPlayerRemoving2}"
+                Text="{Binding Path=LeftPlayer2.PlayerNomber}" />
         </Viewbox>
         <Viewbox
             Grid.Row="8"
             Grid.RowSpan="4"
             Grid.Column="3"
             Grid.ColumnSpan="2">
-            <TextBlock Style="{StaticResource LeftPlayerRemoving2}" Text="{Binding Path=LeftPlayer2.RemovingTimerString}" />
+            <TextBlock
+                Style="{StaticResource LeftPlayerRemoving2}"
+                Text="{Binding Path=LeftPlayer2.RemovingTimerString}" />
         </Viewbox>
         <Viewbox
             Grid.Row="12"
             Grid.RowSpan="4"
             Grid.Column="1"
             Grid.ColumnSpan="1">
-            <TextBlock Style="{StaticResource LeftPlayerRemoving3}" Text="{Binding Path=LeftPlayer3.PlayerNomber}" />
+            <TextBlock
+                Style="{StaticResource LeftPlayerRemoving3}"
+                Text="{Binding Path=LeftPlayer3.PlayerNomber}" />
         </Viewbox>
         <Viewbox
             Grid.Row="12"
             Grid.RowSpan="4"
             Grid.Column="3"
             Grid.ColumnSpan="2">
-            <TextBlock Style="{StaticResource LeftPlayerRemoving3}" Text="{Binding Path=LeftPlayer3.RemovingTimerString}" />
+            <TextBlock
+                Style="{StaticResource LeftPlayerRemoving3}"
+                Text="{Binding Path=LeftPlayer3.RemovingTimerString}" />
         </Viewbox>
 
         <!--  Вторая строка, счет и таймер  -->
@@ -321,42 +365,54 @@
             Grid.RowSpan="4"
             Grid.Column="27"
             Grid.ColumnSpan="1">
-            <TextBlock Style="{StaticResource RightPlayerRemoving1}" Text="{Binding Path=RightPlayer1.PlayerNomber}" />
+            <TextBlock
+                Style="{StaticResource RightPlayerRemoving1}"
+                Text="{Binding Path=RightPlayer1.PlayerNomber}" />
         </Viewbox>
         <Viewbox
             Grid.Row="4"
             Grid.RowSpan="4"
             Grid.Column="29"
             Grid.ColumnSpan="2">
-            <TextBlock Style="{StaticResource RightPlayerRemoving1}" Text="{Binding Path=RightPlayer1.RemovingTimerString}" />
+            <TextBlock
+                Style="{StaticResource RightPlayerRemoving1}"
+                Text="{Binding Path=RightPlayer1.RemovingTimerString}" />
         </Viewbox>
         <Viewbox
             Grid.Row="8"
             Grid.RowSpan="4"
             Grid.Column="27"
             Grid.ColumnSpan="1">
-            <TextBlock Style="{StaticResource RightPlayerRemoving2}" Text="{Binding Path=RightPlayer2.PlayerNomber}" />
+            <TextBlock
+                Style="{StaticResource RightPlayerRemoving2}"
+                Text="{Binding Path=RightPlayer2.PlayerNomber}" />
         </Viewbox>
         <Viewbox
             Grid.Row="8"
             Grid.RowSpan="4"
             Grid.Column="29"
             Grid.ColumnSpan="2">
-            <TextBlock Style="{StaticResource RightPlayerRemoving2}" Text="{Binding Path=RightPlayer2.RemovingTimerString}" />
+            <TextBlock
+                Style="{StaticResource RightPlayerRemoving2}"
+                Text="{Binding Path=RightPlayer2.RemovingTimerString}" />
         </Viewbox>
         <Viewbox
             Grid.Row="12"
             Grid.RowSpan="4"
             Grid.Column="27"
             Grid.ColumnSpan="1">
-            <TextBlock Style="{StaticResource RightPlayerRemoving3}" Text="{Binding Path=RightPlayer3.PlayerNomber}" />
+            <TextBlock
+                Style="{StaticResource RightPlayerRemoving3}"
+                Text="{Binding Path=RightPlayer3.PlayerNomber}" />
         </Viewbox>
         <Viewbox
             Grid.Row="12"
             Grid.RowSpan="4"
             Grid.Column="29"
             Grid.ColumnSpan="2">
-            <TextBlock Style="{StaticResource RightPlayerRemoving3}" Text="{Binding Path=RightPlayer3.RemovingTimerString}" />
+            <TextBlock
+                Style="{StaticResource RightPlayerRemoving3}"
+                Text="{Binding Path=RightPlayer3.RemovingTimerString}" />
         </Viewbox>
 
     </Grid>
