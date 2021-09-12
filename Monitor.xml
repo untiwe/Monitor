@@ -1,0 +1,389 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Monitor</name>
+    </assembly>
+    <members>
+        <member name="T:Monitor.App">
+            <summary>
+            Interaction logic for App.xaml
+            </summary>
+            <summary>
+            App
+            </summary>
+        </member>
+        <member name="M:Monitor.App.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="M:Monitor.App.Main">
+            <summary>
+            Application Entry Point.
+            </summary>
+        </member>
+        <member name="T:Monitor.BigWindow">
+            <summary>
+            Логика взаимодействия для BigWindow.xaml
+            </summary>
+            
+            <summary>
+            BigWindow
+            </summary>
+        </member>
+        <member name="M:Monitor.BigWindow.#ctor">
+            <summary>
+            Конструктор большого окна
+            </summary>
+            
+        </member>
+        <member name="M:Monitor.BigWindow.SetStyles">
+            <summary>
+            Устанавливаем цвет текста
+            </summary>
+        </member>
+        <member name="M:Monitor.BigWindow.CreateVisibility">
+            <summary>
+            Делаем окно снова видимым
+            </summary>
+        </member>
+        <member name="M:Monitor.BigWindow.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:Monitor.CentralInfo">
+            <summary>
+            Основаная информация, выводима на табло.
+            </summary>
+        </member>
+        <member name="P:Monitor.CentralInfo.TabloName">
+            <summary>
+            Название табло/места/стадиона по желанию оператора.
+            </summary>
+            <value>string</value>
+        </member>
+        <member name="P:Monitor.CentralInfo.Period">
+            <summary>
+            Номер текущего периода
+            </summary>
+            <value>short</value>
+        </member>
+        <member name="P:Monitor.CentralInfo.GameTaimer">
+            <summary>
+            Время оставшееся до конца периода.
+            </summary>
+            <value>TimeSpan</value>
+        </member>
+        <member name="P:Monitor.CentralInfo.GameTaimerString">
+            <summary>
+            Время оставшееся до конца периода, в виде строки. Сделано специально для привзяки к нему TextBox без дополнительной филтраци
+            </summary>
+            <value>string</value>
+        </member>
+        <member name="E:Monitor.CentralInfo.PropertyChanged">
+            <summary>
+            Событие для обновления привязаных данных
+            </summary>
+        </member>
+        <member name="M:Monitor.CentralInfo.OnPropertyChanged(System.String)">
+            <summary>
+            Метод, вызываемый set-ром при обновлении данных
+            </summary>
+        </member>
+        <member name="T:Monitor.CentralInfo.TimerEnded">
+            <summary>
+            Делегат, вызываемый если время периода подошло к концу
+            </summary>
+        </member>
+        <member name="E:Monitor.CentralInfo.TimeEndEvent">
+            <summary>
+            Собитые, которое возникает, когда заканчивается время таймера
+            </summary>
+        </member>
+        <member name="M:Monitor.CentralInfo.SubtractTaimer(System.Object,System.EventArgs)">
+            <summary>
+            Метод уменьшения временни на 1 секунду, сделалн для привязки тику таймера DispatcherTimer
+            </summary>
+        </member>
+        <member name="T:Monitor.MainWindow">
+            <summary>
+            Interaction logic for MainWindow.xaml
+            </summary>
+            <summary>
+            MainWindow
+            </summary>
+        </member>
+        <member name="F:Monitor.MainWindow._view">
+            <summary>
+            Класс контекста для привязки данных
+            </summary>
+        </member>
+        <member name="M:Monitor.MainWindow.#ctor">
+            <summary>
+            Конструктор главно окна
+            </summary>
+        </member>
+        <member name="M:Monitor.MainWindow.SetSettings">
+            <summary>
+            Вводим название табло и имена команд из файла настроек
+            </summary>
+        </member>
+        <member name="M:Monitor.MainWindow.InitDispatcherTimer">
+            <summary>
+            Запускаем таймер, инициализаруем подписки на его tick.
+            </summary>
+        </member>
+        <member name="M:Monitor.MainWindow.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:Monitor.Properties.Resources">
+            <summary>
+              Класс ресурса со строгой типизацией для поиска локализованных строк и т.д.
+            </summary>
+        </member>
+        <member name="P:Monitor.Properties.Resources.ResourceManager">
+            <summary>
+              Возвращает кэшированный экземпляр ResourceManager, использованный этим классом.
+            </summary>
+        </member>
+        <member name="P:Monitor.Properties.Resources.Culture">
+            <summary>
+              Перезаписывает свойство CurrentUICulture текущего потока для всех
+              обращений к ресурсу с помощью этого класса ресурса со строгой типизацией.
+            </summary>
+        </member>
+        <member name="P:Monitor.Properties.Resources.a_lcdnova">
+            <summary>
+              Поиск локализованного ресурса типа System.Byte[].
+            </summary>
+        </member>
+        <member name="P:Monitor.Properties.Resources.bigest">
+            <summary>
+              Поиск локализованного ресурса типа System.Byte[].
+            </summary>
+        </member>
+        <member name="P:Monitor.Properties.Resources.biggestOrange1">
+            <summary>
+              Поиск локализованного ресурса типа System.Byte[].
+            </summary>
+        </member>
+        <member name="P:Monitor.Properties.Resources.Cross">
+            <summary>
+              Поиск локализованного ресурса типа System.Byte[].
+            </summary>
+        </member>
+        <member name="P:Monitor.Properties.Resources.Digital_Regular">
+            <summary>
+              Поиск локализованного ресурса типа System.Byte[].
+            </summary>
+        </member>
+        <member name="P:Monitor.Properties.Resources.ft12">
+            <summary>
+              Поиск локализованного ресурса типа System.Byte[].
+            </summary>
+        </member>
+        <member name="P:Monitor.Properties.Resources.iconMonitor">
+            <summary>
+              Поиск локализованного ресурса типа System.Byte[].
+            </summary>
+        </member>
+        <member name="P:Monitor.Properties.Resources.Izis_One">
+            <summary>
+              Поиск локализованного ресурса типа System.Byte[].
+            </summary>
+        </member>
+        <member name="P:Monitor.Properties.Resources.Monitor">
+            <summary>
+              Поиск локализованного ресурса типа System.Byte[].
+            </summary>
+        </member>
+        <member name="P:Monitor.Properties.Resources.ofont_ru_a_EmpirialRg">
+            <summary>
+              Поиск локализованного ресурса типа System.Byte[].
+            </summary>
+        </member>
+        <member name="P:Monitor.Properties.Resources.Promenad_Deco">
+            <summary>
+              Поиск локализованного ресурса типа System.Byte[].
+            </summary>
+        </member>
+        <member name="P:Monitor.Properties.Resources.Shihan">
+            <summary>
+              Поиск локализованного ресурса типа System.Byte[].
+            </summary>
+        </member>
+        <member name="P:Monitor.Properties.Resources.smallest">
+            <summary>
+              Поиск локализованного ресурса типа System.Byte[].
+            </summary>
+        </member>
+        <member name="T:Monitor.RemovingPlayer">
+            <summary>
+            Класс для вывода онформации об удаленом игроке
+            </summary>
+        </member>
+        <member name="P:Monitor.RemovingPlayer.PlayerNomber">
+            <summary>
+            Номер удаленного игрока
+            </summary>
+            <value>short</value>
+        </member>
+        <member name="P:Monitor.RemovingPlayer.RemovingTimer">
+            <summary>
+            Время оставшееся до возврата игрока
+            </summary>
+            <value>TimeSpan</value>
+        </member>
+        <member name="P:Monitor.RemovingPlayer.RemovingTimerString">
+            <summary>
+            Время оставшееся до возврата игрока в виде строки. Сделано специально для привзяки к нему TextBox без дополнительной филтрации.
+            </summary>
+            <value>String</value>
+        </member>
+        <member name="E:Monitor.RemovingPlayer.PropertyChanged">
+            <summary>
+            Событие для обновления привязаных данных
+            </summary>
+        </member>
+        <member name="M:Monitor.RemovingPlayer.OnPropertyChanged(System.String)">
+            <summary>
+            Метод, вызываемый set-ром при обновлении данных
+            </summary>
+        </member>
+        <member name="M:Monitor.RemovingPlayer.SubtractTaimer(System.Object,System.EventArgs)">
+            <summary>
+            Метод уменьшения временни на 1 секунду, сделалн для привязки тику таймера DispatcherTimer
+            </summary>
+        </member>
+        <member name="T:Monitor.SmallWindow">
+            <summary>
+            Логика взаимодействия для SmallWindow.xaml
+            </summary>
+            <summary>
+            SmallWindow
+            </summary>
+        </member>
+        <member name="P:Monitor.SmallWindow.TimeVisibility">
+            <summary>
+            значение, в зависмости от которого видно/не видно часы на малом табло
+            </summary>
+            <value>bool</value>
+        </member>
+        <member name="M:Monitor.SmallWindow.#ctor">
+            <summary>
+            Инициализация класса, малоко окна
+            </summary>
+        </member>
+        <member name="M:Monitor.SmallWindow.Window_Closing(System.Object,System.ComponentModel.CancelEventArgs)">
+            <summary>
+            Про закрытии окна, просто крываем его
+            </summary>
+        </member>
+        <member name="M:Monitor.SmallWindow.StartRefrashDateTime">
+            <summary>
+            Запускаем обновление временни на малом табло
+            </summary>
+        </member>
+        <member name="M:Monitor.SmallWindow.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:Monitor.TeamInfo">
+            <summary>
+            Класс, предоставляющий основную информацию о команде.
+            </summary>
+        </member>
+        <member name="P:Monitor.TeamInfo.TeamName">
+            <summary>
+            название команды
+            </summary>
+            <value>string</value>
+        </member>
+        <member name="P:Monitor.TeamInfo.TeamTitle">
+            <summary>
+            обозначение команды хозяева/готсти/друзья/племянники и т.д.
+            </summary>
+            <value>string</value>
+        </member>
+        <member name="P:Monitor.TeamInfo.TeamCounter">
+            <summary>
+            Счетчик отков команды
+            </summary>
+            <value>short</value>
+        </member>
+        <member name="E:Monitor.TeamInfo.PropertyChanged">
+            <summary>
+            Событие для обновления привязаных данных
+            </summary>
+        </member>
+        <member name="M:Monitor.TeamInfo.OnPropertyChanged(System.String)">
+            <summary>
+            Метод, вызываемый set-ром при обновлении данных
+            </summary>
+        </member>
+        <member name="T:Monitor.View">
+            <summary>
+            Класс контекста для привязки данных к окнам.
+            </summary>
+        </member>
+        <member name="P:Monitor.View.LeftTeam">
+            <summary>
+            Команда с левой половины табло. Обычно хозяева
+            </summary>
+        </member>
+        <member name="P:Monitor.View.RightTeam">
+            <summary>
+            Команда с правой половины табло. Обычно гости
+            </summary>
+        </member>
+        <member name="P:Monitor.View.TabloInfo">
+            <summary>
+            Основаная информация для табло. Период,время периода, название. 
+            </summary>
+        </member>
+        <member name="P:Monitor.View.LeftPlayer1">
+            <summary>
+            Игрок 1 удаления, левой команды
+            </summary>
+        </member>
+        <member name="P:Monitor.View.LeftPlayer2">
+            <summary>
+            Игрок 3 удаления, левой команды
+            </summary>
+        </member>
+        <member name="P:Monitor.View.LeftPlayer3">
+            <summary>
+            Игрок 2 удаления, левой команды
+            </summary>
+        </member>
+        <member name="P:Monitor.View.RightPlayer1">
+            <summary>
+            Игрок 1 удаления, правой команды
+            </summary>
+        </member>
+        <member name="P:Monitor.View.RightPlayer2">
+            <summary>
+            Игрок 2 удаления, правой команды
+            </summary>
+        </member>
+        <member name="P:Monitor.View.RightPlayer3">
+            <summary>
+            Игрок 3 удаления, правой команды
+            </summary>
+        </member>
+        <member name="P:Monitor.View.BigWindowColors">
+            <summary>
+            Цвета для текста табло
+            </summary>
+        </member>
+        <member name="T:Monitor.WindowsStyles">
+            <summary>
+            Класс стилей для табло, что бы пользователь мог его менять.
+            </summary>
+        </member>
+    </members>
+</doc>

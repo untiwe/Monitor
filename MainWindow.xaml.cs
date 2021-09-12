@@ -28,20 +28,21 @@ namespace Monitor
     {
         BigWindow bigWindow = new BigWindow();
         SmallWindow smallWindow = new SmallWindow();
+        /// <summary>
+        /// Класс контекста для привязки данных
+        /// </summary>
         public View _view = new View();
         DispatcherTimer timer;
 
+        /// <summary>
+        /// Конструктор главно окна
+        /// </summary>
         public MainWindow()
         {
-
-            
-
             InitializeComponent();
             _view.LeftTeam.TeamTitle = "";
             _view.RightTeam.TeamTitle = "";
-            //_view.TabloInfo.TabloName = "Академия имени Валерия Харламова";
-            //_view.LeftTeam.TeamName = "Хозяева";
-            //_view.RightTeam.TeamName = "Гости";
+
 
             DataContext = _view;
             bigWindow.DataContext = DataContext;
@@ -59,69 +60,67 @@ namespace Monitor
 
             SetSettings();
         }
-
+        /// <summary>
+        /// Вводим название табло и имена команд из файла настроек
+        /// </summary>
         private void SetSettings()
         {
-
             _view.TabloInfo.TabloName = ConfigurationManager.AppSettings.Get("TabloName");
             _view.LeftTeam.TeamName =  ConfigurationManager.AppSettings.Get("LeftTeamName");
             _view.RightTeam.TeamName = ConfigurationManager.AppSettings.Get("RightTeamName");
-
-            
-
         }
 
-        private void OpenBigWindow(object sender, RoutedEventArgs e) => _OpenBigWindow();
+        //Открытие/закрытие окон экранов
+        private void OpenBigWindow(object sender, RoutedEventArgs e) => OpenWindow(bigWindow);
+        private void OpenSmallWindow(object sender, RoutedEventArgs e) => OpenWindow(smallWindow);
+       
 
-        private void _OpenBigWindow()
+        private void OpenWindow(Window window)
         {
-            if (!bigWindow.IsVisible) 
-                bigWindow.Show();               
+            if (!window.IsVisible)
+                window.Show();
             else
-                bigWindow.Close();
+                window.Close();
 
-            // стили блин bigWindow.SetStyles();
+            //стили блин
+            //bigWindow.SetStyles();
         }
-        private void OpenSmallWindow(object sender, RoutedEventArgs e) => _OpenSmallWindow();
-        private void _OpenSmallWindow()
-        {
-            if (!smallWindow.IsVisible)
-                smallWindow.Show();
-            else
-                smallWindow.Close();
-        }
+
         private void StretchBigWindow(object sender, RoutedEventArgs e) => _StretchBigWindow();
        
         private void _StretchBigWindow()
         {//развернуть или уменьшить окно для экрана стадиона
-        if (bigWindow.WindowState == System.Windows.WindowState.Maximized)
-            {
-                bigWindow.WindowState = System.Windows.WindowState.Normal;
-                bigWindow.WindowStyle = WindowStyle.SingleBorderWindow;
-                StrechBigWindiwBTN.Source = new BitmapImage(new Uri("pack://application:,,,/Monitor;component/Resources/bigest.png"));
-            }
+            ToggleStretch_IbgButton(bigWindow);
+            if (bigWindow.WindowState == System.Windows.WindowState.Maximized)
+                StrechSmallWindiwBTN.Source = new BitmapImage(new Uri("pack://application:,,,/Monitor;component/Resources/smallest.png"));
             else
-            {
-                bigWindow.WindowState = System.Windows.WindowState.Maximized;
-                bigWindow.WindowStyle = WindowStyle.None;
-                StrechBigWindiwBTN.Source = new BitmapImage(new Uri("pack://application:,,,/Monitor;component/Resources/smallest.png"));
-            }
+                StrechSmallWindiwBTN.Source = new BitmapImage(new Uri("pack://application:,,,/Monitor;component/Resources/bigest.png"));
         }
         private void StretchSmallWindow(object sender, RoutedEventArgs e) => _StretchSmallWindow();
 
         private void _StretchSmallWindow()
         {//развернуть или уменьшить окно для экрана тренеров
+            ToggleStretch_IbgButton(smallWindow);
+            if (smallWindow.WindowState == System.Windows.WindowState.Maximized)
+                StrechSmallWindiwBTN.Source = new BitmapImage(new Uri("pack://application:,,,/Monitor;component/Resources/smallest.png"));
+            else
+                StrechSmallWindiwBTN.Source = new BitmapImage(new Uri("pack://application:,,,/Monitor;component/Resources/bigest.png"));
+
+        }
+
+        private void ToggleStretch_IbgButton(Window window)
+        {
             if (smallWindow.WindowState == System.Windows.WindowState.Maximized)
             {
                 smallWindow.WindowState = System.Windows.WindowState.Normal;
                 smallWindow.WindowStyle = WindowStyle.SingleBorderWindow;
-                StrechSmallWindiwBTN.Source = new BitmapImage(new Uri("pack://application:,,,/Monitor;component/Resources/bigest.png"));
+                
             }
             else
             {
                 smallWindow.WindowState = System.Windows.WindowState.Maximized;
                 smallWindow.WindowStyle = WindowStyle.None;
-                StrechSmallWindiwBTN.Source = new BitmapImage(new Uri("pack://application:,,,/Monitor;component/Resources/smallest.png"));
+                
             }
         }
 
@@ -158,12 +157,13 @@ namespace Monitor
         private void PeriodPlusOneCount(object sender, RoutedEventArgs e) => _view.TabloInfo.Period++;
         private void PeriodMinusOneCount(object sender, RoutedEventArgs e) => _view.TabloInfo.Period--;
 
-        
+        /// <summary>
+        /// Запускаем таймер, инициализаруем подписки на его tick.
+        /// </summary>
         public void InitDispatcherTimer()
         { 
             timer = new DispatcherTimer(DispatcherPriority.Send);
             timer.Interval = TimeSpan.FromSeconds(1);
-            //timer.Interval = TimeSpan.FromMilliseconds(985);
             timer.Tick += _view.TabloInfo.SubtractTaimer;
             timer.Tick += _view.LeftPlayer1.SubtractTaimer;
             timer.Tick += _view.LeftPlayer2.SubtractTaimer;
@@ -178,6 +178,7 @@ namespace Monitor
 
         //управление центральным таймером
         private void StopMainTimer() => _StopMainTimer();
+
         private void _StopMainTimer()
         {
             MainTimer.IsReadOnly = false;
@@ -198,10 +199,14 @@ namespace Monitor
 
             StopTimer();
         }
-        private void StartMainTimer() => _StartMainTimer();
+        //private void StartMainTimer() => _StartMainTimer();
 
         private void _StartMainTimer()
         {
+            //Setter setter = new System.Windows.Setter(Background, Color.FromArgb(0, 0, 0, 0));
+            //Style = Resources["DeleteTimers"] as Style;
+            //var x = Style.Setters;
+
             MainTimer.IsReadOnly = true;
             MainTimer.Background = new SolidColorBrush(Color.FromRgb(221, 221, 221));
 
@@ -219,6 +224,11 @@ namespace Monitor
             GuestsTimer3.Background = new SolidColorBrush(Color.FromRgb(221, 221, 221));
 
             StartTimer();
+        }
+
+        private void BlockUnblockTimers(bool IsBlock)
+        {
+
         }
 
         private void StartStopMainTimerBtn(object sender, RoutedEventArgs e) {
@@ -328,9 +338,10 @@ namespace Monitor
                 }
             }
 
-            _OpenBigWindow();
+            OpenWindow(bigWindow);
+            OpenWindow(smallWindow);
+           
             _StretchBigWindow();
-            _OpenSmallWindow();
             _StretchSmallWindow();
 
 
@@ -350,12 +361,6 @@ namespace Monitor
 
         }
 
-
-
-        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
-        {//Делаем выход из приложения при закрытии главного окна. Для закрытя скрытых окон
-            Application.Current.Shutdown();
-        }         
 
         private void AddUpdateAppSettings(string key, string value)
         {
@@ -394,5 +399,11 @@ namespace Monitor
             else
                 _StartMainTimer();
         }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {//Делаем выход из приложения при закрытии главного окна. Для закрытя скрытых окон
+            Application.Current.Shutdown();
+        }
+
     }
 }

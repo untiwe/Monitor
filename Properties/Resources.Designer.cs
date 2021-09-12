@@ -123,16 +123,6 @@ namespace Monitor.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Byte[].
         /// </summary>
-        public static byte[] ft24 {
-            get {
-                object obj = ResourceManager.GetObject("ft24", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Поиск локализованного ресурса типа System.Byte[].
-        /// </summary>
         public static byte[] iconMonitor {
             get {
                 object obj = ResourceManager.GetObject("iconMonitor", resourceCulture);

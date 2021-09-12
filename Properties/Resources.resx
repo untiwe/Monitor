@@ -136,9 +136,6 @@
   <data name="ft12" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ft12.ttf;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="ft24" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ft24.ttf;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="iconMonitor" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\iconMonitor.ico;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>

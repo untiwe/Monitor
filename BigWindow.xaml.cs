@@ -21,7 +21,10 @@ namespace Monitor
     /// 
     public partial class BigWindow : Window
     {
-
+        /// <summary>
+        /// Конструктор большого окна
+        /// </summary>
+        /// 
         public BigWindow()
         {
             InitializeComponent();
@@ -33,14 +36,25 @@ namespace Monitor
             this.Visibility = Visibility.Hidden;
         }
 
+        /// <summary>
+        /// Устанавливаем цвет текста
+        /// </summary>
         public void SetStyles()
         {
-            Setter setter = new Setter(Control.ForegroundProperty, Color.FromArgb(0, 0, 0, 0));
-            Style = Resources["NumbersStyle"] as Style;
-            Debug.WriteLine(Style);
-            Style.Setters.Add(setter);
-        }
+            Setter setter = new Setter(ForegroundProperty, Color.FromArgb(128, 128, 128, 0));
+            Style _Style = Resources["NumbersStyle"] as Style;
+            _Style.Setters.Add(setter);
 
+
+            //Setter setter = new Setter(ForegroundProperty, Color.FromArgb(0, 0, 0, 0));
+            //Style = Resources["NumbersStyle"] as Style;
+            //Style.Setters.Add(setter);
+        }
+        //Debug.WriteLine(Style);
+
+        /// <summary>
+        /// Делаем окно снова видимым
+        /// </summary>
         public void CreateVisibility() => this.Visibility = Visibility.Visible;
     }
 }
