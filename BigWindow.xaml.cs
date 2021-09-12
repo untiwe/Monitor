@@ -28,6 +28,7 @@ namespace Monitor
         public BigWindow()
         {
             InitializeComponent();
+            SetStyles();//пробуем поменать стили
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)

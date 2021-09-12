@@ -385,5 +385,10 @@
             Класс стилей для табло, что бы пользователь мог его менять.
             </summary>
         </member>
+        <member name="P:Monitor.WindowsStyles.ColorNumbers">
+            <summary>
+            Цвет цифр большого экрана
+            </summary>
+        </member>
     </members>
 </doc>

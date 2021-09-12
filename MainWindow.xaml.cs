@@ -81,9 +81,6 @@ namespace Monitor
                 window.Show();
             else
                 window.Close();
-
-            //стили блин
-            //bigWindow.SetStyles();
         }
 
         private void StretchBigWindow(object sender, RoutedEventArgs e) => _StretchBigWindow();

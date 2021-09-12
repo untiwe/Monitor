@@ -17,10 +17,11 @@
 
         <Style x:Key="NumbersStyle">
             <!--<Setter Property="TextElement.FontFamily" Value="Resources/#Digital Regular" />-->
-            <Setter Property="Control.Foreground" Value="{Binding Path=BigWindowColors.ColorNumbers, TargetNullValue=white}"/>
+            <!--<Setter Property="Control.Foreground" Value="white"/>--> <!--без привязки данных-->
+            <Setter Property="Control.Foreground" Value="{Binding Path=BigWindowColors.ColorNumbers, TargetNullValue=white}"/> <!--с привязкой данных-->
         </Style>
 
-        <!--<Style x:Key="NumbersStyle" TargetType="TextBlock" BasedOn="{StaticResource BaseFontFamily}">
+        <!--<Style x:Key="NumbersStyle" TargetType="TextBlock" BasedOn="{StaticResource BaseFontFamily}">    TargetType не работает, да и не надо
             <Setter Property="Control.FontSize" Value="60"/>
             <Setter Property="Control.Background" Value="Transparent"/>
             <Setter Property="Control.HorizontalContentAlignment" Value="Center"/>
