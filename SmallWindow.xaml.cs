@@ -50,7 +50,13 @@ namespace Monitor
         public SmallWindow()
         {
             InitializeComponent();
-            StartRefrashDateTime();
+
+          
+
+            _timer = new DispatcherTimer();
+            _timer.Tick += OnTimerTick;
+            _timer.Interval = TimeSpan.FromSeconds(1);
+            _timer.Start();
         }
 
         /// <summary>
@@ -65,23 +71,10 @@ namespace Monitor
         /// <summary>
         /// Запускаем обновление временни на малом табло
         /// </summary>
-        private void StartRefrashDateTime()
+        private void OnTimerTick(object sender, EventArgs e)
         {
-
-            Task.Factory.StartNew(() => { 
-                while (true){
-
-                    this.Dispatcher.Invoke(() => {
-                        ClockBox.Text = DateTime.Now.ToString("HH:mm");
-                    });
-
-                    Task.Delay(1000);
-
-
-                }
-            });
-            
-        } 
+            ClockBox.Text = DateTime.Now.ToString("HH:mm");
+        }
 
     }
 }
