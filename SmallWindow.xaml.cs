@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace Monitor
 {
@@ -51,9 +52,9 @@ namespace Monitor
         {
             InitializeComponent();
 
-          
 
-            _timer = new DispatcherTimer();
+
+            DispatcherTimer _timer = new DispatcherTimer();
             _timer.Tick += OnTimerTick;
             _timer.Interval = TimeSpan.FromSeconds(1);
             _timer.Start();
