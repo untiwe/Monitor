@@ -74,7 +74,6 @@ namespace Monitor
             }
             set
             {
-                
                 try
                 {
                 List<int> MinutesAndSeconds = new List<int>(value.Split(":").Select(Int32.Parse).ToArray());
@@ -113,11 +112,16 @@ namespace Monitor
         /// </summary>
         public void SubtractTaimer(object sender, EventArgs e)
         {
+
             if (GameTaimer.Seconds == 1 && GameTaimer.Minutes == 0)
                 TimeEndEvent?.Invoke();
 
             if (GameTaimer.Seconds > 0 || GameTaimer.Minutes > 0)
                 GameTaimer = GameTaimer.Subtract(new TimeSpan(0, 0, 1));
+            else
+                TimeEndEvent?.Invoke();
+
+
         }
 
 

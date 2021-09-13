@@ -11,7 +11,7 @@ namespace Monitor
     /// </summary>
     public class WindowsStyles
     {
-        private string _ColorNumbers;
+        
         /// <summary>
         /// Цвет цифр большого экрана
         /// </summary>

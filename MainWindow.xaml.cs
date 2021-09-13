@@ -390,9 +390,7 @@ namespace Monitor
         private void StartStopMainTimer()
         {
             if (timer.IsEnabled)
-            {
                 _StopMainTimer();
-            }
             else
                 _StartMainTimer();
         }
