@@ -22,27 +22,27 @@
             <Setter Property="TextElement.FontFamily" Value="Resources/#ft12" />
         </Style>
 
-        <Style x:Key="BaseTextColor" BasedOn="{StaticResource BaseFontFamily}">
-           
+        <Style
+            x:Key="BaseTextColor"
+            BasedOn="{StaticResource BaseFontFamily}">
             <Style.Triggers>
                 <DataTrigger
                     Binding="{Binding Path=BigWindowColors.SmallWindowVisibleInfo}"
-                    Value="true">
+                    Value="false">
                     <Setter Property="Control.Foreground" Value="Transparent" />
-                    <!--ty-->
                 </DataTrigger>
             </Style.Triggers>
         </Style>
 
         <Style
-            BasedOn="{StaticResource BaseTextColor}"
-            TargetType="TextBlock" />
-
-        <Style
             x:Key="TimersFontFamily"
             BasedOn="{StaticResource BaseTextColor}">
             <Setter Property="Control.Foreground" Value="{Binding Path=BigWindowColors.SmallWindowColorPeriod, TargetNullValue=#06d12b}" />
+			
+
         </Style>
+
+
 
 
 
@@ -120,27 +120,19 @@
             </Style.Triggers>
         </Style>
 
-        <Style x:Key="TimeShow"  BasedOn="{StaticResource BaseFontFamily}">
-            <!--<Style.Triggers>
-                <DataTrigger
-                    Binding="{Binding Path=BigWindowColors.SmallWindowVisibleInfo}"
-                    Value="false">
-                    <Setter Property="Control.Foreground" Value="Transparent" />
-                </DataTrigger>
-            </Style.Triggers>-->
+        <Style
+            x:Key="TimeShow"
+            BasedOn="{StaticResource BaseFontFamily}">
             <Setter Property="Control.Foreground" Value="{Binding Path=BigWindowColors.SmallWindowColorClock, TargetNullValue=Yellow}" />
+			<Style.Triggers>
+				<DataTrigger
+                    Binding="{Binding Path=BigWindowColors.SmallWindowVisibleClock}"
+                    Value="false">
+					<Setter Property="Control.Foreground" Value="Transparent" />
+				</DataTrigger>
+			</Style.Triggers>
         </Style>
 
-        <Style x:Key="TimeHidden">
-            <!--<Style.Triggers>
-                <DataTrigger
-                    Binding="{Binding Path=BigWindowColors.SmallWindowVisibleInfo}"
-                    Value="false">
-                    <Setter Property="Control.Foreground" Value="Transparent" />
-                </DataTrigger>
-            </Style.Triggers>-->
-            <Setter Property="Control.Foreground" Value="Transparent" />
-        </Style>
     </Window.Resources>
 
     <Grid x:Name="SmallWidowGrid">
@@ -205,7 +197,9 @@
             Grid.RowSpan="4"
             Grid.Column="0"
             Grid.ColumnSpan="6">
-            <TextBlock Text="Удаления" />
+            <TextBlock
+                Style="{StaticResource BaseTextColor}"
+                Text="Удаления" />
         </Viewbox>
         <Grid
             Grid.Row="0"
@@ -213,7 +207,7 @@
             Grid.Column="5"
             Grid.ColumnSpan="22"
             ShowGridLines="False">
-            
+
             <Grid.ColumnDefinitions>
                 <!--  30 колонок  -->
                 <ColumnDefinition Width="1*" />
@@ -262,25 +256,29 @@
                 Grid.ColumnSpan="12">
                 <TextBlock
                     HorizontalAlignment="Center"
+                    Style="{StaticResource BaseTextColor}"
                     Text="{Binding Path=LeftTeam.TeamName}" />
             </Viewbox>
-            <Viewbox
+			<Viewbox
                 x:Name="Clock"
                 Grid.Row="1"
                 Grid.RowSpan="3"
                 Grid.Column="11"
-                Grid.ColumnSpan="7"
-                Style="{StaticResource TimeHidden}">
-                <TextBlock
+                Grid.ColumnSpan="7">
+
+				<TextBlock
                     x:Name="ClockBox"
+                    Style="{StaticResource TimeShow}"
                     Text="00:00" />
-            </Viewbox>
+			</Viewbox>
             <Viewbox
                 Grid.Row="1"
                 Grid.RowSpan="3"
                 Grid.Column="17"
                 Grid.ColumnSpan="12">
-                <TextBlock Text="{Binding Path=RightTeam.TeamName}" />
+                <TextBlock
+                    Style="{StaticResource BaseTextColor}"
+                    Text="{Binding Path=RightTeam.TeamName}" />
             </Viewbox>
         </Grid>
         <Viewbox
@@ -288,7 +286,9 @@
             Grid.RowSpan="4"
             Grid.Column="26"
             Grid.ColumnSpan="6">
-            <TextBlock Text="Удаления" />
+            <TextBlock
+                Style="{StaticResource BaseTextColor}"
+                Text="Удаления" />
         </Viewbox>
 
         <!--  Вторая строка левые удаления  -->
@@ -354,21 +354,27 @@
             Grid.RowSpan="10"
             Grid.Column="7"
             Grid.ColumnSpan="5">
-            <TextBlock Text="{Binding Path=LeftTeam.TeamCounter}" />
+            <TextBlock
+                Style="{StaticResource BaseTextColor}"
+                Text="{Binding Path=LeftTeam.TeamCounter}" />
         </Viewbox>
         <Viewbox
             Grid.Row="4"
             Grid.RowSpan="12"
             Grid.Column="11"
             Grid.ColumnSpan="4">
-            <TextBlock Text="Период" />
+            <TextBlock
+                Style="{StaticResource BaseTextColor}"
+                Text="Период" />
         </Viewbox>
         <Viewbox
             Grid.Row="7"
             Grid.RowSpan="6"
             Grid.Column="14"
             Grid.ColumnSpan="4">
-            <TextBlock Text="{Binding Path=TabloInfo.Period}" />
+            <TextBlock
+                Style="{StaticResource BaseTextColor}"
+                Text="{Binding Path=TabloInfo.Period}" />
         </Viewbox>
         <Viewbox
             Grid.Row="4"
@@ -383,7 +389,9 @@
             Grid.RowSpan="10"
             Grid.Column="20"
             Grid.ColumnSpan="4">
-            <TextBlock Text="{Binding Path=RightTeam.TeamCounter}" />
+            <TextBlock
+                Style="{StaticResource BaseTextColor}"
+                Text="{Binding Path=RightTeam.TeamCounter}" />
         </Viewbox>
 
         <!--  Вторая строка правые удаления  -->

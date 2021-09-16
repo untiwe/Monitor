@@ -20,30 +20,7 @@ namespace Monitor
     /// </summary>
     public partial class SmallWindow : Window
     {
-        private bool _TimeVisibility = false;
-        /// <summary>
-        /// значение, в зависмости от которого видно/не видно часы на малом табло
-        /// </summary>
-        /// <value>bool</value>
-        public bool TimeVisibility
-        {
-            get
-            {
-                _TimeVisibility = !_TimeVisibility;
-                if (_TimeVisibility)
-                {
-                    Style style = this.FindResource("TimeShow") as Style;
-                    Clock.Style = style;
-                }
-                else
-                {
-                    Style style = this.FindResource("TimeHidden") as Style;
-                    Clock.Style = style;
-                }
-
-                return _TimeVisibility;
-            }
-        }
+      
 
         /// <summary>
         /// Инициализация класса, малоко окна

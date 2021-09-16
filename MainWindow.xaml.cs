@@ -89,9 +89,9 @@ namespace Monitor
         {//развернуть или уменьшить окно для экрана стадиона
             ToggleStretch_IbgButton(bigWindow);
             if (bigWindow.WindowState == System.Windows.WindowState.Maximized)
-                StrechSmallWindiwBTN.Source = new BitmapImage(new Uri("pack://application:,,,/Monitor;component/Resources/smallest.png"));
-            else
-                StrechSmallWindiwBTN.Source = new BitmapImage(new Uri("pack://application:,,,/Monitor;component/Resources/bigest.png"));
+                StrechBigWindiwBTN.Source = new BitmapImage(new Uri("pack://application:,,,/Monitor;component/Resources/smallest.png"));
+            else      
+                StrechBigWindiwBTN.Source = new BitmapImage(new Uri("pack://application:,,,/Monitor;component/Resources/bigest.png"));
         }
         private void StretchSmallWindow(object sender, RoutedEventArgs e) => _StretchSmallWindow();
 
@@ -107,16 +107,16 @@ namespace Monitor
 
         private void ToggleStretch_IbgButton(Window window)
         {
-            if (smallWindow.WindowState == System.Windows.WindowState.Maximized)
+            if (window.WindowState == System.Windows.WindowState.Maximized)
             {
-                smallWindow.WindowState = System.Windows.WindowState.Normal;
-                smallWindow.WindowStyle = WindowStyle.SingleBorderWindow;
+                window.WindowState = System.Windows.WindowState.Normal;
+                window.WindowStyle = WindowStyle.SingleBorderWindow;
                 
             }
             else
             {
-                smallWindow.WindowState = System.Windows.WindowState.Maximized;
-                smallWindow.WindowStyle = WindowStyle.None;
+                window.WindowState = System.Windows.WindowState.Maximized;
+                window.WindowStyle = WindowStyle.None;
                 
             }
         }
@@ -223,11 +223,6 @@ namespace Monitor
             StartTimer();
         }
 
-        private void BlockUnblockTimers(bool IsBlock)
-        {
-
-        }
-
         private void StartStopMainTimerBtn(object sender, RoutedEventArgs e) {
             StartStopMainTimer();
         }
@@ -298,10 +293,22 @@ namespace Monitor
         private void ChangeClock(object sender, RoutedEventArgs e)
         //влючение/выключение часов на малом экране
         {
-            if (smallWindow.TimeVisibility)
+            _view.BigWindowColors.SmallWindowVisibleClock = !_view.BigWindowColors.SmallWindowVisibleClock;
+            if (_view.BigWindowColors.SmallWindowVisibleClock)
                 TimeBtn.Content = "Убрать";
             else
                 TimeBtn.Content = "Время";
+
+        }
+        
+        private void ChangeSwhowInfo(object sender, RoutedEventArgs e)
+        //влючение/выключение информации на малом экране (кроме часов)
+        {
+            _view.BigWindowColors.SmallWindowVisibleInfo = !_view.BigWindowColors.SmallWindowVisibleInfo;
+            if (_view.BigWindowColors.SmallWindowVisibleInfo)
+                ShowInfoBtn.Content = "Убрать";
+            else
+                ShowInfoBtn.Content = "Инфо";
 
         }
 
