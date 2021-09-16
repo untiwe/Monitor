@@ -10,7 +10,7 @@
     Height="600"
     Background="Black"
     Closing="Window_Closing"
-    Foreground="White"
+    Foreground="{Binding Path=BigWindowColors.SmallWindowColorInfo, TargetNullValue=#FFFFFF}"
     mc:Ignorable="d">
     <!--  Height="600" Width="800"  -->
     <!--  Height="96" Width="992"  -->
@@ -22,14 +22,26 @@
             <Setter Property="TextElement.FontFamily" Value="Resources/#ft12" />
         </Style>
 
+        <Style x:Key="BaseTextColor" BasedOn="{StaticResource BaseFontFamily}">
+           
+            <Style.Triggers>
+                <DataTrigger
+                    Binding="{Binding Path=BigWindowColors.SmallWindowVisibleInfo}"
+                    Value="true">
+                    <Setter Property="Control.Foreground" Value="Transparent" />
+                    <!--ty-->
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+
         <Style
-            BasedOn="{StaticResource BaseFontFamily}"
+            BasedOn="{StaticResource BaseTextColor}"
             TargetType="TextBlock" />
 
         <Style
             x:Key="TimersFontFamily"
-            BasedOn="{StaticResource BaseFontFamily}">
-            <Setter Property="Control.Foreground" Value="#06d12b" />
+            BasedOn="{StaticResource BaseTextColor}">
+            <Setter Property="Control.Foreground" Value="{Binding Path=BigWindowColors.SmallWindowColorPeriod, TargetNullValue=#06d12b}" />
         </Style>
 
 
@@ -108,11 +120,25 @@
             </Style.Triggers>
         </Style>
 
-        <Style x:Key="TimeShow">
-            <Setter Property="Control.Foreground" Value="Yellow" />
+        <Style x:Key="TimeShow"  BasedOn="{StaticResource BaseFontFamily}">
+            <!--<Style.Triggers>
+                <DataTrigger
+                    Binding="{Binding Path=BigWindowColors.SmallWindowVisibleInfo}"
+                    Value="false">
+                    <Setter Property="Control.Foreground" Value="Transparent" />
+                </DataTrigger>
+            </Style.Triggers>-->
+            <Setter Property="Control.Foreground" Value="{Binding Path=BigWindowColors.SmallWindowColorClock, TargetNullValue=Yellow}" />
         </Style>
 
         <Style x:Key="TimeHidden">
+            <!--<Style.Triggers>
+                <DataTrigger
+                    Binding="{Binding Path=BigWindowColors.SmallWindowVisibleInfo}"
+                    Value="false">
+                    <Setter Property="Control.Foreground" Value="Transparent" />
+                </DataTrigger>
+            </Style.Triggers>-->
             <Setter Property="Control.Foreground" Value="Transparent" />
         </Style>
     </Window.Resources>
@@ -187,6 +213,7 @@
             Grid.Column="5"
             Grid.ColumnSpan="22"
             ShowGridLines="False">
+            
             <Grid.ColumnDefinitions>
                 <!--  30 колонок  -->
                 <ColumnDefinition Width="1*" />

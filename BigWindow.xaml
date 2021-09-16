@@ -11,14 +11,14 @@
 
         <Style x:Key="BaseFontFamily">
             <!--<Setter Property="TextElement.FontFamily" Value="Resources/#a_lcdnova" />-->
-            <Setter Property="Control.Foreground" Value="#FF4500"/>
+            
             
         </Style>
 
         <Style x:Key="NumbersStyle">
             <!--<Setter Property="TextElement.FontFamily" Value="Resources/#Digital Regular" />-->
             <!--<Setter Property="Control.Foreground" Value="white"/>--> <!--без привязки данных-->
-            <Setter Property="Control.Foreground" Value="{Binding Path=BigWindowColors.ColorNumbers, TargetNullValue=white}"/> <!--с привязкой данных-->
+            <Setter Property="Control.Foreground" Value="{Binding Path=BigWindowColors.BigWindowColorNumbers, TargetNullValue=white}"/> <!--с привязкой данных-->
         </Style>
 
         <!--<Style x:Key="NumbersStyle" TargetType="TextBlock" BasedOn="{StaticResource BaseFontFamily}">    TargetType не работает, да и не надо
@@ -36,7 +36,7 @@
             <Setter Property="Control.VerticalAlignment" Value="Center"/>
         </Style>
         <Style x:Name="WordsStyle" x:Key="TextBlockTextColor" BasedOn="{StaticResource LabelStyle1}">
-            <Setter Property="Control.Foreground" Value="#FF4500"/>
+            <Setter Property="Control.Foreground" Value="{Binding Path=BigWindowColors.BigWindowColorText, TargetNullValue=#FF4500}"/>
         </Style>
 
         <!--Стили с тригерами для списков удаленых игроков-->

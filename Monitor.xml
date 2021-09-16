@@ -282,7 +282,7 @@
             Про закрытии окна, просто крываем его
             </summary>
         </member>
-        <member name="M:Monitor.SmallWindow.StartRefrashDateTime">
+        <member name="M:Monitor.SmallWindow.OnTimerTick(System.Object,System.EventArgs)">
             <summary>
             Запускаем обновление временни на малом табло
             </summary>
@@ -385,9 +385,34 @@
             Класс стилей для табло, что бы пользователь мог его менять.
             </summary>
         </member>
-        <member name="P:Monitor.WindowsStyles.ColorNumbers">
+        <member name="P:Monitor.WindowsStyles.BigWindowColorNumbers">
             <summary>
             Цвет цифр большого экрана
+            </summary>
+        </member>
+        <member name="P:Monitor.WindowsStyles.BigWindowColorText">
+            <summary>
+            Цвет букв большого экрана
+            </summary>
+        </member>
+        <member name="P:Monitor.WindowsStyles.SmallWindowColorPeriod">
+            <summary>
+            Цвет таймера периода малого экрана
+            </summary>
+        </member>
+        <member name="P:Monitor.WindowsStyles.SmallWindowColorInfo">
+            <summary>
+            Цвет общей информации малого экрана
+            </summary>
+        </member>
+        <member name="P:Monitor.WindowsStyles.SmallWindowColorClock">
+            <summary>
+            Цвет часов малого экрана
+            </summary>
+        </member>
+        <member name="P:Monitor.WindowsStyles.SmallWindowVisibleInfo">
+            <summary>
+            Видимость всей информации на малом окне (кроче часов)
             </summary>
         </member>
     </members>

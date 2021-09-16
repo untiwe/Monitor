@@ -120,8 +120,6 @@ namespace Monitor
                 GameTaimer = GameTaimer.Subtract(new TimeSpan(0, 0, 1));
             else
                 TimeEndEvent?.Invoke();
-
-
         }
 
 
