@@ -1,0 +1,7 @@
+{
+  "profiles": {
+    "Monitor": {
+      "commandName": "Project"
+    }
+  }
+}

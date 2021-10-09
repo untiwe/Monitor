@@ -266,12 +266,6 @@
             SmallWindow
             </summary>
         </member>
-        <member name="P:Monitor.SmallWindow.TimeVisibility">
-            <summary>
-            значение, в зависмости от которого видно/не видно часы на малом табло
-            </summary>
-            <value>bool</value>
-        </member>
         <member name="M:Monitor.SmallWindow.#ctor">
             <summary>
             Инициализация класса, малоко окна
@@ -413,6 +407,22 @@
         <member name="P:Monitor.WindowsStyles.SmallWindowVisibleInfo">
             <summary>
             Видимость всей информации на малом окне (кроче часов)
+            </summary>
+            
+        </member>
+        <member name="P:Monitor.WindowsStyles.SmallWindowVisibleClock">
+            <summary>
+            Видимость часов на малом окне
+            </summary>
+        </member>
+        <member name="E:Monitor.WindowsStyles.PropertyChanged">
+            <summary>
+            Событие для обновления привязаных данных
+            </summary>
+        </member>
+        <member name="M:Monitor.WindowsStyles.OnPropertyChanged(System.String)">
+            <summary>
+            Метод, вызываемый set-ром при обновлении данных
             </summary>
         </member>
     </members>
