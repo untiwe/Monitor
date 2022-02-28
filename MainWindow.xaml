@@ -7,10 +7,9 @@
         xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
         
         xmlns:local="clr-namespace:Monitor"
-        xmlns:syncfusion="http://schemas.syncfusion.com/wpf" x:Class="Monitor.MainWindow"
+        xmlns:syncfusion="http://schemas.syncfusion.com/wpf" xmlns:tb="http://www.hardcodet.net/taskbar" x:Class="Monitor.MainWindow"
         mc:Ignorable="d"
         Title="Монитор" Height="650" Width="950" Closing="Window_Closing" WindowStartupLocation="Manual" PreviewKeyDown="Window_PreviewKeyDown">
-
 
     <Window.Resources>
         <Style x:Key="StaticTitles">
@@ -70,6 +69,7 @@
 
 
     <Grid ShowGridLines="False" Margin="10,10,10,10">
+        
         <Grid.RowDefinitions>
             <RowDefinition Height="2*"/>
             <RowDefinition Height="12*"/>

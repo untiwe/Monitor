@@ -29,12 +29,12 @@ namespace Monitor
                 OnPropertyChanged("TabloName");
             }
         }
-        private short _Period;
+        private int _Period;
         /// <summary>
         /// Номер текущего периода
         /// </summary>
         /// <value>short</value>
-        public short Period
+        public int Period
         {
             get => _Period;
             set
@@ -62,7 +62,7 @@ namespace Monitor
         }
 
         /// <summary>
-        /// Время оставшееся до конца периода, в виде строки. Сделано специально для привзяки к нему TextBox без дополнительной филтраци
+        /// Время оставшееся до конца периода, в виде строки. Сделано специально для привзяки к нему TextBox без дополнительной фильтраци
         /// </summary>
         /// <value>string</value>
         public string GameTaimerString
@@ -113,10 +113,10 @@ namespace Monitor
         public void SubtractTaimer(object sender, EventArgs e)
         {
 
-            if (GameTaimer.Seconds == 1 && GameTaimer.Minutes == 0)
+            if (GameTaimer.Hours > 1 && GameTaimer.Seconds == 1 && GameTaimer.Minutes == 0)
                 TimeEndEvent?.Invoke();
 
-            if (GameTaimer.Seconds > 0 || GameTaimer.Minutes > 0)
+            if (GameTaimer.Hours > 0 || GameTaimer.Seconds > 0 || GameTaimer.Minutes > 0)
                 GameTaimer = GameTaimer.Subtract(new TimeSpan(0, 0, 1));
             else
                 TimeEndEvent?.Invoke();

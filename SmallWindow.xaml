@@ -17,14 +17,36 @@
     <!--  Height="288" Width="2976"  -->
 
     <Window.Resources>
-
         <Style x:Key="BaseFontFamily">
             <Setter Property="TextElement.FontFamily" Value="Resources/#ft12" />
+            
+        </Style>
+
+        <Style x:Key="BaseGameTrigger"
+            BasedOn="{StaticResource BaseFontFamily}">
+            <Style.Triggers>
+                <DataTrigger
+                    Binding="{Binding Path=RelaxTimer.IsRelaxTimer}"
+                    Value="false">
+                    <Setter Property="Control.Visibility" Value="Hidden"/>
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style x:Key="BaseRelaxTrigger"
+            BasedOn="{StaticResource BaseFontFamily}">
+            <Style.Triggers>
+                <DataTrigger
+                    Binding="{Binding Path=RelaxTimer.IsRelaxTimer}"
+                    Value="true">
+                    <Setter Property="Control.Visibility" Value="Hidden"/>
+                </DataTrigger>
+            </Style.Triggers>
         </Style>
 
         <Style
             x:Key="BaseTextColor"
-            BasedOn="{StaticResource BaseFontFamily}">
+            BasedOn="{StaticResource BaseGameTrigger}">
             <Style.Triggers>
                 <DataTrigger
                     Binding="{Binding Path=BigWindowColors.SmallWindowVisibleInfo}"
@@ -38,7 +60,7 @@
             x:Key="TimersFontFamily"
             BasedOn="{StaticResource BaseTextColor}">
             <Setter Property="Control.Foreground" Value="{Binding Path=BigWindowColors.SmallWindowColorPeriod, TargetNullValue=#06d12b}" />
-			
+
 
         </Style>
 
@@ -122,20 +144,44 @@
 
         <Style
             x:Key="TimeShow"
-            BasedOn="{StaticResource BaseFontFamily}">
+            BasedOn="{StaticResource BaseGameTrigger}">
             <Setter Property="Control.Foreground" Value="{Binding Path=BigWindowColors.SmallWindowColorClock, TargetNullValue=Yellow}" />
-			<Style.Triggers>
-				<DataTrigger
+            <Style.Triggers>
+                <DataTrigger
                     Binding="{Binding Path=BigWindowColors.SmallWindowVisibleClock}"
                     Value="false">
-					<Setter Property="Control.Foreground" Value="Transparent" />
-				</DataTrigger>
-			</Style.Triggers>
+                    <Setter Property="Control.Foreground" Value="Transparent" />
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style
+            x:Key="GameShow">
+            <Style.Triggers>
+                <DataTrigger
+                    Binding="{Binding Path=IsGameTime}"
+                    Value="true">
+                    <Setter Property="Control.Visibility" Value="Hidden"/>
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style
+            x:Key="RelaxShow">
+            <Style.Triggers>
+                <DataTrigger
+                    Binding="{Binding Path=IsGameTime}"
+                    Value="false">
+                    <Setter Property="Control.Visibility" Value="Hidden"/>
+                </DataTrigger>
+            </Style.Triggers>
         </Style>
 
     </Window.Resources>
 
-    <Grid x:Name="SmallWidowGrid">
+    <Grid x:Name="SmallWidowGridGame">
+        <!--   Style="{StaticResource GameShow}" -->
+          
         <Grid.RowDefinitions>
             <!--  16 строк  -->
             <RowDefinition Height="1*" />
@@ -259,18 +305,18 @@
                     Style="{StaticResource BaseTextColor}"
                     Text="{Binding Path=LeftTeam.TeamName}" />
             </Viewbox>
-			<Viewbox
+            <Viewbox
                 x:Name="Clock"
                 Grid.Row="1"
                 Grid.RowSpan="3"
                 Grid.Column="11"
                 Grid.ColumnSpan="7">
 
-				<TextBlock
+                <TextBlock
                     x:Name="ClockBox"
                     Style="{StaticResource TimeShow}"
                     Text="00:00" />
-			</Viewbox>
+            </Viewbox>
             <Viewbox
                 Grid.Row="1"
                 Grid.RowSpan="3"
@@ -450,5 +496,38 @@
                 Text="{Binding Path=RightPlayer3.RemovingTimerString}" />
         </Viewbox>
 
+        
+        
+        <!-- Элементы часов и обратного таймера для времени катния-->
+
+        <Viewbox
+               
+                Grid.Row="3"
+                Grid.RowSpan="4"
+                Grid.Column="12"
+                Grid.ColumnSpan="8">
+
+            <TextBlock
+                    x:Name="test5"
+                    Style="{StaticResource BaseRelaxTrigger}"
+                    Text="{Binding Path=RelaxTimer.ViewDate, Mode=OneWay}" />
+        </Viewbox>
+
+        <Viewbox
+                
+                Grid.Row="6"
+                Grid.RowSpan="8"
+                Grid.Column="12"
+                Grid.ColumnSpan="8">
+
+            <TextBlock
+                    x:Name="test2"
+                    Style="{StaticResource BaseRelaxTrigger}"
+                    Text="{Binding Path=RelaxTimer.RelaxTaimerString, Mode=OneWay}" />
+        </Viewbox>
+
     </Grid>
+
+
+
 </Window>

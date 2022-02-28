@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<style>
+    * {
+        font-size: 20px;
+        text-align: center;
+    }
+
+    body {
+        width: 100%;
+        max-width: 900px;
+        margin: auto;
+        margin-top: 10px;
+        border: 1px solid black;
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+
+    input {
+        width: 100%;
+        box-sizing: border-box;
+        text-align: center;
+    }
+
+    .label {
+        background-color: #FF4500;
+        color: white;
+    }
+
+    input[type='number']::-webkit-inner-spin-button,
+    input[type='number']::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+
+    .left_team,
+    .mid_inform,
+    .right_team {
+        padding-top: 10px;
+        padding-bottom: 30px;
+        width: 30%;
+        border: 1px solid rgb(143, 141, 141);
+    }
+
+    .btn_number{
+        font-size: 30px;
+    }
+
+    #_view_TabloInfo_Period{
+        font-size: 60px;
+    }
+
+    .team_couneter_wrapper {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: repeat(5, 1fr);
+        grid-column-gap: 10px;
+        grid-row-gap: 3px;
+        margin-top: 30px;
+        background-color: #E0DFDF;
+        padding-top: 5px;
+        padding-bottom: 5px;
+    }
+
+    .team_couneter_label {
+        grid-column: 1 / 5;
+        grid-row: 1;
+    }
+
+    .btn_couneter-1_team {
+        grid-column: 1;
+        grid-row: 2 / 4;
+    }
+
+    .btn_counter_restart_team {
+        grid-column: 1;
+        grid-row: 4 / 6;
+    }
+
+    .input_counter_team {
+        font-size: 60px;
+        grid-column: 2 / 4;
+        grid-row: 2 / 6;
+    }
+
+    .btn_couneter_plus1_team {
+        grid-column: 4;
+        grid-row: 2 / 6;
+    }
+
+    .period_wrapper {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        height: 20%;
+    }
+
+    .period_wrapper * {
+        width: 30%;
+    }
+
+    .period_wrapper input {
+        width: 40%;
+    }
+
+
+    .main_timer_wrapper {
+        margin-top: 10%;
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+        grid-template-rows: repeat(5, 1fr);
+        grid-column-gap: 2px;
+        grid-row-gap: 2px;
+        background-color: #E0DFDF;
+        padding-top: 5px;
+        padding-bottom: 5px;
+    }
+
+    .main_timer_label {
+        grid-column: 1 / 5;
+        grid-row: 1;
+    }
+
+    .main_timer_btn_restart {
+        grid-column: 5 / 7;
+        grid-row: 1;
+    }
+
+    .main_timer_btn {
+        grid-column: span 2;
+        grid-row: 2;
+    }
+
+    .main_timer_input {
+        grid-column: 1/ 7;
+        grid-row: 3 / 5;
+    }
+
+    .main_timer_btn_start_stop {
+        grid-column: 1/ 7;
+        grid-row: 5;
+    }
+
+    .removing_wrapper {
+        margin-top: 10px;
+        width: 48%;
+        display: flex;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+    }
+
+    .removing_title {
+        width: 100%;
+    }
+
+    .removing_string_wrapper {
+        width: 100%;
+        display: flex;
+    }
+
+    .removing_number {
+        width: 12.5%;
+    }
+
+    .removing_timer {
+        width: 20%;
+    }
+
+    .removing_span {
+        width: 12.5%;
+    }
+
+    .removing_btn {
+        width: 17.5%;
+    }
+</style>
+
+<body>
+    <div class="left_team">
+        <div class="label">Хозяева</div>
+        <input id="_view_LeftTeam_TeamTitle" type="text">
+        <input id="_view_LeftTeam_TeamName" type="text">
+        <div class="team_couneter_wrapper">
+            <div class="label team_couneter_label">Общий счет</div>
+            <button onclick="_view_LeftTeam_TeamCounter_Count(-1)" class="btn_couneter-1_team">-1</button>
+            <button onclick="_view_LeftTeam_TeamCounter_Count(Number(_view_LeftTeam_TeamCounter.value) * -1)"
+                class="btn_counter_restart_team">сброс</button>
+            <input id="_view_LeftTeam_TeamCounter" class="input_counter_team" type="number" value="0">
+            <button onclick="_view_LeftTeam_TeamCounter_Count(1)" class="btn_couneter_plus1_team">+1</button>
+        </div>
+    </div>
+    <div class="mid_inform">
+        <div class="label">Период</div>
+        <div class="period_wrapper">
+            <button class="btn_number" onclick="_view_TabloInfo_Period_Count(-1)">-1</button>
+            <input id="_view_TabloInfo_Period" type="number" value="0">
+            <button class="btn_number" onclick="_view_TabloInfo_Period_Count(1)">+1</button>
+        </div>
+        <div class="main_timer_wrapper">
+            <div class="label main_timer_label">Время</div>
+            <button onclick="_view_TabloInfo_GameTaimerString_setTime('')"
+                class="main_timer_btn_restart">Сброс</button>
+            <button onclick="_view_TabloInfo_GameTaimerString_setTime('05:00')" class="main_timer_btn">5 мин</button>
+            <button onclick="_view_TabloInfo_GameTaimerString_setTime('20:00')" class="main_timer_btn">20 мин</button>
+            <button onclick="_view_TabloInfo_GameTaimerString_setTime('10:00')" class="main_timer_btn">10 мин</button>
+            <input id="_view_TabloInfo_GameTaimerString" class="main_timer_input timer" type="text" placeholder="00:00">
+            <button class="main_timer_btn_start_stop">старт/стоп</button>
+        </div>
+
+    </div>
+    <div class="right_team">
+        <div class="label">Гости</div>
+        <input id="_view_RightTeam_TeamTitle" type="text">
+        <input id="_view_RightTeam_TeamName" type="text">
+        <div class="team_couneter_wrapper">
+            <div class="label team_couneter_label">Общий счет</div>
+            <button onclick="_view_RightTeam_TeamCounter_Count(-1)" class="btn_couneter-1_team">-1</button>
+            <button onclick="_view_RightTeam_TeamCounter_Count(Number(_view_RightTeam_TeamCounter.value) * -1)"
+                class="btn_counter_restart_team">сброс</button>
+            <input id="_view_RightTeam_TeamCounter" class="input_counter_team" type="number" value="0">
+            <button onclick="_view_RightTeam_TeamCounter_Count(1)" class="btn_couneter_plus1_team">+1</button>
+        </div>
+    </div>
+
+    <div class="removing_wrapper">
+        <div class="label removing_title">Удаления</div>
+        <div class="removing_string_wrapper">
+            <input id="_view_LeftPlayer1_PlayerNomber" type="number" class="removing_number" value="0">
+            <input id="_view_LeftPlayer1_RemovingTimerString" type="text" class="removing_timer timer" placeholder="00:00">
+            <div class="removing_span"></div>
+            <button onclick="_view_LeftPlayer1_SetTimer(2)" class="removing_btn">+2</button>
+            <button onclick="_view_LeftPlayer1_SetTimer(5)" class="removing_btn">+5</button>
+            <button onclick="_view_LeftPlayer1_SetTimer(10)" class="removing_btn">+10</button>
+            <button onclick="_view_LeftPlayer1_SetTimer(0)" class="removing_btn">Сброс</button>
+        </div>
+        <div class="removing_string_wrapper">
+            <input id="_view_LeftPlayer2_PlayerNomber" type="number" class="removing_number" value="0">
+            <input id="_view_LeftPlayer2_RemovingTimerString" type="text" class="removing_timer timer"
+                placeholder="00:00">
+            <div class="removing_span"></div>
+            <button onclick="_view_LeftPlayer2_SetTimer(2)" class="removing_btn">+2</button>
+            <button onclick="_view_LeftPlayer2_SetTimer(5)" class="removing_btn">+5</button>
+            <button onclick="_view_LeftPlayer2_SetTimer(10)" class="removing_btn">+10</button>
+            <button onclick="_view_LeftPlayer2_SetTimer(0)" class="removing_btn">Сброс</button>
+        </div>
+        <div class="removing_string_wrapper">
+            <input id="_view_LeftPlayer3_PlayerNomber" type="number" class="removing_number" value="0">
+            <input id="_view_LeftPlayer3_RemovingTimerString" type="text" class="removing_timer timer"
+                placeholder="00:00">
+            <div class="removing_span"></div>
+            <button onclick="_view_LeftPlayer3_SetTimer(2)" class="removing_btn">+2</button>
+            <button onclick="_view_LeftPlayer3_SetTimer(5)" class="removing_btn">+5</button>
+            <button onclick="_view_LeftPlayer3_SetTimer(10)" class="removing_btn">+10</button>
+            <button onclick="_view_LeftPlayer3_SetTimer(0)" class="removing_btn">Сброс</button>
+        </div>
+
+
+    </div>
+    <div class="removing_wrapper">
+        <div class="label removing_title">Удаления</div>
+        <div class="removing_string_wrapper">
+            <input id="_view_RightPlayer1_PlayerNomber" type="number" class="removing_number" value="0">
+            <input id="_view_RightPlayer1_RemovingTimerString" type="text" class="removing_timer timer"
+                placeholder="00:00">
+            <div class="removing_span"></div>
+            <button onclick="_view_RightPlayer1_SetTimer(2)" class="removing_btn">+2</button>
+            <button onclick="_view_RightPlayer1_SetTimer(5)" class="removing_btn">+5</button>
+            <button onclick="_view_RightPlayer1_SetTimer(10)" class="removing_btn">+10</button>
+            <button onclick="_view_RightPlayer1_SetTimer(0)" class="removing_btn">Сброс</button>
+        </div>
+        <div class="removing_string_wrapper">
+            <input id="_view_RightPlayer2_PlayerNomber" type="number" class="removing_number" value="0">
+            <input id="_view_RightPlayer2_RemovingTimerString" type="text" class="removing_timer timer"
+                placeholder="00:00">
+            <div class="removing_span"></div>
+            <button onclick="_view_RightPlayer2_SetTimer(2)" class="removing_btn">+2</button>
+            <button onclick="_view_RightPlayer2_SetTimer(5)" class="removing_btn">+5</button>
+            <button onclick="_view_RightPlayer2_SetTimer(10)" class="removing_btn">+10</button>
+            <button onclick="_view_RightPlayer2_SetTimer(0)" class="removing_btn">Сброс</button>
+        </div>
+        <div class="removing_string_wrapper">
+            <input id="_view_RightPlayer3_PlayerNomber" type="number" class="removing_number" value="0">
+            <input id="_view_RightPlayer3_RemovingTimerString" type="text" class="removing_timer timer"
+                placeholder="00:00">
+            <div class="removing_span"></div>
+            <button onclick="_view_RightPlayer3_SetTimer(2)" class="removing_btn">+2</button>
+            <button onclick="_view_RightPlayer3_SetTimer(5)" class="removing_btn">+5</button>
+            <button onclick="_view_RightPlayer3_SetTimer(10)" class="removing_btn">+10</button>
+            <button onclick="_view_RightPlayer3_SetTimer(0)" class="removing_btn">Сброс</button>
+        </div>
+
+
+    </div>
+</body>
+<script>
+
+    var test = window.prompt('Введите пароль')
+    fetch('/jadge/?key=' + test).then(r => r.text())
+    .then(r => {
+        if (r != 'true')
+            location.reload()
+    });
+
+    // http://www.websocket.org/echo.html
+    //вешаем маску на поля с таймерами
+    var arrayNumbers = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0']
+    document.querySelectorAll('.timer').forEach(item => {
+        item.addEventListener('keydown', (e) => {
+            if (e.key == 'Backspace' || e.key == 'Delete')
+                return;
+
+            if (!arrayNumbers.includes(e.key))
+                e.preventDefault();
+
+            //после сброса, у счетчиков игроков почему то нули(у таймера игры нет), хотя js видит это как пустую строку(в момент события), по этому такое принудительное обновление
+            if (e.target.value == "00:00")
+                e.target.value = ""
+
+            if (e.target.value.length >= 5)
+                e.preventDefault();
+        })
+    })
+    document.querySelectorAll('.timer').forEach(item => {
+        item.addEventListener('keyup', (e) => {
+
+            if (e.key == 'Backspace' || e.key == 'Delete')
+                return;
+
+            let regexp = /[0-9]{2}/g;
+            let matchAll = e.target.value.match(regexp);
+            if (e.target.value.length == 2 && matchAll.length == 1)
+                e.target.value = e.target.value + ":"
+        })
+    })
+
+    
+    var IsTimerWork = false
+    var websocket;
+
+    fetch('http://<<ServerIP>>/getsocket/').then(response => response.text())
+        .then((response) => {
+            //проверяем полученый адрес для сокета 
+            console.log(response)
+            websocket = new WebSocket(`ws://${response}`);
+            websocket.onopen = function (e) {
+                doSend('_!:@:!_')//запрашиваем состояние приложения, после подключения
+            };
+            websocket.onclose = function (e) {
+                alert("Соединение потеряно.")
+            };
+            websocket.onmessage = function (e) {
+                data = JSON.parse(e.data);
+                ToggleWrite(data.mainTimerStatus);
+                MonitorCondition(data._view);
+            };
+            websocket.onerror = function (e) {
+            };
+        }).then(HangListeners())
+
+    //получаем строку из таймера, возвращаем ее или null
+    function CheckCurretTimer(timerString) {
+        let regexp = /[0-9]{2}\:[0-9]{2}/g;
+        let matchAll = timerString.match(regexp);
+        if (matchAll != null)
+            return matchAll[0]
+        return null
+    }
+
+    //конвертируем строку с прибалвением временни
+    function AddMinutesTimer(minutes, timer) {
+        if (timer != '') {
+
+            let timeArray = timer.split(':')
+            let oldMinutes = Number(timeArray[0])
+            let newMinutes = oldMinutes + minutes
+            newMinutes = String(newMinutes)
+            if (newMinutes.length < 2)
+                newMinutes = "0" + newMinutes
+            return newMinutes + ":" + timeArray[1]
+        }
+        else {
+            let newMinutes = String(minutes)
+            if (newMinutes.length < 2)
+                newMinutes = "0" + newMinutes
+            return newMinutes + ":00"
+        }
+    }
+
+
+    //Отправка вешаем слушатели, после подключения
+    function HangListeners() {
+        _view_TabloInfo_Period.addEventListener('keyup', _view_TabloInfo_Period_Send);
+        _view_LeftTeam_TeamCounter.addEventListener('keyup', _view_LeftTeam_TeamCounter_Send);
+        _view_LeftTeam_TeamCounter.addEventListener('keyup', _view_RightTeam_TeamCounter_Send);
+        _view_LeftTeam_TeamName.addEventListener('keyup', () => { doSend("_view.LeftTeam.TeamName!:@:!" + _view_LeftTeam_TeamName.value) });
+        _view_LeftTeam_TeamTitle.addEventListener('keyup', () => { doSend("_view.LeftTeam.TeamTitle!:@:!" + _view_LeftTeam_TeamTitle.value) });
+        _view_RightTeam_TeamName.addEventListener('keyup', () => { doSend("_view.RightTeam.TeamName!:@:!" + _view_RightTeam_TeamName.value) });
+        _view_RightTeam_TeamTitle.addEventListener('keyup', () => { doSend("_view.RightTeam.TeamTitle!:@:!" + _view_RightTeam_TeamTitle.value) });
+        _view_TabloInfo_GameTaimerString.addEventListener('keyup', _view_TabloInfo_GameTaimerString_send);
+        _view_LeftPlayer1_PlayerNomber.addEventListener('keyup', _view_LeftPlayer1_PlayerNomber_SendNumber);
+        _view_LeftPlayer1_RemovingTimerString.addEventListener('keyup', _view_LeftPlayer1_PlayerNomber_SendTimer);
+        _view_LeftPlayer2_PlayerNomber.addEventListener('keyup', _view_LeftPlayer2_PlayerNomber_SendNumber);
+        _view_LeftPlayer2_RemovingTimerString.addEventListener('keyup', _view_LeftPlayer2_PlayerNomber_SendTimer);
+        _view_LeftPlayer3_PlayerNomber.addEventListener('keyup', _view_LeftPlayer3_PlayerNomber_SendNumber);
+        _view_LeftPlayer3_RemovingTimerString.addEventListener('keyup', _view_LeftPlayer3_PlayerNomber_SendTimer);
+        _view_RightPlayer1_PlayerNomber.addEventListener('keyup', _view_RightPlayer1_PlayerNomber_SendNumber);
+        _view_RightPlayer1_RemovingTimerString.addEventListener('keyup', _view_RightPlayer1_PlayerNomber_SendTimer);
+        _view_RightPlayer2_PlayerNomber.addEventListener('keyup', _view_RightPlayer2_PlayerNomber_SendNumber);
+        _view_RightPlayer2_RemovingTimerString.addEventListener('keyup', _view_RightPlayer2_PlayerNomber_SendTimer);
+        _view_RightPlayer3_PlayerNomber.addEventListener('keyup', _view_RightPlayer3_PlayerNomber_SendNumber);
+        _view_RightPlayer3_RemovingTimerString.addEventListener('keyup', _view_RightPlayer3_PlayerNomber_SendTimer);
+        document.querySelector('.main_timer_btn_start_stop').addEventListener('click', ()=>doSend('StartStopTimer!:@:!_'));
+    }
+    //работа с общим счетчиком
+    function _view_TabloInfo_Period_Send() {
+
+        if (Number(_view_TabloInfo_Period.value) < 0)
+            _view_TabloInfo_Period.value = 0
+        doSend("_view.TabloInfo.Period!:@:!" + _view_TabloInfo_Period.value)
+    }
+    function _view_TabloInfo_Period_Count(term) {
+        let per_count = Number(_view_TabloInfo_Period.value)
+        _view_TabloInfo_Period.value = per_count + term;
+        _view_TabloInfo_Period_Send();
+    }
+
+    //работа с общим таймером
+    function _view_TabloInfo_GameTaimerString_send(e) {
+        let send = CheckCurretTimer(e.target.value);
+        if (send == null)
+            return;
+
+        doSend("_view.TabloInfo.GameTaimerString!:@:!" + send)
+    }
+    function _view_TabloInfo_GameTaimerString_setTime(newTimer) {
+        _view_TabloInfo_GameTaimerString.value = newTimer;
+        doSend("_view.TabloInfo.GameTaimerString!:@:!" + newTimer);
+    }
+
+    //работа со счетчиком левой команды
+    function _view_LeftTeam_TeamCounter_Send() {
+        if (Number(_view_LeftTeam_TeamCounter.value) < 0)
+            _view_LeftTeam_TeamCounter.value = 0
+        doSend("_view.LeftTeam.TeamCounter!:@:!" + _view_LeftTeam_TeamCounter.value)
+    }
+    function _view_LeftTeam_TeamCounter_Count(term) {
+        let per_count = Number(_view_LeftTeam_TeamCounter.value)
+        _view_LeftTeam_TeamCounter.value = per_count + term;
+        _view_LeftTeam_TeamCounter_Send();
+    }
+
+    //работа со счетчиком правой команды
+    function _view_RightTeam_TeamCounter_Send() {
+        if (Number(_view_RightTeam_TeamCounter.value) < 0)
+            _view_RightTeam_TeamCounter.value = 0
+        doSend("_view.RightTeam.TeamCounter!:@:!" + _view_RightTeam_TeamCounter.value)
+    }
+    function _view_RightTeam_TeamCounter_Count(term) {
+        let per_count = Number(_view_RightTeam_TeamCounter.value)
+        _view_RightTeam_TeamCounter.value = per_count + term;
+        _view_RightTeam_TeamCounter_Send();
+    }
+
+    //работа с игроками удаления
+    //1 левый
+    function _view_LeftPlayer1_PlayerNomber_SendNumber() {
+
+        if (Number(_view_LeftPlayer1_PlayerNomber.value) >= 0)
+            doSend("_view.LeftPlayer1.PlayerNomber!:@:!" + _view_LeftPlayer1_PlayerNomber.value);
+    }
+    function _view_LeftPlayer1_PlayerNomber_SendTimer() {
+        let send = CheckCurretTimer(_view_LeftPlayer1_RemovingTimerString.value);
+        if (send == null)
+            return;
+        doSend("_view.LeftPlayer1.RemovingTimerString!:@:!" + send)
+    }
+    function _view_LeftPlayer1_SetTimer(term) {
+        if (term == 0) {
+            _view_LeftPlayer1_PlayerNomber.value = 0;
+            _view_LeftPlayer1_RemovingTimerString.value = ''
+            _view_LeftPlayer1_PlayerNomber_SendNumber()
+        }
+        _view_LeftPlayer1_RemovingTimerString.value = AddMinutesTimer(term, _view_LeftPlayer1_RemovingTimerString.value);
+        _view_LeftPlayer1_PlayerNomber_SendTimer();
+    }
+
+    //2 левый
+    function _view_LeftPlayer2_PlayerNomber_SendNumber() {
+        if (Number(_view_LeftPlayer2_PlayerNomber.value) >= 0)
+            doSend("_view.LeftPlayer2.PlayerNomber!:@:!" + _view_LeftPlayer2_PlayerNomber.value);
+    }
+    function _view_LeftPlayer2_PlayerNomber_SendTimer() {
+        let send = CheckCurretTimer(_view_LeftPlayer2_RemovingTimerString.value);
+        if (send == null)
+            return;
+        doSend("_view.LeftPlayer2.RemovingTimerString!:@:!" + send)
+    }
+    function _view_LeftPlayer2_SetTimer(term) {
+        if (term == 0) {
+            _view_LeftPlayer2_PlayerNomber.value = 0;
+            _view_LeftPlayer2_RemovingTimerString.value = ""
+            _view_LeftPlayer2_PlayerNomber_SendNumber()
+        }
+        _view_LeftPlayer2_RemovingTimerString.value = AddMinutesTimer(term, _view_LeftPlayer2_RemovingTimerString.value);
+        _view_LeftPlayer2_PlayerNomber_SendTimer();
+    }
+
+    //3 левый
+    function _view_LeftPlayer3_PlayerNomber_SendNumber() {
+        if (Number(_view_LeftPlayer3_PlayerNomber.value) >= 0)
+            doSend("_view.LeftPlayer3.PlayerNomber!:@:!" + _view_LeftPlayer3_PlayerNomber.value);
+    }
+    function _view_LeftPlayer3_PlayerNomber_SendTimer() {
+        let send = CheckCurretTimer(_view_LeftPlayer3_RemovingTimerString.value);
+        if (send == null)
+            return;
+        doSend("_view.LeftPlayer3.RemovingTimerString!:@:!" + send)
+    }
+    function _view_LeftPlayer3_SetTimer(term) {
+        if (term == 0) {
+            _view_LeftPlayer3_PlayerNomber.value = 0;
+            _view_LeftPlayer3_RemovingTimerString.value = ""
+            _view_LeftPlayer3_PlayerNomber_SendNumber()
+            _view_LeftPlayer3_RemovingTimerString.value = AddMinutesTimer(term, _view_LeftPlayer3_RemovingTimerString.value);
+            _view_LeftPlayer3_PlayerNomber_SendTimer();
+        }
+    }
+
+    //1 правый
+    function _view_RightPlayer1_PlayerNomber_SendNumber() {
+        if (Number(_view_RightPlayer1_PlayerNomber.value) >= 0)
+            doSend("_view.RightPlayer1.PlayerNomber!:@:!" + _view_RightPlayer1_PlayerNomber.value);
+    }
+    function _view_RightPlayer1_PlayerNomber_SendTimer() {
+        let send = CheckCurretTimer(_view_RightPlayer1_RemovingTimerString.value);
+        if (send == null)
+            return;
+        doSend("_view.RightPlayer1.RemovingTimerString!:@:!" + send)
+    }
+    function _view_RightPlayer1_SetTimer(term) {
+        if (term == 0) {
+            _view_RightPlayer1_PlayerNomber.value = 0;
+            _view_RightPlayer1_RemovingTimerString.value = ""
+            _view_RightPlayer1_PlayerNomber_SendNumber()
+        }
+        _view_RightPlayer1_RemovingTimerString.value = AddMinutesTimer(term, _view_RightPlayer1_RemovingTimerString.value);
+        _view_RightPlayer1_PlayerNomber_SendTimer();
+    }
+
+    //2 правый
+    function _view_RightPlayer2_PlayerNomber_SendNumber() {
+        if (Number(_view_RightPlayer2_PlayerNomber.value) >= 0)
+            doSend("_view.RightPlayer2.PlayerNomber!:@:!" + _view_RightPlayer2_PlayerNomber.value);
+    }
+    function _view_RightPlayer2_PlayerNomber_SendTimer() {
+        let send = CheckCurretTimer(_view_RightPlayer2_RemovingTimerString.value);
+        if (send == null)
+            return;
+        doSend("_view.RightPlayer2.RemovingTimerString!:@:!" + send)
+    }
+    function _view_RightPlayer2_SetTimer(term) {
+        if (term == 0) {
+            _view_RightPlayer2_PlayerNomber.value = 0;
+            _view_RightPlayer2_RemovingTimerString.value = ""
+            _view_RightPlayer2_PlayerNomber_SendNumber()
+        }
+        _view_RightPlayer2_RemovingTimerString.value = AddMinutesTimer(term, _view_RightPlayer2_RemovingTimerString.value);
+        _view_RightPlayer2_PlayerNomber_SendTimer();
+    }
+
+    //3 правый
+    function _view_RightPlayer3_PlayerNomber_SendNumber() {
+        if (Number(_view_RightPlayer3_PlayerNomber.value) >= 0)
+            doSend("_view.RightPlayer3.PlayerNomber!:@:!" + _view_RightPlayer3_PlayerNomber.value);
+    }
+    function _view_RightPlayer3_PlayerNomber_SendTimer() {
+        let send = CheckCurretTimer(_view_RightPlayer3_RemovingTimerString.value);
+        if (send == null)
+            return;
+        doSend("_view.RightPlayer3.RemovingTimerString!:@:!" + send)
+    }
+    function _view_RightPlayer3_SetTimer(term) {
+        if (term == 0) {
+            _view_RightPlayer3_PlayerNomber.value = 0;
+            _view_RightPlayer3_RemovingTimerString.value = ""
+            _view_RightPlayer3_PlayerNomber_SendNumber()
+        }
+        _view_RightPlayer3_RemovingTimerString.value = AddMinutesTimer(term, _view_RightPlayer3_RemovingTimerString.value);
+        _view_RightPlayer3_PlayerNomber_SendTimer();
+    }
+
+    function doSend(message) {
+        websocket.send(message);
+    }
+    //переключение активности/не активности таймеров
+    function ToggleWrite(state){
+        IsTimerWork = state;
+        _view_LeftPlayer1_RemovingTimerString.disabled = state;
+        _view_LeftPlayer2_RemovingTimerString.disabled = state;
+        _view_LeftPlayer3_RemovingTimerString.disabled = state;
+        _view_RightPlayer1_RemovingTimerString.disabled = state;
+        _view_RightPlayer2_RemovingTimerString.disabled = state;
+        _view_RightPlayer3_RemovingTimerString.disabled = state;
+        _view_TabloInfo_GameTaimerString.disabled = state
+    }
+
+    //обновляем данные приложения
+    function MonitorCondition(_view){
+        _view_TabloInfo_Period.value = _view.TabloInfo.Period
+        _view_LeftTeam_TeamCounter.value = _view.LeftTeam.TeamCounter
+       _view_LeftTeam_TeamCounter.value = _view.LeftTeam.TeamCounter
+       _view_LeftTeam_TeamName.value = _view.LeftTeam.TeamName
+       _view_LeftTeam_TeamTitle.value = _view.LeftTeam.TeamTitle
+       _view_RightTeam_TeamName.value = _view.RightTeam.TeamName
+       _view_RightTeam_TeamTitle.value = _view.RightTeam.TeamTitle
+       _view_TabloInfo_GameTaimerString.value = _view.TabloInfo.GameTaimerString 
+       _view_LeftPlayer1_PlayerNomber.value = _view.LeftPlayer1.PlayerNomber
+       _view_LeftPlayer1_RemovingTimerString.value = _view.LeftPlayer1.RemovingTimerString
+       _view_LeftPlayer2_PlayerNomber.value = _view.LeftPlayer2.PlayerNomber
+       _view_LeftPlayer2_RemovingTimerString.value = _view.LeftPlayer2.RemovingTimerString
+       _view_LeftPlayer3_PlayerNomber.value = _view.LeftPlayer3.PlayerNomber
+       _view_LeftPlayer3_RemovingTimerString.value = _view.LeftPlayer3.RemovingTimerString
+       _view_RightPlayer1_PlayerNomber.value = _view.RightPlayer1.PlayerNomber
+       _view_RightPlayer1_RemovingTimerString.value = _view.RightPlayer1.RemovingTimerString
+       _view_RightPlayer2_PlayerNomber.value = _view.RightPlayer2.PlayerNomber
+       _view_RightPlayer2_RemovingTimerString.value = _view.RightPlayer2.RemovingTimerString
+       _view_RightPlayer3_PlayerNomber.value = _view.RightPlayer3.PlayerNomber
+       _view_RightPlayer3_RemovingTimerString.value = _view.RightPlayer3.RemovingTimerString
+    }
+</script>

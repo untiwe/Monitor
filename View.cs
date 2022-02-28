@@ -50,5 +50,18 @@ namespace Monitor
         /// Цвета для текста табло
         /// </summary>
         public WindowsStyles BigWindowColors { get; set; } = new WindowsStyles();
+        /// <summary>
+        /// Состояние большого окна
+        /// </summary>
+        public ScreenState BigWindowState { get; set; } = new ScreenState();
+        /// <summary>
+        /// Состояние малого окна
+        /// </summary>
+        public ScreenState SmallWindowState { get; set; } = new ScreenState();
+
+        /// <summary>
+        /// Таймер для времени катания
+        /// </summary>
+        public RelaxingTimer RelaxTimer { get; set; } = new RelaxingTimer();
     }
 }

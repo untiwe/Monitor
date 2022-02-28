@@ -13,12 +13,12 @@ namespace Monitor
     /// </summary>
     public class RemovingPlayer : INotifyPropertyChanged
     {
-        private short _PlayerNomber;
+        private int _PlayerNomber;
         /// <summary>
         /// Номер удаленного игрока
         /// </summary>
         /// <value>short</value>
-        public short PlayerNomber
+        public int PlayerNomber
         {
             get => _PlayerNomber;
             set

@@ -11,17 +11,46 @@
 
         <Style x:Key="BaseFontFamily">
             <!--<Setter Property="TextElement.FontFamily" Value="Resources/#a_lcdnova" />-->
-            
-            
         </Style>
 
-        <Style x:Key="NumbersStyle">
+
+        <Style x:Key="BaseGameTrigger"
+            BasedOn="{StaticResource BaseFontFamily}">
+            <Style.Triggers>
+                <DataTrigger
+                    Binding="{Binding Path=RelaxTimer.IsRelaxTimer}"
+                    Value="false">
+                    <Setter Property="Control.Visibility" Value="Hidden"/>
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style x:Key="BaseRelaxTrigger"
+            BasedOn="{StaticResource BaseFontFamily}">
+            <Style.Triggers>
+                <DataTrigger
+                    Binding="{Binding Path=RelaxTimer.IsRelaxTimer}"
+                    Value="true">
+                    <Setter Property="Control.Visibility" Value="Hidden"/>
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style x:Key="NumbersGameStyle"
+            BasedOn="{StaticResource BaseGameTrigger}">
             <!--<Setter Property="TextElement.FontFamily" Value="Resources/#Digital Regular" />-->
-            <!--<Setter Property="Control.Foreground" Value="white"/>--> <!--без привязки данных-->
-            <Setter Property="Control.Foreground" Value="{Binding Path=BigWindowColors.BigWindowColorNumbers, TargetNullValue=white}"/> <!--с привязкой данных-->
+            <!--<Setter Property="Control.Foreground" Value="white"/>-->
+            <!--без привязки данных-->
+            <Setter Property="Control.Foreground" Value="{Binding Path=BigWindowColors.BigWindowColorNumbers, TargetNullValue=white}"/>
+            <!--с привязкой данных-->
         </Style>
 
-        <!--<Style x:Key="NumbersStyle" TargetType="TextBlock" BasedOn="{StaticResource BaseFontFamily}">    TargetType не работает, да и не надо
+        <Style x:Key="NumbersRelaxStyle"
+            BasedOn="{StaticResource BaseRelaxTrigger}">
+            <Setter Property="Control.Foreground" Value="{Binding Path=BigWindowColors.BigWindowColorNumbers, TargetNullValue=white}"/>
+        </Style>
+
+        <!--<Style x:Key="NumbersGameStyle" TargetType="TextBlock" BasedOn="{StaticResource BaseGameTrigger}">    TargetType не работает, да и не надо
             <Setter Property="Control.FontSize" Value="60"/>
             <Setter Property="Control.Background" Value="Transparent"/>
             <Setter Property="Control.HorizontalContentAlignment" Value="Center"/>
@@ -30,7 +59,7 @@
             <Setter Property="Control.VerticalAlignment" Value="Stretch"/>
         </Style>-->
 
-        <Style x:Key="LabelStyle1" BasedOn="{StaticResource BaseFontFamily}">
+        <Style x:Key="LabelStyle1" BasedOn="{StaticResource BaseGameTrigger}">
             <Setter Property="Control.HorizontalContentAlignment" Value="Center"/>
             <Setter Property="Control.VerticalContentAlignment" Value="Center"/>
             <Setter Property="Control.VerticalAlignment" Value="Center"/>
@@ -40,47 +69,47 @@
         </Style>
 
         <!--Стили с тригерами для списков удаленых игроков-->
-        <Style x:Key="LeftPlayerRemoving1" BasedOn="{StaticResource NumbersStyle}">
-            
+        <Style x:Key="LeftPlayerRemoving1" BasedOn="{StaticResource NumbersGameStyle}">
+
             <Style.Triggers>
                 <DataTrigger Binding="{Binding Path=LeftPlayer1.PlayerNomber}" Value="0">
                     <Setter Property="Control.Foreground" Value="Transparent"/>
                 </DataTrigger>
             </Style.Triggers>
         </Style>
-        <Style x:Key="LeftPlayerRemoving2" BasedOn="{StaticResource NumbersStyle}">
-           
+        <Style x:Key="LeftPlayerRemoving2" BasedOn="{StaticResource NumbersGameStyle}">
+
             <Style.Triggers>
                 <DataTrigger Binding="{Binding Path=LeftPlayer2.PlayerNomber}" Value="0">
                     <Setter Property="Control.Foreground" Value="Transparent"/>
                 </DataTrigger>
             </Style.Triggers>
         </Style>
-        <Style x:Key="LeftPlayerRemoving3" BasedOn="{StaticResource NumbersStyle}">
-            
+        <Style x:Key="LeftPlayerRemoving3" BasedOn="{StaticResource NumbersGameStyle}">
+
             <Style.Triggers>
                 <DataTrigger Binding="{Binding Path=LeftPlayer3.PlayerNomber}" Value="0">
                     <Setter Property="Control.Foreground" Value="Transparent"/>
                 </DataTrigger>
             </Style.Triggers>
         </Style>
-        <Style x:Key="RightPlayerRemoving1" BasedOn="{StaticResource NumbersStyle}">
-            
+        <Style x:Key="RightPlayerRemoving1" BasedOn="{StaticResource NumbersGameStyle}">
+
             <Style.Triggers>
                 <DataTrigger Binding="{Binding Path=RightPlayer1.PlayerNomber}" Value="0">
                     <Setter Property="Control.Foreground" Value="Transparent"/>
                 </DataTrigger>
             </Style.Triggers>
         </Style>
-        <Style x:Key="RightPlayerRemoving2" BasedOn="{StaticResource NumbersStyle}">
-            
+        <Style x:Key="RightPlayerRemoving2" BasedOn="{StaticResource NumbersGameStyle}">
+
             <Style.Triggers>
                 <DataTrigger Binding="{Binding Path=RightPlayer2.PlayerNomber}" Value="0">
                     <Setter Property="Control.Foreground" Value="Transparent"/>
                 </DataTrigger>
             </Style.Triggers>
         </Style>
-        <Style x:Key="RightPlayerRemoving3" BasedOn="{StaticResource NumbersStyle}">
+        <Style x:Key="RightPlayerRemoving3" BasedOn="{StaticResource NumbersGameStyle}">
             <Style.Triggers>
                 <DataTrigger Binding="{Binding Path=RightPlayer3.PlayerNomber}" Value="0">
                     <Setter Property="Control.Foreground" Value="Transparent"/>
@@ -116,7 +145,7 @@
         <Viewbox Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="6" HorizontalAlignment="Center" VerticalAlignment="Center">
             <TextBlock Style="{StaticResource TextBlockTextColor}" Text="{Binding Path=TabloInfo.TabloName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></TextBlock>
         </Viewbox>
-       
+
 
         <!--Левая половина-->
         <Viewbox Style="{StaticResource LabelStyle1}" 
@@ -146,8 +175,8 @@
                 </TransformGroup>
             </Viewbox.RenderTransform>
             <!--тут-->
-            <TextBlock Style="{StaticResource NumbersStyle}" Text="{Binding Path=LeftTeam.TeamCounter, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-            <!--Style="{StaticResource NumbersStyle}"-->
+            <TextBlock Style="{StaticResource NumbersGameStyle}" Text="{Binding Path=LeftTeam.TeamCounter, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+            <!--Style="{StaticResource NumbersGameStyle}"-->
         </Viewbox>
 
         <Viewbox HorizontalAlignment="Center" Grid.ColumnSpan="2" Grid.Row="7">
@@ -171,7 +200,7 @@
         <Viewbox HorizontalAlignment="Center" Grid.Column="1" Grid.ColumnSpan="1" Grid.Row="10">
             <TextBlock Style="{StaticResource LeftPlayerRemoving3}" Text="{Binding Path=LeftPlayer3.RemovingTimerString, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
         </Viewbox>
-        
+
 
         <!--Центральная часть-->
         <Viewbox HorizontalAlignment="Center"  Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="2" Grid.RowSpan="3" Margin="0,20,0,20">
@@ -186,7 +215,7 @@
                     <TranslateTransform X="0" Y="25"/>
                 </TransformGroup>
             </Viewbox.RenderTransform>
-            <TextBlock Style="{StaticResource NumbersStyle}" Text="{Binding Path=TabloInfo.Period, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+            <TextBlock Style="{StaticResource NumbersGameStyle}" Text="{Binding Path=TabloInfo.Period, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
         </Viewbox>
         <Viewbox HorizontalAlignment="Center" Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="5" Grid.RowSpan="2" Margin="0,20,0,0">
             <Viewbox.RenderTransform>
@@ -208,9 +237,9 @@
                     <TranslateTransform X="0" Y="100"/>
                 </TransformGroup>
             </Viewbox.RenderTransform>
-            <TextBlock Style="{StaticResource NumbersStyle}" Text="{Binding Path=TabloInfo.GameTaimerString, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+            <TextBlock Style="{StaticResource NumbersGameStyle}" Text="{Binding Path=TabloInfo.GameTaimerString, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
         </Viewbox>
-        
+
 
         <!--Правая половина-->
 
@@ -240,7 +269,7 @@
                     <TranslateTransform X="0" Y="-30"/>
                 </TransformGroup>
             </Viewbox.RenderTransform>
-            <TextBlock Style="{StaticResource NumbersStyle}" Text="{Binding Path=RightTeam.TeamCounter, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+            <TextBlock Style="{StaticResource NumbersGameStyle}" Text="{Binding Path=RightTeam.TeamCounter, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
         </Viewbox>
 
         <Viewbox HorizontalAlignment="Center" Grid.ColumnSpan="2" Grid.Column="4" Grid.Row="7">
@@ -264,5 +293,25 @@
         <Viewbox HorizontalAlignment="Center" Grid.Column="5" Grid.ColumnSpan="1" Grid.Row="10">
             <TextBlock Style="{StaticResource RightPlayerRemoving3}" Text="{Binding Path=RightPlayer3.RemovingTimerString, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
         </Viewbox>
+        
+        <!-- 11 row 6 column -->
+        <!-- Элементы часов и обратного таймера для времени катния-->
+
+        <Viewbox HorizontalAlignment="Center"  
+                 Grid.Column="2" 
+                 Grid.ColumnSpan="2" 
+                 Grid.Row="2" 
+                 Grid.RowSpan="3">
+            <TextBlock Style="{StaticResource NumbersRelaxStyle}" Text="{Binding Path=RelaxTimer.ViewDate, Mode=OneWay}"/>
+        </Viewbox>
+
+        <Viewbox HorizontalAlignment="Center"  
+                 Grid.Column="1" 
+                 Grid.ColumnSpan="4" 
+                 Grid.Row="5" 
+                 Grid.RowSpan="4">
+            <TextBlock Style="{StaticResource NumbersRelaxStyle}" Text="{Binding Path=RelaxTimer.RelaxTaimerString, Mode=OneWay}"/>
+        </Viewbox>
+        
     </Grid>
 </Window>

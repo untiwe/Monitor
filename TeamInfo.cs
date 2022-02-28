@@ -41,12 +41,12 @@ namespace Monitor
                 OnPropertyChanged("TeamTitle");//или OnPropertyChanged();
             }
         }
-        private short _TeamCounter = 0;//счетчик очков команды
+        private int _TeamCounter = 0;//счетчик очков команды
         /// <summary>
         /// Счетчик отков команды
         /// </summary>
         /// <value>short</value>
-        public short TeamCounter 
+        public int TeamCounter 
         { 
             get => _TeamCounter; 
             set
